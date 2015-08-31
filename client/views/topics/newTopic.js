@@ -1,20 +1,21 @@
 Template.newTopic.events({
-  "submit .new-todo": function(e,t){
+  "submit .new-topic-form": function(e){
 
-    // console.log("form submitted");
+    //prevent unwanted default browser behavior for form submit
+    e.preventDefault();
 
-    var topicTitle = e.target.title.value;
 
+    //get text entered into topicTitle field
+    var topicTitle = e.target.topicTitle.value;
+
+    //add new topic record to db (this approach will only work with insecure turned on)
     var topicId = Topics.insert({
       title: topicTitle,
-      updateAt: new Date()
+      updatedAt: Date()
     });
-    // debugger;
 
-    // console.log(topicId);
-
-    //reset the input field
-    // document.getElementByClassName('new-todo')[0].reset();
+    //clear out form data after insert
+    $('.new-topic-form')[0].reset();
 
   }
 });
