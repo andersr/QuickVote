@@ -1,7 +1,7 @@
 <template name="topicsList">
   <ul class="list-group">
    {{#each topics}}
-    <li class="list-group-item">{{title}} <button class="pull-right delete-topic btn btn-default btn-xs">&times;</button></li>
+    <li class="list-group-item"> {{title}} <span class="pull-right">{{> upDownVote}} | <button class="delete-topic btn btn-default btn-xs">&times;</button></span></li>
       {{/each}}
   </ul>
 </template>

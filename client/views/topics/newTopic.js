@@ -14,6 +14,12 @@ Template.newTopic.events({
       updatedAt: Date()
     });
 
+    //Associate a vote with this topic
+    Votes.insert({
+      topicId: topicId,
+      voteCount: 0
+    });
+
     //clear out form data after insert
     $('.new-topic-form')[0].reset();
 
