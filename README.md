@@ -1,3 +1,3 @@
 # TopicVoter App
 
-This is a simple Meteor app used for teaching Meteor basics.
+A meteor app used for an introductory talk on Meteor JS.
