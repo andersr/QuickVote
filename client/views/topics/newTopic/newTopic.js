@@ -25,3 +25,7 @@ Template.newTopic.events({
 
   }
 });
+
+// Template inheritance, using the following package: https://atmospherejs.com/aldeed/template-extension
+Template.newTopicNavBar.inheritsHelpersFrom("newTopic");
+Template.newTopicNavBar.inheritsEventsFrom("newTopic");

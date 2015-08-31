@@ -2,7 +2,7 @@ Template.upDownVote.helpers({
   voteCount:function(){
     var thisVote = Votes.findOne({topicId: this._id});
     
-    // only return if found - can be resolved with template level subscriptions
+    // required since we are not waiting for vote subscriptions to be ready.  TODO: resolve by adding a template level vote subscription
     if(thisVote){
       return thisVote.voteCount;
     }
