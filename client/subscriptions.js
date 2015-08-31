@@ -1,1 +1,2 @@
-// Meteor.subscribe('topics');
+Meteor.subscribe('topics');
+Meteor.subscribe('votes');

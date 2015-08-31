@@ -12,7 +12,13 @@ Template.topicsList.events({
     var confirmDelete = confirm("Really delete this topic?");
 
     if(confirmDelete){
-      Topics.remove(this._id);
+
+      Meteor.call('removeTopic', this._id, function(error, result){
+        if (error){
+          console.log(error.reason);
+        }
+      });
+      
     };
     
   }
