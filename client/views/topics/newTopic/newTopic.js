@@ -1,10 +1,10 @@
 Template.newTopic.helpers({
-  // clearForm: function(){
-  //   if(Session.get("topicAdded")){
-  //     $('.new-topic-form')[0].reset();
-  //     Session.set("topicAdded", false);
-  //   }
-  // }
+  clearForm: function(){
+    if(Session.get("topicAdded")){
+      $('.new-topic-form')[0].reset();
+      Session.set("topicAdded", false);
+    }
+  }
   // ,
   // topicAdded: function(){
   //   return Session.get("topicAdded");
@@ -41,12 +41,15 @@ Template.newTopic.events({
     Meteor.call('addTopic', topicAttributes, function(error, result){
       if (error){
         console.log(error.reason);
+      } else {
+        //TODO: communicate directly with helper instead
+        Session.set("topicAdded", true);
       }
     });
 
      //clear out form data after insert
      //TODO: wait for topic id to be returned before doing reset (currently above action is async)
-    $('.new-topic-form')[0].reset();
+   
 
   }
 });
