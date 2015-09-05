@@ -1,14 +1,13 @@
-Template.newTopic.helpers({
-  // clearForm: function(){
-  //   if(Session.get("topicAdded")){
-  //     $('.new-topic-form')[0].reset();
-  //     Session.set("topicAdded", false);
-  //   }
-  // }
+Template.voteTitle.helpers({
+  editingVoteTitle: function(){
+    if(this.voteTitle === ""){
+
+    }
+  }
 })
 
-Template.newTopic.events({
-  "submit .new-topic-form": function(event,template){
+Template.voteTitle.events({
+  "submit .vote-title-form": function(event,template){
     //prevent unwanted default behavior for form submit
     event.preventDefault();
 
@@ -16,7 +15,7 @@ Template.newTopic.events({
     var self = this;
 
     //get text entered into topicTitle field
-    var topicTitle = e.target.topicTitle.value;
+    var voteTitle = e.target.voteTitle.value;
 
     //This will only work with insecure turned on:
     // var topicId = Topics.insert({
@@ -30,11 +29,11 @@ Template.newTopic.events({
     //   voteCount: 0
     // });
 
-    var topicAttributes = {
-      title: topicTitle
+    var voteAttributes = {
+      title: voteTitle
     };
 
-    Meteor.call('addTopic', topicAttributes, function(error, result){
+    Meteor.call('createVote', voteAttributes, function(error, result){
       if (error){
         console.log(error.reason);
       } else {

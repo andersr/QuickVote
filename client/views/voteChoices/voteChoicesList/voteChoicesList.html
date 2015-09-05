@@ -1,9 +1,6 @@
-<template name="votingChoicesList">
-<div class="page-header">
- <h1 class="display-inline">Which Meteor Topics should we discuss?</h1>
-</div>
+<template name="voteChoicesList">
   <ul class="list-group">
-    <li class="list-group-item">{{> newTopic}}</li>
+    <li class="list-group-item">{{> voteChoice}}</li>
    {{#each topics}}
     <li class="list-group-item"> {{title}} <span class="pull-right">{{> upDownVote}} | <button class="delete-topic btn btn-default btn-xs">&times;</button></span></li>
       {{/each}}

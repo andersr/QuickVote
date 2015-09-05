@@ -1,0 +1,9 @@
+<template name="voteChoice">
+ {{#if editingVoteTitle}}
+ <form class="vote-title-form form-inline">
+   <input type="text" name="voteChoiceTitle" placeholder="Add a vote choice..."  />
+ </form>
+ {{else}}
+ {{voteChoiceTitle}}
+ {{/if}}
+</template>
