@@ -5,7 +5,11 @@
 {{> appHeader}}
 <div class="main-content container row">
  <div class="col-sm-8 col-md-offset-2">
+ {{#if currentUser}}
    {{> vote}}
+   {{else}}
+   <p>Welcome to TopicVoter!  Please sign in to continue.</p>
+   {{/if}}
 </div>
 </div>
 </body>
