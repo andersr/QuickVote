@@ -13,3 +13,5 @@ ian:accounts-ui-bootstrap-3
 ongoworks:security
 kit:basic-auth
 iron:router
+sacha:spin
+useraccounts:bootstrap

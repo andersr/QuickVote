@@ -11,8 +11,9 @@
       <a class="navbar-brand" href="#">TopicVoter</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse"> 
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right">{{#if showLogin}}
       {{> loginButtons}}
+      {{/if}}
     </ul>
     </div><!--/.navbar-collapse -->
   </div>
