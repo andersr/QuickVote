@@ -1,9 +1,9 @@
 Meteor.startup(function(){
 
   // Set default session values
-  // Session.setDefault({
-  //   "topicAdded", false
-  // });
+  Session.setDefault({
+    "newVote": true
+  });
 
 });
 

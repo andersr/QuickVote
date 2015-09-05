@@ -1,7 +1,7 @@
 <template name="voteTitle">
-{{#if editingVoteTitle}}
+{{#if editVoteTitle}}
   <form class="vote-title-form form-inline">
-   <input type="text" name="voteTitle" placeholder="What's this vote about?"  />
+   <input type="text" name="voteTitle" placeholder="New vote..."  />
  </form>
  {{else}}
  <h1 class="display-inline">{{voteTitle}}</h1>

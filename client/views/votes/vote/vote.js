@@ -1,14 +1,16 @@
-Template.voteTitle.helpers({
-  editVoteTitle: function(){
-    if (Session.get("newVote") || Session.get("editVoteTitle")) {
-      return true;
-    } else {
-      return false; 
-    };
-  }
+Template.vote.helpers({
+
+  // TODO: move from voteTitle to here for more DRY data context
+  // editVoteTitle: function(){
+  //   if (Session.get("newVote") || Session.get("editVoteTitle")) {
+  //     return true;
+  //   } else {
+  //     return false; 
+  //   };
+  // }
 })
 
-Template.voteTitle.events({
+Template.vote.events({
   "submit .vote-title-form": function(event,template){
     //prevent unwanted default behavior for form submit
     event.preventDefault();
