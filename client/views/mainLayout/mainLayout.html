@@ -1,0 +1,21 @@
+<template name="mainLayout">
+ {{> appHeader}}
+<div class="main-content container row">
+ <div class="col-sm-8 col-md-offset-2">
+ {{> yield}}
+</div>
+</div>
+</template>
+
+<template name="tmp">
+  {{> appHeader}}
+<div class="main-content container row">
+ <div class="col-sm-8 col-md-offset-2">
+ {{#if currentUser}}
+   {{> vote}}
+   {{else}}
+   <p>Welcome to TopicVoter!  Please sign in to continue.</p>
+   {{/if}}
+</div>
+</div>
+</template>
