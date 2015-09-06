@@ -1,7 +1,7 @@
 Template.voteChoicesList.helpers({
-  // newVote: function(){
-  //   return Session.get("newVote"); 
-  // }
+  votingOpen: function(){
+    return Session.get("votingOpen"); 
+  },
 
   voteChoices:function(){
     var voteId = Router.current().params._id;
