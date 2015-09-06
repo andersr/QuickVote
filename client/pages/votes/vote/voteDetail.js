@@ -1,4 +1,4 @@
-Template.vote.helpers({
+Template.voteDetail.helpers({
 
   // TODO: move from voteTitle to here for more DRY data context
   // editVoteTitle: function(){
@@ -10,7 +10,7 @@ Template.vote.helpers({
   // }
 })
 
-Template.vote.events({
+Template.voteDetail.events({
   "submit .vote-title-form": function(event,template){
     //prevent unwanted default behavior for form submit
     event.preventDefault();

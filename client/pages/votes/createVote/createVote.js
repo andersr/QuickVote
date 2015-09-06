@@ -5,10 +5,10 @@ Template.createVote.events({
     event.preventDefault();
 
     //allow for exposing 'this' to internal functions, such as Meteor.call
-    var self = this;
+    // var self = this;
 
     //get text entered into topicTitle field
-    var voteTitle = e.target.voteTitle.value;
+    var voteTitle = event.target.voteTitle.value;
 
     //This will only work with insecure turned on:
     // var topicId = Topics.insert({
@@ -32,7 +32,12 @@ Template.createVote.events({
       } else {
 
          //clear out form data after insert
-         template.find("form").reset();
+         // template.find("form").reset();
+         console.log(result._id);
+
+         // Router.go('showPost', { _id: Router.current().params._id });
+
+         Router.go('voteDetail', { _id: result._id });
 
       }
     });
