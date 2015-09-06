@@ -15,3 +15,4 @@ kit:basic-auth
 iron:router
 sacha:spin
 useraccounts:bootstrap
+jiku:bootstrap-toggle
