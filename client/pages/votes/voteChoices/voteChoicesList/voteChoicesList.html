@@ -1,10 +1,8 @@
-<template name="voteChoices">
-  {{#unless newVote}}
+<template name="voteChoicesList">
   <ul class="list-group">
-    <li class="list-group-item">{{> voteChoice}}</li>
+    <li class="list-group-item">{{> addVoteChoice}}</li>
    {{#each voteChoices}}
     <li class="list-group-item"> {{title}} <span class="pull-right">{{> upDownVote}} | <button class="delete-topic btn btn-default btn-xs">&times;</button></span></li>
       {{/each}}
   </ul>
-  {{/unless}}
 </template>
