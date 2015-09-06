@@ -4,9 +4,9 @@ Template.voteChoicesList.helpers({
   // }
 
   voteChoices:function(){
-    var voteId = Router.current().route.params._id;
+    var voteId = Router.current().params._id;
 
-    var voteChoices = VoteChoices.find({voteId: voteId});
+    var voteChoices = VoteChoices.find({voteId: voteId}, {sort: {updatedAt: -1}});
     return voteChoices;
     // VoteChoices.find({}, {sort: {updatedAt: -1}});
     // return Tasks.find({}, {sort: {createdAt: -1}});
