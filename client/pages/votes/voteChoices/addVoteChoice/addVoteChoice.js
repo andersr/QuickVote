@@ -1,3 +1,7 @@
+Template.addVoteChoice.onRendered(function(){
+  $( ".newVoteChoice" ).focus();
+});
+
 Template.addVoteChoice.events({
   "submit .add-vote-choice-form": function(event,template){
     //prevent unwanted default behavior for form submit
@@ -35,7 +39,7 @@ Template.addVoteChoice.events({
 
          //clear out form data after insert
          template.find("form").reset();
-         console.log(result._id);
+         // console.log(result._id);
 
   
 
