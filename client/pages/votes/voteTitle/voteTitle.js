@@ -1,10 +1,11 @@
 Template.voteTitle.helpers({
   editVoteTitle: function(){
-    if (Session.get("newVote") || Session.get("editVoteTitle")) {
-      return true;
-    } else {
-      return false; 
-    };
+    return Session.get("editVoteTitle");
+    // if (Session.get("newVote") || Session.get("editVoteTitle")) {
+    //   return true;
+    // } else {
+    //   return false; 
+    // };
   }
 })
 
