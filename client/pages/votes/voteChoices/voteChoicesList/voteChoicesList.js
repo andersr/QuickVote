@@ -1,6 +1,21 @@
 Template.voteChoicesList.helpers({
+  // votingOpen: function(){
+
+  //   // return Session.get("votingOpen"); 
+  // },
+
+  
   votingOpen: function(){
-    return Session.get("votingOpen"); 
+    return Votes.findOne({_id: Router.current().params._id}).votingEnabled;
+    //TODO: refactor using collection helpers
+    // var currentVote = Votes.findOne({_id: Router.current().params._id});
+
+    // if (currentVote.votingEnabled) {
+    //   return true;
+    // } else {
+    //   return false; 
+    // };
+
   },
 
   voteChoices:function(){

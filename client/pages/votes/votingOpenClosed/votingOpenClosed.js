@@ -1,5 +1,12 @@
 Template.votingOpenClosed.onRendered(function(){
-   this.$('.voteOpenClose').bootstrapToggle();
+  var votingEnabled = Votes.findOne({_id: Router.current().params._id}).votingEnabled;
+
+  if (votingEnabled) {
+    this.$('.voteOpenClose').bootstrapToggle('on');
+  } else {
+    this.$('.voteOpenClose').bootstrapToggle('off');
+  };
+
 });
 
 Template.votingOpenClosed.helpers({
@@ -11,16 +18,24 @@ Template.votingOpenClosed.helpers({
 
 Template.votingOpenClosed.events({
   "change .voteOpenClose": function(event){
-    var checked = $(event.target).is(':checked');
-    if (checked) {
-      Session.set("votingOpen", true);
-    } else {
-      Session.set("votingOpen", false);
+
+    var voteAttributes = {
+      voteId: Router.current().params._id,
+      votingEnabled: $(event.target).is(':checked')
     };
 
+    console.log(voteAttributes.votingEnabled);
 
-    // console.log(checked);
+    Meteor.call('openCloseVote', voteAttributes, function(error, result){
+      if (error){
+        console.log(error.reason);
+      }
+    });
   }
+});
+
+Template.votingOpenClosed.onDestroyed(function(){
+   this.$('.voteOpenClose').bootstrapToggle('destroy');
 });
 
 
