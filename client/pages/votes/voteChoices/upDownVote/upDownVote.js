@@ -1,16 +1,37 @@
 Template.upDownVote.helpers({
   upDownVoteBtn:function(){
-    return "up";
+   
+    // look for an existing vote by this user for this vote choice, and set alreadyVoted to false if not found
+    var alreadyVoted = UserVotes.findOne({voteChoiceId: this._id, voterId: Meteor.userId()}) || false;
 
-    //if this user has already vote on this item, return down, else up
+    if (alreadyVoted) {
 
+      //this user has previously voted for this vote choice
+
+      //if their most recent vote was an upvote
+      if (alreadyVoted.upVote) {
+        
+        // display a downvote button
+        return "down";
+
+      } else {
+
+        //their last vote was a downvote, therefore display an up button
+        return "up";
+      }
+
+    } else {
+      // the user was not found (and therefore has never voted)
+      // display the default upvote button
+      return "up";
+    };
+  
   }
 });
 
 Template.upDownVote.events({
 
-  //TODO: replace this with single component that contextually display an up or down button
-  "click .up-vote":function(){
+  "click .user-vote":function(){
     var currentVoteChoice = VoteChoices.findOne({_id: this._id });
     // var currentUserVote = UserVotes.findOne({voteChoice: currentVoteChoice });
 
@@ -37,6 +58,24 @@ Template.upDownVote.events({
     //   }
     // });
 
+    // var userVoteAttributes = {
+    //     voteChoiceId: this._id,
+    //     upVote: true
+    //   }
+
+    //   Meteor.call('userUpvote', userVoteAttributes, function (error, result) {
+
+    //     if (error){
+    //       console.log(error.reason);
+    //     } else {
+
+    //     // update the display of the vote button
+    //     return "down";
+
+    //     }
+
+    //   });
+
       };
 
     } else {
@@ -44,18 +83,7 @@ Template.upDownVote.events({
     };
 
 
-//after login, want to do: $('#loginModal').modal('hide');
-//on open of modal, set logging in to true, then if logginIn is true and meteor.userId is true, close modal
-    // // get id of topic being voted on
-    // var voteId = this._id;
 
-    // // TODO: this is not DRY (same as in voteCount). Create a currentVote helper with a template level subscription and use whenever currentVote is needed
-    // var currentVoteChoice = Votes.findOne({voteId: this._id})
-
-    // Votes.update(
-    //   { _id: currentVote._id},
-    //   {$inc: { voteCount: 1 }}
-    // );
   },
 
   "click .down-vote":function(e){
