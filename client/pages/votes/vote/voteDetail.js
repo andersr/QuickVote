@@ -1,26 +1,10 @@
 Template.voteDetail.helpers({
 
   isOwner: function(){
-
-    var currentVote = Votes.findOne({_id: Router.current().params._id});
-
-    if (currentVote.owner === Meteor.userId()) {
-      return true;
-    } else {
-      return false; 
-    };
+    return Votes.findOne({_id: Router.current().params._id}).owner === Meteor.userId();
   },
   votingOpen: function(){
     return Votes.findOne({_id: Router.current().params._id}).votingEnabled;
-    //TODO: refactor using collection helpers
-    // var currentVote = Votes.findOne({_id: Router.current().params._id});
-
-    // if (currentVote.votingEnabled) {
-    //   return true;
-    // } else {
-    //   return false; 
-    // };
-
   }
 })
 
