@@ -6,7 +6,6 @@ Template.upDownVote.helpers({
     if(thisVote){
       return thisVote.voteCount;
     }
- 
   }
 });
 
