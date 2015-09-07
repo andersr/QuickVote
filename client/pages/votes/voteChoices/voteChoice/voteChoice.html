@@ -1,5 +1,11 @@
 <template name="voteChoice">
- {{title}}<span class="pull-right">{{> upDownVote}} {{#if isOwner}} | <button class="delete-topic btn btn-default btn-xs">&times;</button>{{/if}}</span>
+ {{title}}
+ <span class="pull-right">
+   {{> upDownVote}}
+   {{#if isOwner}}
+     | <button class="delete-topic btn btn-default btn-xs">&times;</button>
+   {{/if}}
+  </span>
 </template>
 
 <template name="tmpVoteChoice">

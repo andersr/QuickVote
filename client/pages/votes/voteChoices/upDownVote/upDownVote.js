@@ -1,22 +1,44 @@
 Template.upDownVote.helpers({
-  // voteCount:function(){
-  //   var thisVote = Votes.findOne({voteId: this._id});
-    
-  //   // required since we are not waiting for vote subscriptions to be ready.  TODO: resolve by adding a template level vote subscription
-  //   if(thisVote){
-  //     return thisVote.voteCount;
-  //   }
-  // }
+  upDownVoteBtn:function(){
+    return "up";
+
+    //if this user has already vote on this item, return down, else up
+
+  }
 });
 
 Template.upDownVote.events({
 
   //TODO: replace this with single component that contextually display an up or down button
   "click .up-vote":function(){
-    // var currentVote = Vote.find({_id: Router.current().params._id});
+    var currentVoteChoice = VoteChoices.findOne({_id: this._id });
+    // var currentUserVote = UserVotes.findOne({voteChoice: currentVoteChoice });
 
     if (Meteor.userId()) {
-      console.log('ok to vote');
+      console.log('ok to vote on this: ' + currentUserVote);
+
+      if (currentUserVote) {
+         console.log('already voted, so will be a downvote instead');
+
+      } else {
+
+    //         var voteAttributes = {
+    //   title: voteTitle
+    // };
+
+    // Meteor.call('createVote', voteAttributes, function(error, result){
+    //   if (error){
+    //     console.log(error.reason);
+    //   } else {
+
+    //      //clear out form data after insert
+    //      template.find("form").reset();
+
+    //   }
+    // });
+
+      };
+
     } else {
       $('#loginModal').modal('show');
     };
