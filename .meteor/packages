@@ -16,3 +16,4 @@ iron:router
 sacha:spin
 useraccounts:bootstrap
 jiku:bootstrap-toggle
+dburles:collection-helpers

@@ -1,5 +1,7 @@
 <template name="voteDetail">
+  {{#if isOwner}}
   {{> votingOpenClosed}}
+  {{/if}}
   {{> voteTitle}} 
   {{> voteChoicesList}}
 </template>

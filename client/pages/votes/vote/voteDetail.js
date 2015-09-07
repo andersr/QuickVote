@@ -1,13 +1,15 @@
 Template.voteDetail.helpers({
 
-  // TODO: move from voteTitle to here for more DRY data context
-  // editVoteTitle: function(){
-  //   if (Session.get("newVote") || Session.get("editVoteTitle")) {
-  //     return true;
-  //   } else {
-  //     return false; 
-  //   };
-  // }
+  isOwner: function(){
+
+    var currentVote = Votes.findOne({_id: Router.current().params._id});
+
+    if (currentVote.owner === Meteor.userId()) {
+      return true;
+    } else {
+      return false; 
+    };
+  }
 })
 
 Template.voteDetail.events({
