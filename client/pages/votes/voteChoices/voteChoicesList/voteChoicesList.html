@@ -2,7 +2,7 @@
   <ul class="list-group">
     <li class="list-group-item">{{> addVoteChoice}}</li>
    {{#each voteChoices}}
-    <li class="list-group-item"> {{title}} <span class="pull-right">{{#if votingOpen}}{{> upDownVote}} |{{/if}} <button class="delete-topic btn btn-default btn-xs">&times;</button></span></li>
+    <li class="list-group-item"> {{title}} <span class="pull-right">{{#if votingOpen}}{{> upDownVote}} |{{/if}} {{#if isOwner}}<button class="delete-topic btn btn-default btn-xs">&times;</button>{{/if}}</span></li>
       {{/each}}
   </ul>
 </template>
