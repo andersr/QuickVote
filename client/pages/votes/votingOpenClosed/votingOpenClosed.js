@@ -9,11 +9,11 @@ Template.votingOpenClosed.onRendered(function(){
 
 });
 
-Template.votingOpenClosed.helpers({
-  isOpen: function(){
-    return "checked";
-  }
-});
+// Template.votingOpenClosed.helpers({
+//   isOpen: function(){
+//     return "checked";
+//   }
+// });
 
 
 Template.votingOpenClosed.events({
@@ -23,8 +23,6 @@ Template.votingOpenClosed.events({
       voteId: Router.current().params._id,
       votingEnabled: $(event.target).is(':checked')
     };
-
-    console.log(voteAttributes.votingEnabled);
 
     Meteor.call('openCloseVote', voteAttributes, function(error, result){
       if (error){
@@ -37,17 +35,3 @@ Template.votingOpenClosed.events({
 Template.votingOpenClosed.onDestroyed(function(){
    this.$('.voteOpenClose').bootstrapToggle('destroy');
 });
-
-
-// 'click .selectPill': function(e) {
-//     var name = $(e.target).attr('for');
-//     if ($("input[name='+name+']").attr('checked') == 'checked'){
-//       $("input[name='+name+']").trigger('change').removeAttr('checked');
-//     }
-//     else{
-//       $("input[name='+name+']").trigger('change').attr('checked', 'checked');
-//     }
-//   },
-//   'change #input':function(e){
-//     alert("value changed");
-//   }

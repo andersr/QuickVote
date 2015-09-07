@@ -1,11 +1,8 @@
 Template.voteDetail.helpers({
-
-  isOwner: function(){
-    return Votes.findOne({_id: Router.current().params._id}).owner === Meteor.userId();
-  },
-  votingOpen: function(){
-    return Votes.findOne({_id: Router.current().params._id}).votingEnabled;
-  }
+  
+  // votingOpen: function(){
+  //   return Votes.findOne({_id: Router.current().params._id}).votingEnabled;
+  // }
 })
 
 Template.voteDetail.events({
@@ -18,18 +15,6 @@ Template.voteDetail.events({
 
     //get text entered into topicTitle field
     var voteTitle = e.target.voteTitle.value;
-
-    //This will only work with insecure turned on:
-    // var topicId = Topics.insert({
-    //   title: topicTitle,
-    //   updatedAt: Date()
-    // });
-
-    // //Associate a vote with this topic
-    // Votes.insert({
-    //   topicId: topicId,
-    //   voteCount: 0
-    // });
 
     var voteAttributes = {
       title: voteTitle

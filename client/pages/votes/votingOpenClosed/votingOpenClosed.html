@@ -1,4 +1,5 @@
 <template name="votingOpenClosed">
+{{#if isOwner}}
 <form class="form-inline">
   <div class="checkbox">
     <label>
@@ -6,4 +7,11 @@
     </label>
   </div>
 </form>
+{{else}}
+  {{#if votingOpen}}
+   <p>Voting is open.</p>
+  {{else}}
+   <p>Voting is closed.</p>
+   {{/if}}
+{{/if}}
 </template>
