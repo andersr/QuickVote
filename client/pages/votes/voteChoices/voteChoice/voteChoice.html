@@ -1,5 +1,9 @@
 <template name="voteChoice">
- {{#if editVoteChoiceTitle}}
+ {{title}}<span class="pull-right">{{> upDownVote}} {{#if isOwner}} | <button class="delete-topic btn btn-default btn-xs">&times;</button>{{/if}}</span>
+</template>
+
+<template name="tmpVoteChoice">
+   {{#if editVoteChoiceTitle}}
  <form class="vote-title-form form-inline">
    <input type="text" name="voteChoiceTitle" placeholder="Add a vote choice..."  />
  </form>

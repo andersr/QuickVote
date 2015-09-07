@@ -1,18 +1,19 @@
 Template.upDownVote.helpers({
-  voteCount:function(){
-    var thisVote = Votes.findOne({voteId: this._id});
+  // voteCount:function(){
+  //   var thisVote = Votes.findOne({voteId: this._id});
     
-    // required since we are not waiting for vote subscriptions to be ready.  TODO: resolve by adding a template level vote subscription
-    if(thisVote){
-      return thisVote.voteCount;
-    }
-  }
+  //   // required since we are not waiting for vote subscriptions to be ready.  TODO: resolve by adding a template level vote subscription
+  //   if(thisVote){
+  //     return thisVote.voteCount;
+  //   }
+  // }
 });
 
 Template.upDownVote.events({
 
   //TODO: replace this with single component that contextually display an up or down button
   "click .up-vote":function(){
+    // var currentVote = Vote.find({_id: Router.current().params._id});
 
     if (Meteor.userId()) {
       console.log('ok to vote');

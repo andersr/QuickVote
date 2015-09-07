@@ -1,8 +1,14 @@
 <template name="voteChoicesList">
   <ul class="list-group">
-    {{#if isOwner}}<li class="list-group-item">{{> addVoteChoice}}</li>{{/if}}
-   {{#each voteChoices}}
-    <li class="list-group-item"> {{title}} <span class="pull-right">{{> upDownVote}} {{#if isOwner}} | <button class="delete-topic btn btn-default btn-xs">&times;</button>{{/if}}</span></li>
-      {{/each}}
+    {{#if isOwner}}
+      <li class="list-group-item">
+        {{> addVoteChoice}}
+      </li>
+    {{/if}}
+    {{#each voteChoices}}
+      <li class="list-group-item">
+        {{> voteChoice}}
+      </li>
+    {{/each}}
   </ul>
 </template>
