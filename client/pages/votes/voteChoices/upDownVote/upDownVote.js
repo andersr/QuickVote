@@ -18,9 +18,12 @@ Template.upDownVote.events({
     if (Meteor.userId()) {
       console.log('ok to vote');
     } else {
-      $('#myModal').modal('show');
+      $('#loginModal').modal('show');
     };
 
+
+//after login, want to do: $('#loginModal').modal('hide');
+//on open of modal, set logging in to true, then if logginIn is true and meteor.userId is true, close modal
     // // get id of topic being voted on
     // var voteId = this._id;
 
