@@ -15,16 +15,22 @@ Template.upDownVote.events({
   //TODO: replace this with single component that contextually display an up or down button
   "click .up-vote":function(){
 
-    // get id of topic being voted on
-    var voteId = this._id;
+    if (Meteor.userId()) {
+      console.log('ok to vote');
+    } else {
+      $('#myModal').modal('show');
+    };
 
-    // TODO: this is not DRY (same as in voteCount). Create a currentVote helper with a template level subscription and use whenever currentVote is needed
-    var currentVote = Votes.findOne({voteId: this._id})
+    // // get id of topic being voted on
+    // var voteId = this._id;
 
-    Votes.update(
-      { _id: currentVote._id},
-      {$inc: { voteCount: 1 }}
-    );
+    // // TODO: this is not DRY (same as in voteCount). Create a currentVote helper with a template level subscription and use whenever currentVote is needed
+    // var currentVoteChoice = Votes.findOne({voteId: this._id})
+
+    // Votes.update(
+    //   { _id: currentVote._id},
+    //   {$inc: { voteCount: 1 }}
+    // );
   },
 
   "click .down-vote":function(e){

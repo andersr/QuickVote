@@ -5,24 +5,24 @@ Template.voteChoicesList.helpers({
   // },
 
   
-  votingOpen: function(){
-    return Votes.findOne({_id: Router.current().params._id}).votingEnabled;
-    //TODO: refactor using collection helpers
-    // var currentVote = Votes.findOne({_id: Router.current().params._id});
+  // votingOpen: function(){
+  //   return Votes.findOne({_id: Router.current().params._id}).votingEnabled;
+  //   //TODO: refactor using collection helpers
+  //   // var currentVote = Votes.findOne({_id: Router.current().params._id});
 
-    // if (currentVote.votingEnabled) {
-    //   return true;
-    // } else {
-    //   return false; 
-    // };
+  //   // if (currentVote.votingEnabled) {
+  //   //   return true;
+  //   // } else {
+  //   //   return false; 
+  //   // };
 
-  },
+  // },
 
   voteChoices:function(){
-    var voteId = Router.current().params._id;
+    // var voteId = Router.current().params._id;
 
-    var voteChoices = VoteChoices.find({voteId: voteId}, {sort: {updatedAt: -1}});
-    return voteChoices;
+    return VoteChoices.find({voteId: Router.current().params._id }, {sort: {updatedAt: -1}});
+    // return voteChoices;
     // VoteChoices.find({}, {sort: {updatedAt: -1}});
     // return Tasks.find({}, {sort: {createdAt: -1}});
   }
