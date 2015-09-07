@@ -32,11 +32,17 @@ Template.upDownVote.helpers({
 Template.upDownVote.events({
 
   "click .user-vote":function(){
-    var currentVoteChoice = VoteChoices.findOne({_id: this._id });
-    // var currentUserVote = UserVotes.findOne({voteChoice: currentVoteChoice });
 
     if (Meteor.userId()) {
-      console.log('ok to vote on this: ' + currentUserVote);
+      // console.log('ok to vote on this: ' + currentUserVote);
+
+    var currentVoteChoice = VoteChoices.findOne({_id: this._id });
+    var previousVote = UserVotes.findOne({voteChoiceId: this._id, voterId: Meteor.userId()}) || false;
+
+    // 1. update the vote count for this vote
+    // 2. update upVote to true or false for this vote choice and user
+
+    // var currentUserVote = UserVotes.findOne({voteChoice: currentVoteChoice });
 
       if (currentUserVote) {
          console.log('already voted, so will be a downvote instead');
