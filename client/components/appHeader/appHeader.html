@@ -17,9 +17,9 @@
   
     </div>
     <div id="navbar" class="navbar-collapse collapse">
-  <!--   <button type="button" class="btn btn-default navbar-btn">Sign in</button> -->
-        {{#linkTo route="createVote" class="new-vote btn btn-default btn-sm navbar-btn" role="button" data-toggle="tooltip" data-placement="right" title="New Vote"}}<i class="fa fa-plus"></i> New Vote{{/linkTo}}
-    <ul class="nav navbar-nav navbar-right">{{#if showLogin}}
+    {{> newVoteBtn}}    
+    <ul class="nav navbar-nav navbar-right">
+    {{#if showLogin}}
       {{> loginButtons}}
       {{/if}}
     </ul>
