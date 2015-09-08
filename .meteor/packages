@@ -15,7 +15,6 @@ kit:basic-auth
 iron:router
 sacha:spin
 useraccounts:bootstrap
-jiku:bootstrap-toggle
 dburles:collection-helpers
 reactive-var
 fortawesome:fontawesome
