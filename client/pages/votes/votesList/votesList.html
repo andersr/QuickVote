@@ -1,0 +1,9 @@
+<template name="votesList">
+  <ul class="list-group">
+   {{#each this}}
+      <li class="list-group-item">
+        {{#linkTo route='voteDetail'}}{{title}}{{/linkTo}}
+      </li>
+    {{/each}}
+  </ul>
+</template>
