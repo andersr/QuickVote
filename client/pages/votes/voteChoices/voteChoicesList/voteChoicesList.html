@@ -1,14 +1,22 @@
 <template name="voteChoicesList">
-  <ul class="list-group">
-    {{#if isOwner}}
-      <li class="list-group-item">
+<div class="table-responsive">
+  <table class="table table-hover">
+   <tbody>
+   {{#if isOwner}}
+      <tr> 
+         <td>
         {{> addVoteChoice}}
-      </li>
+        </td>
+       </tr>
     {{/if}}
-    {{#each voteChoices}}
-      <li class="list-group-item">
+       {{#each voteChoices}}
+        <tr> 
+         <td>
         {{> voteChoice}}
-      </li>
-    {{/each}}
-  </ul>
+          </td>
+       </tr>
+  {{/each}}
+  </tbody>
+</table>
+</div>
 </template>
