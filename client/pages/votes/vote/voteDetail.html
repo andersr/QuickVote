@@ -1,5 +1,12 @@
 <template name="voteDetail">
-  {{> votingOpenClosed}}  
-  {{> voteTitle}} 
-  {{> voteChoicesList}}
+ <div class="row align-center">
+  {{> voteTitle}}
+  </div>
+  <div class="row align-center">
+ {{> votingOpenClosed}}
+</div>
+ <div class="row">
+{{> voteChoicesList}}
+</div>
+  
 </template>

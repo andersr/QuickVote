@@ -1,5 +1,6 @@
 <template name="appHeader">
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="header clearfix">
+<nav>
   <div class="container">
 
     <div class="navbar-header">
@@ -10,8 +11,8 @@
         <span class="icon-bar"></span>
       </button>
 
-
-      {{#linkTo route="home" class="navbar-brand"}}QuickVote{{/linkTo}}
+<h3> {{#linkTo route="home" class="navbar-brand"}}QuickVote{{/linkTo}}</h3>
+     
 
   
     </div>
@@ -25,4 +26,17 @@
     </div><!--/.navbar-collapse -->
     </div>
 </nav>
+</div>
 </template>
+
+<!--  <div class="header clearfix">
+    <nav>
+      <ul class="nav nav-pills pull-right">
+        <li role="presentation" class="active"><a href="#">Home</a></li>
+        <li role="presentation"><a href="#">About</a></li>
+        <li role="presentation"><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  <h3 class="text-muted">QuickVote</h3>
+</div>
+ -->
