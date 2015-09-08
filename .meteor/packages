@@ -17,3 +17,4 @@ sacha:spin
 useraccounts:bootstrap
 jiku:bootstrap-toggle
 dburles:collection-helpers
+reactive-var

@@ -1,6 +1,6 @@
 <template name="upDownVote">
 {{count}} 
 {{#if votingOpen}}
-<button class="user-vote btn btn-default btn-xs"><span class="glyphicon glyphicon-thumbs-{{upDownVoteBtn}}" aria-hidden="true"></span></button>
+<button name="{{currentVote}}" class="user-vote btn btn-default btn-xs"><span class="glyphicon glyphicon-thumbs-{{currentVote}}" aria-hidden="true"></span></button>
 {{/if}}
 </template>
