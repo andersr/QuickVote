@@ -5,5 +5,9 @@ Template.appHeader.helpers({
     } else {
       return true;
     }
-  }
+  },
+  addingNewVote: function(){
+    return Router.current().route.getName() === 'createVote';
+  },
+  
 });

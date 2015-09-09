@@ -1,4 +1,3 @@
-
 Template.createVote.events({
   "submit .create-vote-form": function(event,template){
     //prevent unwanted default behavior for form submit
