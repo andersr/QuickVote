@@ -6,15 +6,17 @@
 
 meteor-platform
 fourseven:scss
-twbs:bootstrap
 aldeed:template-extension
 accounts-github
-ian:accounts-ui-bootstrap-3
 ongoworks:security
 kit:basic-auth
 iron:router
 sacha:spin
-useraccounts:bootstrap
 dburles:collection-helpers
 reactive-var
 fortawesome:fontawesome
+semantic:ui
+flemay:less-autoprefixer
+iandouglas:accounts-ui-semantic-ui
+utilities:avatar
+useraccounts:semantic-ui
