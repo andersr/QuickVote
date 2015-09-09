@@ -4,6 +4,9 @@ Template.appHeader.helpers({
   },
   addingNewVote: function(){
     return Router.current().route.getName() === 'createVote';
-  },
-  
+  }
+  // ,
+  //  isHomePage:function(){
+  //   return Router.current().route.getName() === 'home';
+  // }
 });

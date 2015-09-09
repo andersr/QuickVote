@@ -1,4 +1,35 @@
 <template name="appHeader">
+<div class="ui fixed inverted menu">
+    <div class="ui container">
+      {{#if isHomePage}}
+         <div class="header item">{{appTitle}}</div>
+      {{else}}
+         {{#linkTo route="home" class="header item"}}{{appTitle}}{{/linkTo}}
+      {{/if}}
+      <a href="#" class="item">Home</a>
+      <a href="#" class="ui simple dropdown item">
+        Dropdown <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item">Link Item</div>
+          <div class="item">Link Item</div>
+          <div class="divider"></div>
+          <div class="header">Header Item</div>
+          <div class="item">
+            <i class="dropdown icon"></i>
+            Sub Menu
+            <div class="menu">
+              <div class="item">Link Item</div>
+              <div class="item">Link Item</div>
+            </div>
+          </div>
+          <div class="item">Link Item</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</template>
+
+<template name="twbs_appHeader">
 <div class="header clearfix">
 <nav>
   <div class="container">
