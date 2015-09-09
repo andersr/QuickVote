@@ -1,10 +1,6 @@
 Template.appHeader.helpers({
   showLogin: function(){
-    if(Router.current().route.getName() === 'login'){
-      return false;
-    } else {
-      return true;
-    }
+    return Router.current().route.getName() !== 'login';
   },
   addingNewVote: function(){
     return Router.current().route.getName() === 'createVote';
