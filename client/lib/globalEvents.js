@@ -1,8 +1,4 @@
-Template.userNavDropDown.onRendered(function(){
-  this.$(".dropdown").dropdown();
-});
-
-// Template.userNavDropDown.events({
+// Template.body.events({
 //   "click .logout":function(){ 
 
 //     Meteor.logout(function(err) {
