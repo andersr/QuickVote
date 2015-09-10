@@ -1,0 +1,18 @@
+<template name="voteDetail">
+<h1 class="ui header">
+   {{> voteTitle}}
+  </h1>
+  {{> votingOpenClosed}}
+ {{> voteChoicesList}}
+</template>
+
+<template name="createVoteTmp">
+  <div class="max-width-hack">
+    <h1 class="ui header">New Vote</h1>
+      <form class="ui form create-vote-form ">
+        <div class="field">
+         <input type="text" name="voteTitle" placeholder="What will you be voting about?"  />
+       </div>
+     </form>
+   </div>
+</template>

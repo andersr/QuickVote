@@ -1,12 +1,12 @@
 <template name="votingOpenClosed">
 {{#if isOwner}}
-<form>
+  <form>
   <div class="checkbox">
- <!--    <label> -->
-      <input class="voteOpenClose" type="checkbox" data-toggle="toggle" data-on="Voting Open" data-off="Voting Closed" data-onstyle="success" data-offstyle="danger" data-size="small">
- <!--    </label> -->
-  </div>
-</form>
+  <!--    <label> -->
+     <input class="voteOpenClose" type="checkbox" data-toggle="toggle" data-on="Voting Open" data-off="Voting Closed" data-onstyle="success" data-offstyle="danger" data-size="small">
+     <!--    </label> -->
+    </div>
+  </form>
 {{else}}
   {{#if votingOpen}}
    <p>Voting is open.</p>
