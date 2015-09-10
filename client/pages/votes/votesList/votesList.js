@@ -1,10 +1,10 @@
-Template.votesList.helpers({
-  userName:function(){
+// Template.votesList.helpers({
+//   userName:function(){
 
-    // for each vote, get the owner
+//     // for each vote, get the owner
     
 
 
-  }
+//   }
   
-});
+// });
