@@ -1,7 +1,3 @@
-// Template.appHeader.onRendered(function(){
-//   this.$(".dropdown").dropdown();
-// })
-
 Template.appHeader.onRendered(function(){
   this.$(".dropdown").dropdown();
 });
