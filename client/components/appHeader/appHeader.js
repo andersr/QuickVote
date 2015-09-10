@@ -14,12 +14,5 @@ Template.appHeader.helpers({
   },
   addingNewVote: function(){
     return Router.current().route.getName() === 'createVote';
-  },
-  userNavDropDown:function(){
-  
   }
-  // ,
-  //  isHomePage:function(){
-  //   return Router.current().route.getName() === 'home';
-  // }
 });

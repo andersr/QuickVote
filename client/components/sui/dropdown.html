@@ -1,0 +1,9 @@
+<template name="userNavDropDown">
+  <div class="ui pointing dropdown item avatar-dropdown">
+    {{#with currentUser}} {{> avatar user=this shape="circle" size="small"}}{{/with}}
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      <a class="item logout">Sign Out</a>
+    </div>
+  </div>
+</template>

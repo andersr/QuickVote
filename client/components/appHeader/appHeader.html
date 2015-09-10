@@ -1,12 +1,26 @@
 <template name="appHeader">
-<div class="ui fixed inverted menu">
-   <!--  <div class="ui container"> -->
-      {{#if isHomePage}}
-         <div class="header item">{{appTitle}}</div>
-      {{else}}
-         {{#linkTo route="home" class="header item"}}{{appTitle}}{{/linkTo}}
-      {{/if}}
-           <div class="right menu">
+  <div class="ui fixed inverted menu">
+     <!--  <div class="ui container"> -->
+        {{#if isHomePage}}
+           <div class="header item">{{appTitle}}</div>
+        {{else}}
+           {{#linkTo route="home" class="header item"}}{{appTitle}}{{/linkTo}}
+        {{/if}}
+    <div class="right menu">
+      <div class="ui right aligned item">
+        {{#if currentUser}}
+          {{> userNavDropDown}}
+        {{else}}
+          {{> loginButtons align="right"}}
+        {{/if}}
+      </div>
+    </div>
+    </div>
+</template>
+
+<template name="dropdownTmp">
+
+      <div class="right menu">
       <div class="ui right aligned item">
        {{#if currentUser}}
         <div class="ui pointing dropdown item avatar-dropdown">
@@ -15,7 +29,7 @@
          <i class="dropdown icon"></i>
       
           <div class="menu">
-             <div class="item">Sign Out</div>
+             <a class="item logout">Foo</a>
           </div>
         </div>
       {{else}}
@@ -23,7 +37,7 @@
       {{/if}}
       </div>
       </div>
- <!--      <a href="#" class="ui simple dropdown item">
+   <!--      <a href="#" class="ui simple dropdown item">
         Dropdown <i class="dropdown icon"></i>
         <div class="menu">
           <div class="item">Link Item</div>
@@ -42,7 +56,6 @@
         </div>
       </a>
  -->   <!--  </div> -->
-  </div>
 </template>
 
 <template name="twbs_appHeader">
