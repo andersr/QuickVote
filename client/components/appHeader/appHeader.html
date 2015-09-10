@@ -11,7 +11,9 @@
         {{#if currentUser}}
           {{> userNavDropDown}}
         {{else}}
+          {{#unless isLoginPage}}
           {{> loginButtons align="right"}}
+          {{/unless}}
         {{/if}}
       </div>
     </div>
