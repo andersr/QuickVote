@@ -5,5 +5,9 @@ Meteor.startup(function(){
     "newVote": true
   });
 
+  Template.body.onRendered(function(){
+    this.$(".dropdown").dropdown();
+  });
+
 });
 
