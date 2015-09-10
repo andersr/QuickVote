@@ -3,6 +3,7 @@ settings.json
 git client/lib/semantic-ui/definitions/**
 client/lib/semantic-ui/site/**
 client/lib/semantic-ui/themes/**
+client/lib/semantic-ui/definitions/**
 client/lib/semantic-ui/semantic.less
 client/lib/semantic-ui/.custom.semantic.json
 client/lib/semantic-ui/semantic.less
