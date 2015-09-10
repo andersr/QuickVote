@@ -46,7 +46,7 @@
     "step": false,
     "sticky": false,
     "tab": false,
-    "table": false,
+    "table": true,
     "transition": true,
     "visibility": false,
     "visit": false
