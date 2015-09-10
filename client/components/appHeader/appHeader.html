@@ -7,7 +7,9 @@
       {{#linkTo route="home" class="header item"}}{{appTitle}}{{/linkTo}}
       {{/if}}
       <div class="item">
+      {{#unless isCreatingVote}}
         {{> newVote}}
+      {{/unless}}
       </div>
       <div class="right menu">
         <div class="ui right aligned item">

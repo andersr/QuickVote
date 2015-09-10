@@ -10,6 +10,11 @@ Template.registerHelper('isLoginPage', function(){
   return Router.current().route.getName() === 'login';
 });
 
+Template.registerHelper('isCreatingVote', function(){
+  return Router.current().route.getName() === 'createVote';
+});
+
+
 Template.registerHelper('appTitle', function(){
   return QVConstants.appTitle;
 });
