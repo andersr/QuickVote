@@ -1,19 +1,23 @@
 <template name="votesList">
   <h1 class="ui header">Recent Votes</h1>
-<table class="ui single line padded table">
+<table class="ui padded table">
  <tbody>
     {{#each this}}
     <tr>
       <td>
         <h2 class="ui header">
           {{#linkTo route='voteDetail'}}{{title}}{{/linkTo}}
-            <div class="sub header">
-            {{#if votingEnabled}}
-              <span class="color-positive bold-text"> Voting Open</span>
-            {{else}}
-              Voting Closed
-            {{/if}} | Created by JimBob</div>
-      </h2></td>
+        </h2>
+      </td>
+      <td>
+        <div class="sub header">
+          {{#if votingEnabled}}
+             <span class="color-positive bold-text"> Voting Open</span>
+          {{else}}
+             Voting Closed
+          {{/if}}
+        </div>
+      </td>
     </tr>
     {{/each}}
   </tbody>
