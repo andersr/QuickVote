@@ -1,9 +1,3 @@
-Template.mainLayout.helpers({
-  // isHomePage:function(){
-  //   return true;
-  // }
-});
-
 Template.mainLayout.events({
 "click .logout":function(){ 
 

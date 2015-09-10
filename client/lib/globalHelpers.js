@@ -6,6 +6,10 @@ Template.registerHelper('isHomePage', function(){
   return Router.current().route.getName() === 'home';
 });
 
+Template.registerHelper('isLoginPage', function(){
+  return Router.current().route.getName() === 'login';
+});
+
 Template.registerHelper('appTitle', function(){
   return QVConstants.appTitle;
 });
