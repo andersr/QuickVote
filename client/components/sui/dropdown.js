@@ -4,7 +4,6 @@ Template.userNavDropDown.onRendered(function(){
 
 Template.userNavDropDown.events({
   "click .logout":function(){ 
-    console.log("clicked logout");
 
     Meteor.logout(function(err) {
       if(err){
