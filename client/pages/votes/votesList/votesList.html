@@ -1,80 +1,29 @@
 <template name="votesList">
-<h1 class="ui header">Recent Votes</h1>
-
-<table class="ui celled table">
-  <thead>
-    <tr>
-      <th>Topic</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-  <tbody>
+  <h1 class="ui header">Recent Votes</h1>
+<table class="ui single line padded table">
+ <tbody>
     {{#each this}}
     <tr>
       <td>
         <h2 class="ui header">
           {{#linkTo route='voteDetail'}}{{title}}{{/linkTo}}
-            <div class="sub header">Created by JimBob
-        </div>
+            <div class="sub header">Created by JimBob</div>
       </h2></td>
-      <td>
-        Closed :-/
-      </td>
     </tr>
     {{/each}}
   </tbody>
-</table>
-
-  
+  </table>
 </template>
 
-<template name="oldTable">
-
-<!--  <div class="row"> -->
- <h1>Votes</h1>
-<!--  </div> -->
- <!--  <div class="row"> -->
-  <div class="table-responsive">
-  <table class="table table-hover">
-   <tbody>
-       {{#each this}}
-        <tr> 
-         <td>
-        {{#linkTo route='voteDetail'}}{{title}}{{/linkTo}}
-          </td>
-       </tr>
-  {{/each}}
-  </tbody>
-</table>
-<!-- </div> -->
+<template name="votingListTmp">
+   
+  <div class="ui relaxed divided list">
+    {{#each this}}
+      <div class="item">
+      <div class="content"><h3>{{#linkTo route='voteDetail' class="header"}}{{title}}{{/linkTo}}</h3>
+      <div class="description">Created by JimBob | Closed</div></div>
+      
+    </div>
+    {{/each}}
   </div>
-
-<!--       <caption>Optional table caption.</caption>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Name</th>
-          <th>Votes</th>
-          <th>Voters</th>
-        </tr>
-      </thead> -->
-     
-        <!-- <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr> -->
 </template>
