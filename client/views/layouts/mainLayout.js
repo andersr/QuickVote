@@ -1,5 +1,5 @@
 Template.mainLayout.onRendered(function(){
-  // this.$('.ui.sidebar').sidebar();
+  this.$('.ui.sidebar').sidebar();
 });
 
 Template.mainLayout.events({
