@@ -4,7 +4,7 @@
      {{#if Template.subscriptionsReady}}
        {{#each votes}}
         <div class="item">
-        <h3>{{#linkTo route='voteDetail'}}{{title}}{{/linkTo}}</h3>
+        <h3>{{#linkTo route='voteDetail' class="close-sidebar"}}{{title}}{{/linkTo}}</h3>
         </div>
        {{/each}}
      {{else}}

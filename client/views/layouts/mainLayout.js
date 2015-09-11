@@ -1,5 +1,5 @@
 Template.mainLayout.onRendered(function(){
-  this.$('.ui.sidebar').sidebar();
+  // this.$('.ui.sidebar').sidebar();
 });
 
 Template.mainLayout.events({
@@ -14,8 +14,14 @@ Template.mainLayout.events({
       };
     });
 
-  },
+  }
+  ,
   "click .toggle-sidebar":function(){
+
+    $('.ui.sidebar').sidebar('toggle');
+
+  },
+  "click .close-sidebar":function(){
 
     $('.ui.sidebar').sidebar('toggle');
 
