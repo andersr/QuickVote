@@ -1,14 +1,7 @@
 <template name="mainLayout">
 <body>
   {{> sAlert template='dkAlert'}}
-    <div class="ui sidebar inverted vertical menu left">
-     <div class="header">Recent Votes</div>
-      {{#each this}}
-      <div class="item">
-      <h3>{{title}}</h3>
-      </div>
-     {{/each}}
-  </div>
+  {{> sidebar}}
 <div class="pusher">
  {{> appHeader}}
   <div class="ui main container">
@@ -16,33 +9,4 @@
   </div>
 </div>
 </body>
-</template>
-
-<template name="suiMain">
-  <div class="ui main text container">
-    <h1 class="ui header">Semantic UI Fixed Template</h1>
-    <p>This is a basic fixed menu template using fixed size containers.</p>
-    <p>A text container is used for the main container, which is useful for single column layouts</p>
-    <img class="wireframe" src="assets/images/wireframe/media-paragraph.png">
-    <img class="wireframe" src="assets/images/wireframe/paragraph.png">
-    <img class="wireframe" src="assets/images/wireframe/paragraph.png">
-    <img class="wireframe" src="assets/images/wireframe/paragraph.png">
-    <img class="wireframe" src="assets/images/wireframe/paragraph.png">
-    <img class="wireframe" src="assets/images/wireframe/paragraph.png">
-    <img class="wireframe" src="assets/images/wireframe/paragraph.png">
-  </div>
-</template>
-
-<template name="tmp">
-  {{> appHeader}}
-<div class="main-content container row">
- <div class="col-md-6 col-md-offset-3">
- {{#if currentUser}}
-   {{> vote}}
-   {{else}}
-   <p>Welcome to TopicVoter!  Please sign in to continue.</p>
-   {{/if}}
-</div>
-</div>
-
 </template>
