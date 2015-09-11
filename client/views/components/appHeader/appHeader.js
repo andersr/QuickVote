@@ -1,5 +1,6 @@
 Template.appHeader.onRendered(function(){
   this.$(".dropdown").dropdown();
+  this.$('.sidebar-menu-popup').popup();
 });
 
 

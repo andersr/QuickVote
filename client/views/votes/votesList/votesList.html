@@ -23,3 +23,12 @@
   </tbody>
   </table>
 </template>
+
+<template name="votesListSideBar">
+  <div class="header">Recent Votes</div>
+      {{#each this}}
+      <div class="item">
+      <h3>{{#linkTo route='voteDetail'}}{{title}}{{/linkTo}}</h3>
+      </div>
+     {{/each}}
+</template>
