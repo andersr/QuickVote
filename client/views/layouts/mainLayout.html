@@ -1,12 +1,15 @@
 <template name="mainLayout">
 <body>
   {{> sAlert template='dkAlert'}}
-<div class="pushable">
+  <div class="ui sidebar inverted vertical menu">
+    Sidebar
+  </div>
+<div class="pusher">
  {{> appHeader}}
   <div class="ui main container">
     {{> yield}}
   </div>
-</div>{{! .pushable}}
+</div>
 </body>
 </template>
 

@@ -1,3 +1,7 @@
+Template.mainLayout.onRendered(function(){
+  // this.$('.ui.sidebar').sidebar();
+});
+
 Template.mainLayout.events({
 "click .logout":function(){ 
 
@@ -9,6 +13,11 @@ Template.mainLayout.events({
         Router.go("login");
       };
     });
+
+  },
+  "click .toggle-sidebar":function(){
+
+    $('.ui.sidebar').sidebar('toggle');
 
   }
 });
