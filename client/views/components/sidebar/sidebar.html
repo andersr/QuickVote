@@ -1,10 +1,15 @@
 <template name="sidebar">
     <div class="ui sidebar inverted vertical menu left">
      <div class="header">Recent Votes</div>
-      {{#each votes}}
-      <div class="item">
-      <h3>{{#linkTo route='voteDetail'}}{{title}}{{/linkTo}}</h3>
-      </div>
-     {{/each}}
+     {{#if Template.subscriptionsReady}}
+       {{#each votes}}
+        <div class="item">
+        <h3>{{#linkTo route='voteDetail'}}{{title}}{{/linkTo}}</h3>
+        </div>
+       {{/each}}
+     {{else}}
+        <div class="loading">{{>spinner}}</div>
+      {{/if}}
   </div>
 </template>
+
