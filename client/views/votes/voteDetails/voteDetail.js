@@ -11,10 +11,10 @@ Template.voteDetail.events({
     event.preventDefault();
 
     //allow for exposing 'this' to internal functions, such as Meteor.call
-    var self = this;
+    // var self = this;
 
     //get text entered into topicTitle field
-    var voteTitle = e.target.voteTitle.value;
+    var voteTitle = event.target.voteTitle.value;
 
     var voteAttributes = {
       title: voteTitle
