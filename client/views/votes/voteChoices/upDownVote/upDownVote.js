@@ -8,7 +8,19 @@ Template.upDownVote.onCreated(function(){
 Template.upDownVote.helpers({
   currentVote: function(){
     return Template.instance().currentVote.get();
+  },
+  upVoteToggle: function(){
+    var currentVote = Template.instance().currentVote.get();
+
+    if (currentVote === "up") {
+      return "outline";
+    } else {
+      return "";
+    };
+
   }
+
+
 
 });
 

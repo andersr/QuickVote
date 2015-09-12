@@ -1,4 +1,7 @@
 Template.registerHelper('isOwner', function(){
+  // var owner = Votes.findOne({_id: Router.current().params._id}).owner;
+  // var user = Meteor.userId();
+  // console.log("owner: " + owner + ", user: " + user);
   return Votes.findOne({_id: Router.current().params._id}).owner === Meteor.userId();
 });
 
@@ -20,6 +23,6 @@ Template.registerHelper('appTitle', function(){
 });
 
 
-Template.registerHelper('votingOpen', function(){
+Template.registerHelper('votingIsOpen', function(){
    return Votes.findOne({_id: Router.current().params._id}).votingEnabled;
 });

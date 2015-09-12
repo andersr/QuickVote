@@ -1,0 +1,23 @@
+<template name="votingEnabled">
+{{#if isOwner}}
+<!--   <form> -->
+  <div class="ui checkbox">
+  <input class="voteOpenClose" type="checkbox">
+  <label>Enable voting</label>
+</div>
+
+ <!--  </form> -->
+{{else}}
+  {{#if votingIsOpen}}
+   <p>Voting is open.</p>
+  {{else}}
+   <p>Voting is closed.</p>
+   {{/if}}
+{{/if}}
+</template>
+
+ <!--  <div class="checkbox"> -->
+  <!--    <label> -->
+  <!--    <input  type="checkbox" data-toggle="toggle" data-on="Voting Open" data-off="Voting Closed" data-onstyle="success" data-offstyle="danger" data-size="small"> -->
+     <!--    </label> -->
+   <!--  </div> -->

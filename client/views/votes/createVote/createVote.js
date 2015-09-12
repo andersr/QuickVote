@@ -32,7 +32,7 @@ Template.createVote.events({
 
          //clear out form data after insert
          // template.find("form").reset();
-         console.log(result._id);
+         // console.log(result._id);
 
          // Router.go('showPost', { _id: Router.current().params._id });
 

@@ -1,7 +1,7 @@
 <template name="upDownVote">
 <div class="ui label">
-  {{#if votingOpen}}
-<button name="{{currentVote}}" class="user-vote ui button basic tiny" aria-hidden="true">Thumbs up</button>
+  {{#if votingIsOpen}}
+<button name="{{currentVote}}" class="user-vote ui icon button" aria-hidden="true"><i class="thumbs {{upVoteToggle}} up icon"></i></button>
 {{else}}
 Votes: 
 {{/if}} {{count}} 
