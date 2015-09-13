@@ -16,13 +16,7 @@
       </div>
       <div class="right menu">
         <div class="ui right aligned item">
-          {{#if currentUser}}
-          {{> userNavDropDown}}
-          {{else}}
-          {{#unless isLoginPage}}
-          {{> loginButtons align="right"}}
-          {{/unless}}
-          {{/if}}
+          {{> loginButtons}}
         </div>
       </div>
     </div>
@@ -30,6 +24,13 @@
 </template>
 
   <template name="twbs_appHeader">
+     {{#if currentUser}}
+          {{> userNavDropDown}}
+          {{else}}
+          {{#unless isLoginPage}}
+          {{> loginButtons align="right"}}
+          {{/unless}}
+          {{/if}}
     <div class="header clearfix">
       <nav>
         <div class="container">

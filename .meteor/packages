@@ -7,7 +7,6 @@
 meteor-platform
 fourseven:scss
 aldeed:template-extension
-accounts-github
 ongoworks:security
 kit:basic-auth
 iron:router
@@ -17,9 +16,10 @@ reactive-var
 fortawesome:fontawesome
 semantic:ui
 flemay:less-autoprefixer
-iandouglas:accounts-ui-semantic-ui
 utilities:avatar
-useraccounts:semantic-ui
 juliancwirko:s-alert-stackslide
 juliancwirko:s-alert
-bruz:github-api
+accounts-google
+useraccounts:semantic-ui
+accounts-ui
+iandouglas:accounts-ui-semantic-ui
