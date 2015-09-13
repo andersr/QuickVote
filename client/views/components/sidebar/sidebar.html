@@ -1,5 +1,6 @@
 <template name="sidebar">
     <div class="ui sidebar inverted vertical menu left">
+    {{> newVote}}
      <div class="header">Recent Votes</div>
      {{#if Template.subscriptionsReady}}
        {{#each votes}}

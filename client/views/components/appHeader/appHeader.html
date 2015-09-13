@@ -9,11 +9,7 @@
       {{else}}
       {{#linkTo route="home" class="header item"}}{{appTitle}}{{/linkTo}}
       {{/if}}
-      <div class="item">
-      {{#unless isCreatingVote}}
-        {{> newVote}}
-      {{/unless}}
-      </div>
+      
       <div class="right menu">
         <div class="ui right aligned item">
           {{> loginButtons}}
@@ -24,6 +20,11 @@
 </template>
 
   <template name="twbs_appHeader">
+  <div class="item">
+      {{#unless isCreatingVote}}
+        {{> newVote}}
+      {{/unless}}
+      </div>
      {{#if currentUser}}
           {{> userNavDropDown}}
           {{else}}
