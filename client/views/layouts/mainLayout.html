@@ -1,12 +1,11 @@
 <template name="mainLayout">
-<body>
+
   {{> sAlert template='dkAlert'}}
   {{> sidebar}}
-<div class="pusher">
+<div class="pusher full-height">
  {{> appHeader}}
-  <div class="ui main container">
+  <div class="ui main container full-height">
     {{> yield}}
   </div>
 </div>
-</body>
 </template>
