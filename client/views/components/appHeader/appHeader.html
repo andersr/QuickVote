@@ -1,13 +1,13 @@
 <template name="appHeader">
 <header class="app-header">
       <div class="header-left">
-      Header Left
+      {{> actionButton event="new-vote" icon="plus" title="New Vote"}}
       </div>
       <div class="header-center">
-      Header Center Foo
+      QuickVote
       </div>
       <div class="header-right">
-      Header Right 
+      {{> loginButtons align="right"}}
       </div>
   </header>
 </template>
@@ -18,7 +18,7 @@
        {{> nav_button event=headerLeft.event icon=headerLeft.icon title=headerLeft.title}}  
       </div>
       <div class="header-center">
-      {{> Template.dynamic template=headerCenter}}
+      
       </div>
       <div class="header-right">
        {{> nav_button event=headerRight.event icon=headerRight.icon title=headerRight.title}}  
