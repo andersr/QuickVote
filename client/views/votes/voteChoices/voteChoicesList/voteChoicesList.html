@@ -1,5 +1,5 @@
 <template name="voteChoicesList">
-  <table class="ui very basic padded table full-height">
+  <table class="table">
    <tbody>
    {{#if isOwner}}
       <tr> 
@@ -9,7 +9,7 @@
        </tr>
     {{/if}}
     {{#each voteChoices}}
-      {{> voteChoice}}
+      {{> voteChoiceItem}}
     {{/each}}
   </tbody>
 </table>

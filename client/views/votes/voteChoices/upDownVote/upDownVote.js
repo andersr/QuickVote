@@ -1,12 +1,15 @@
 Template.upDownVote.onCreated(function(){
 
   //set up a reactive variable for managing display of up/down vote buttons and collecting their vote count
+  // fa-thumbs-o-up
+  // fa-thumbs-up
   this.currentVote = new ReactiveVar("up");
 
 });
 
 Template.upDownVote.helpers({
   currentVote: function(){
+    //TODO: this should really be based on currentVote in the db, not on the current css class
     return Template.instance().currentVote.get();
   },
   upVoteToggle: function(){

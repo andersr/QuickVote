@@ -1,11 +1,9 @@
 <template name="upDownVote">
-<div class="ui label">
   {{#if votingIsOpen}}
-<button name="{{currentVote}}" class="user-vote ui icon button" aria-hidden="true"><i class="thumbs {{upVoteToggle}} up icon"></i></button>
+<button name="{{currentVote}}" class="user-vote icon-button"><i class="fa {{upVoteToggle}}"></i></button>
 {{else}}
 Votes: 
 {{/if}} {{count}} 
-</div>
 </template>
 
 <template name="tmpUpDownVote">
