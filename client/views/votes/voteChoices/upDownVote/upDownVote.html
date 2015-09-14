@@ -1,5 +1,6 @@
 <template name="upDownVote">
   {{#if votingIsOpen}}
+  {{> actionButton}}
 <button name="{{currentVote}}" class="user-vote icon-button"><i class="fa {{upVoteToggle}}"></i></button>
 {{else}}
 Votes: 

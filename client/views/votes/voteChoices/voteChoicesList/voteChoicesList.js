@@ -29,18 +29,18 @@ Template.voteChoicesList.helpers({
 });
 
 Template.voteChoicesList.events({
-  "click .delete-topic":function(e){
-    e.preventDefault();
+  // "click .delete-topic":function(e){
+  //   e.preventDefault();
 
-    var confirmDelete = confirm("Really delete this vote choice?");
+  //   var confirmDelete = confirm("Really delete this vote choice?");
 
-    if(confirmDelete){
-      Meteor.call('removeVoteChoice', this._id, function(error, result){
-        if (error){
-          console.log(error.reason);
-        }
-      });
-    };
+  //   if(confirmDelete){
+  //     Meteor.call('removeVoteChoice', this._id, function(error, result){
+  //       if (error){
+  //         console.log(error.reason);
+  //       }
+  //     });
+  //   };
     
-  }
+  // }
 });
