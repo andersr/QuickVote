@@ -1,0 +1,56 @@
+// BASE LAYOUT
+// _______________________________________________________
+
+
+// Apply a box layout to all elements
+// http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+html,body
+  box-sizing: border-box
+*, *:before, *:after
+    box-sizing: inherit
+
+// Full height application container
+html, body, .app-container
+  height: 100%
+
+// Center app-container in viewport
+.app-container
+  margin-left: auto
+  margin-right: auto
+
+// Apply flex layout
+.app-container
+  display: flex
+  flex-direction: column
+
+.app-header, .app-footer
+  display: flex
+  flex-direction: row
+  flex-wrap: nowrap
+  align-items: center
+  justify-content: center
+  height: 5em
+
+  .header-center, .footer-center
+    text-align: center
+    flex: 1
+
+  .header-left, .header-right
+    width: 5em
+
+.main-content
+  display: flex
+  flex-direction: column
+  flex: 1 
+
+
+.app-container 
+  max-width: $app-max-width
+
+//   margin-top: 0
+// .app-header, .app-footer
+//   padding:1.25em 2.25em
+// .app-header
+//   height: 3em
+// .app-footer
+//   height: 6em

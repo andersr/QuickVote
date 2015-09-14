@@ -1,4 +1,33 @@
 <template name="appHeader">
+<header class="app-header">
+      <div class="header-left">
+      Header Left
+      </div>
+      <div class="header-center">
+      Header Center Foo
+      </div>
+      <div class="header-right">
+      Header Right 
+      </div>
+  </header>
+</template>
+
+<template name="appHeaderTmp">
+<header class="app-header">
+      <div class="header-left">
+       {{> nav_button event=headerLeft.event icon=headerLeft.icon title=headerLeft.title}}  
+      </div>
+      <div class="header-center">
+      {{> Template.dynamic template=headerCenter}}
+      </div>
+      <div class="header-right">
+       {{> nav_button event=headerRight.event icon=headerRight.icon title=headerRight.title}}  
+      </div>
+  
+  </header>
+</template>
+
+<template name="sui_appHeader">
   <div class="ui fixed inverted menu">
     <div class="ui container">
     <a class="ui item button toggle-sidebar" data-content="View sidebar menu">

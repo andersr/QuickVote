@@ -14,7 +14,6 @@ sacha:spin
 dburles:collection-helpers
 reactive-var
 fortawesome:fontawesome
-semantic:ui
 flemay:less-autoprefixer
 utilities:avatar
 juliancwirko:s-alert-stackslide
