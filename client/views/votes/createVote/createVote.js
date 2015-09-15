@@ -13,7 +13,7 @@ Template.createVote.events({
         console.log(error.reason);
       } else {
 
-         Router.go('voteDetail', { _id: result._id });
+         Router.go('voteDetail', { _id: result.voteId });
 
       }
     });

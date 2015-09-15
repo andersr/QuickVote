@@ -17,14 +17,17 @@ Template.addVoteChoice.events({
     };
 
     Meteor.call('addVoteChoice', voteChoiceAttributes, function(error, result){
+
       if (error){
+
         console.log(error.reason);
+
       } else {
 
-         //clear out form data after insert
-         template.find("form").reset();
+        //clear out form data after insert
+        template.find("form").reset();
+     };
 
-      }
     });
 
   }

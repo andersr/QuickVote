@@ -1,35 +1,58 @@
 Template.upDownVote.onCreated(function(){
 
-  //set up a reactive variable for managing display of up/down vote buttons and collecting their vote count
-  // fa-thumbs-o-up
-  // fa-thumbs-up
-  this.currentVote = new ReactiveVar("up");
+  // this.isUpVote = new ReactiveVar(false);
+
+  if(Meteor.userId()){
+
+    var currentUserVote = UserVotes.findOne({voteChoiceId: this.data._id, voterId: Meteor.userId() });
+      
+
+      this.isUpVote = new ReactiveVar(currentUserVote.upVote);
+
+  } else {
+
+    //assume they have not voted and set all votes to default
+    this.isUpVote = new ReactiveVar(false);
+
+  };
+
+
 
 });
 
 Template.upDownVote.helpers({
-  currentVote: function(){
-    //TODO: this should really be based on currentVote in the db, not on the current css class
-    return Template.instance().currentVote.get();
-  },
-  upVoteToggle: function(){
-    var currentVote = Template.instance().currentVote.get();
+  // currentUserVote: function(){
 
-    if (currentVote === "up") {
-      return "outline";
+   
+
+
+  // },
+  thumbIconToggle: function(){
+
+    if (Template.instance().isUpVote.get()) {
+      return "thumbs-up";
     } else {
-      return "";
+      return "thumbs-o-up";
     };
 
-  }
+  },
 
+  upDownVoteMsg: function(){
+
+    // if (Template.instance().currentVote.get() === "upVote") {
+    //   return "Upvote this choice";
+    // } else {
+    //   return "Undo your upvote";
+    // };
+
+  }
 
 
 });
 
 Template.upDownVote.events({
 
-  "click .user-vote":function(){
+  "click .up-down-vote":function(){
     //user must be signed in to vote...
     if (Meteor.userId()) {
       var currentTemplate = Template.instance();
