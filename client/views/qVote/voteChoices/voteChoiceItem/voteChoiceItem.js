@@ -1,3 +1,7 @@
+// Template.voteChoiceItem.onCreated(function(){
+//   console.log("vote choice item title: " + this.title)
+// })
+
   // Template.voteChoiceItem.helpers({
   //   currentVoteChoice:function(){
   //     console.log(this);
