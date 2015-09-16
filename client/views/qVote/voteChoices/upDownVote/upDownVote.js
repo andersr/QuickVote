@@ -4,6 +4,7 @@ Template.upDownVote.onCreated(function(){
   var currentVoteChoiceId = templateInstance.data._id;
 
   templateInstance.currentVote = new ReactiveVar(false);
+  templateInstance.hasVoted = new ReactiveVar(false);
 
   templateInstance.autorun(function(){
 
@@ -11,16 +12,20 @@ Template.upDownVote.onCreated(function(){
 
     if (userVotesSubscription.ready()) {
 
+      // check if user has voted previously
+      // if so, set currentVote to their most recent vote
       if (Meteor.userId()) {
 
-        var lastVote = UserVotes.findOne({
+        var userVote = UserVotes.findOne({
           voteChoiceId:currentVoteChoiceId,
           voterId: Meteor.userId()
-        }).upVote || false;
+        });
 
-        console.log("last vote: " + lastVote);
+        if (userVote != undefined) {
+          templateInstance.currentVote.set(userVote.upVote);
+          templateInstance.hasVoted.set(true);
+        } 
 
-        templateInstance.currentVote.set(lastVote);
       };
     };
   });
@@ -46,47 +51,6 @@ Template.upDownVote.helpers({
   }
 
 });
-
-
-//   var foo = this;
-
-//   foo.autorun(function(){
-//     foo.subscribe('userVotes');
-
-//     // if (subscription.ready()) {
-//     //   // instance.userVote = UserVotes.findOne({voteChoiceId: this.currentVoteChoiceId});
-//     //   // instance.voteToggle.set(currentUserVote.upVote);
-//     //   // var userVote = UserVotes.findOne({}, {limit:1});
-//     //   instance.firstVote.set(false);
-//     //   // console.log("current vote: " + instance.voteToggle.get());
-//     //   // console.log("current vote: " + currentUserVote.upVote);
-     
-//     // } else {
-//     //    instance.voteToggle.set(false);
-//     //    instance.firstVote.set(true);
-//     //    console.log("subscription not ready");
-//     // }
-//   });
-
-
-
-//   foo.voteToggle = new ReactiveVar();
-//   // instance.firstVote = new ReactiveVar(true);
-//   // console.log(this.currentVoteChoiceId);
-
-
-//   // 3. Cursor
-
-//   instance.userVotes = function() { 
-//     return UserVotes.find({});
-//   }
-
-//   console.log(Template.instance().userVotes)
-
-
-// });
-
-
 
 // Template.upDownVote.events({
 
@@ -131,6 +95,49 @@ Template.upDownVote.helpers({
 //     }
 //   }
 // });
+
+
+//   var foo = this;
+
+//   foo.autorun(function(){
+//     foo.subscribe('userVotes');
+
+//     // if (subscription.ready()) {
+//     //   // instance.userVote = UserVotes.findOne({voteChoiceId: this.currentVoteChoiceId});
+//     //   // instance.voteToggle.set(currentUserVote.upVote);
+//     //   // var userVote = UserVotes.findOne({}, {limit:1});
+//     //   instance.firstVote.set(false);
+//     //   // console.log("current vote: " + instance.voteToggle.get());
+//     //   // console.log("current vote: " + currentUserVote.upVote);
+     
+//     // } else {
+//     //    instance.voteToggle.set(false);
+//     //    instance.firstVote.set(true);
+//     //    console.log("subscription not ready");
+//     // }
+//   });
+
+
+
+//   foo.voteToggle = new ReactiveVar();
+//   // instance.firstVote = new ReactiveVar(true);
+//   // console.log(this.currentVoteChoiceId);
+
+
+//   // 3. Cursor
+
+//   instance.userVotes = function() { 
+//     return UserVotes.find({});
+//   }
+
+//   console.log(Template.instance().userVotes)
+
+
+// });
+
+
+
+
 
 //     // };
 
