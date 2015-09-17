@@ -1,31 +1,15 @@
-// Template.votingEnabled.onCreated(function(){
-//   var votingEnabled = Votes.findOne({_id: Router.current().params._id}).votingEnabled;
+Template.votingEnabled.helpers({
+  votingEnabled: function () {
+    return Votes.findOne({_id: Router.current().params._id}).votingEnabled || false;
+  }
+});
 
-//   // if (votingEnabled) {
+// Eventually add this:
+// if (votingEnabled) {
 //   //   this.$('.voteOpenClose').bootstrapToggle('on');
 //   // } else {
 //   //   this.$('.voteOpenClose').bootstrapToggle('off');
 //   // };
-
-// });
-
-
-// Template.votingEnabled.onRendered(function(){
-//   var votingEnabled = Votes.findOne({_id: Router.current().params._id}).votingEnabled;
-
-//   if (votingEnabled) {
-//     // this.$('.voteOpenClose').bootstrapToggle('on');
-//   } else {
-//     // this.$('.voteOpenClose').bootstrapToggle('off');
-//   };
-
-// });
-
-// Template.votingOpenClosed.helpers({
-//   isOpen: function(){
-//     return "checked";
-//   }
-// });
 
 
 Template.votingEnabled.events({

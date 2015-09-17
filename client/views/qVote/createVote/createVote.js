@@ -2,7 +2,6 @@ Template.createVote.onRendered(function(){
   $( "input[name=voteTitle]" ).focus();
 });
 
-
 Template.createVote.events({
   "submit .create-vote-form": function(event,template){
     event.preventDefault();

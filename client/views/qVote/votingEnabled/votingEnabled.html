@@ -1,9 +1,10 @@
 <template name="votingEnabled">
 {{#if isOwner}}
 <!--   <form> -->
-  <div class="ui checkbox">
-  <input class="voteOpenClose" type="checkbox">
-  <label>Enable voting</label>
+  <div class="checkbox">
+  <label>
+  <input class="voteOpenClose" type="checkbox" checked={{votingEnabled}}>
+  Enable voting</label>
 </div>
 
  <!--  </form> -->
