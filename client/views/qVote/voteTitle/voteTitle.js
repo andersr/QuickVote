@@ -1,5 +1,3 @@
-Template.voteTitle.helpers({
-  // editVoteTitle: function(){
-  //   return Session.get("editVoteTitle");
-  // }
-});
+// Template.voteTitle.onRendered(function(){
+//   $( "input[name=voteTitle]" ).focus();
+// });

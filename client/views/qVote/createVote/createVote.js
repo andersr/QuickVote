@@ -1,3 +1,8 @@
+Template.createVote.onRendered(function(){
+  $( "input[name=voteTitle]" ).focus();
+});
+
+
 Template.createVote.events({
   "submit .create-vote-form": function(event,template){
     event.preventDefault();
@@ -12,16 +17,12 @@ Template.createVote.events({
       if (error){
         console.log(error.reason);
       } else {
-
-         Router.go('voteDetail', { _id: result.voteId });
-
+        Router.go('voteDetail', { _id: result.voteId });
       }
     });
-
   },
   "click .cancel-create-vote": function(event,template){
     event.preventDefault();
     Session.set("newVote", false);
   }
-
 });
