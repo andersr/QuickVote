@@ -12,20 +12,6 @@
   </header>
 </template>
 
-<template name="appHeaderTmp">
-<header class="app-header">
-      <div class="header-left">
-       {{> nav_button event=headerLeft.event icon=headerLeft.icon title=headerLeft.title}}  
-      </div>
-      <div class="header-center">
-      
-      </div>
-      <div class="header-right">
-       {{> nav_button event=headerRight.event icon=headerRight.icon title=headerRight.title}}  
-      </div>
-  
-  </header>
-</template>
 
 <template name="sui_appHeader">
   <div class="ui fixed inverted menu">
@@ -74,9 +60,6 @@
             </button>
 
             <h3> {{#linkTo route="home" class="navbar-brand"}}QuickVote{{/linkTo}}</h3>
-
-
-
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             {{#unless addingNewVote}}
