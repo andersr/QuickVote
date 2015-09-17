@@ -5,44 +5,48 @@
 
 Template.appHeader.helpers({
   headerLeft: function(){
+    
     var current_view = Router.current().route.getName();
 
-    //display new vote button on homepage
+    switch (current_view){
+      case 'voteDetail':
+        return {
+          icon: "chevron-left",
+          event: "go-to-homepage",
+          title: "View all Votes"
+        };      
 
+      default:
+        return {
+          icon: "plus",
+          event: "new-vote",
+          title: "New Vote"
+        };     
+      // case 'login':
+      //   return "page_title";
 
-    // display back to home button on other pages
+      // case 'tag_matches':
+      //   return "page_title";
+
+      // case 'edit_post':
+      //   return "post_title";
+
+      // case 'show_post':
+      //   return "post_title";
+
+      // case 'tags_list':
+      //   return "page_title";
+
+      // case 'search_results':
+      //    return "search_form";   
+
+      // default: 
+      //   return "page_title";
+    };
+
   },
   headerCenter: function () {
-      return "foo";
 
-    // // TODO: Create a global 'current_view' helper
-    // var current_view = Router.current().route.getName();
-  
-    // switch (current_view){
-    //   case 'home':
-    //     return "user_nav";      
-
-    //   case 'login':
-    //     return "page_title";
-
-    //   case 'tag_matches':
-    //     return "page_title";
-
-    //   case 'edit_post':
-    //     return "post_title";
-
-    //   case 'show_post':
-    //     return "post_title";
-
-    //   case 'tags_list':
-    //     return "page_title";
-
-    //   case 'search_results':
-    //      return "search_form";   
-
-    //   default: 
-    //     return "page_title";
-    // };
   },
   showLogin: function(){
     return Router.current().route.getName() !== 'login';
@@ -61,6 +65,9 @@ Template.appHeader.events({
       console.log('show twbs login modal')
        // show twbs login modal $('#loginModal').modal('show');
     };
+  },
+  "click .go-to-homepage": function(){
+     Router.go('home');
   }
   
 });
