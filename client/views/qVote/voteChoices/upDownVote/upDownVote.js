@@ -76,11 +76,8 @@ Template.upDownVote.events({
 
     // if user is not signed in, ask to sign in before voting
     if (!Meteor.userId()) {
-       $('#loginModal').modal();
-       console.log("please sign in to vote...");
-       // $('#loginModal').modal('show');
+      $('#loginModal').modal('show');
     } else {
-
       //if this is their first time voting, create a new userVote for this vote choice
       if (Template.instance().firstVote.get()) {
 

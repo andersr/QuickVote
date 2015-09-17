@@ -25,3 +25,4 @@ service-configuration
 nemo64:bootstrap
 splendido:accounts-meld
 reactive-dict
+useraccounts:bootstrap

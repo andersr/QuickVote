@@ -1,7 +1,3 @@
-// Template.mainLayout.onRendered(function(){
- 
-// });
-
 Template.mainLayout.events({
 "click .logout":function(){ 
 
