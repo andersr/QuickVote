@@ -54,12 +54,14 @@ Template.appHeader.helpers({
 Template.appHeader.events({
 
   "click .new-vote": function(){
-    if (Meteor.user()) {
-      Session.set("newVote", true);
+
+    if (!Meteor.userId()) {
+      Session.set("loginViaModal", true);
+      $('#loginModal').modal('show');
     } else {
-      console.log('show twbs login modal')
-       // show twbs login modal $('#loginModal').modal('show');
+      Session.set("newVote", true);
     };
+    
   },
   "click .go-to-homepage": function(){
      Router.go('home');
