@@ -1,11 +1,19 @@
 Template.upDownVote.onCreated(function(){
 
+  //allow for making template instance available inside autorun
   var templateInstance = this;
-  // var currentVoteChoiceId = templateInstance.data._id;
+
+  //associate upvotes with a corresponding vote choice
   templateInstance.currentVoteChoice = new ReactiveVar(templateInstance.data._id);
-  templateInstance.currentVote = new ReactiveVar(false);
+
+  //enable determining if we should add a new vote or update an existing vote 
   templateInstance.firstVote = new ReactiveVar(true);
 
+  //track the user vote for this vote choice
+  templateInstance.currentVote = new ReactiveVar(false);
+
+
+  //enable auto-checking for updates to this user's votes
   templateInstance.autorun(function(){
 
     var userVotesSubscription = templateInstance.subscribe('userVotes');
@@ -13,7 +21,6 @@ Template.upDownVote.onCreated(function(){
     if (userVotesSubscription.ready()) {
 
       // check if user has voted previously
-      // if so, set currentVote to their most recent vote
       if (Meteor.userId()) {
 
         var userVote = UserVotes.findOne({
@@ -24,8 +31,15 @@ Template.upDownVote.onCreated(function(){
         if (userVote != undefined) {
           templateInstance.currentVote.set(userVote.upVote);
           templateInstance.firstVote.set(false);
-        } 
+        };
+        // else {
+        //   templateInstance.firstVote.set(true);
+        //   templateInstance.currentVote.set(false);
+        // }
 
+      } else {
+        templateInstance.firstVote.set(true);
+        templateInstance.currentVote.set(false);
       };
     };
   });
@@ -58,6 +72,7 @@ Template.upDownVote.events({
 
     var voteChoiceId = Template.instance().currentVoteChoice.get();
     var upVote = Template.instance().currentVote.get();
+    console.log("upVote on click: " + upVote);
 
     // if user is not signed in, ask to sign in before voting
     if (!Meteor.userId()) {
@@ -65,19 +80,17 @@ Template.upDownVote.events({
        // $('#loginModal').modal('show');
     } else {
 
-      //is this their first time voting on this vote choice?
+      //if this is their first time voting, create a new userVote for this vote choice
       if (Template.instance().firstVote.get()) {
 
         Meteor.call('newUserVote', voteChoiceId, function (error, result) {
-
           if (error){
             console.log(error.reason);
           };
-
         });
 
       } else {
-
+        //if not, updating their existing vote choice
         console.log("not first vote...");
 
         var userVoteAttributes = {
@@ -89,31 +102,24 @@ Template.upDownVote.events({
 
           if (error){
             console.log(error.reason);
-          } else {
-            console.log("toggleUpDownVote result: " + result.upVote);
+          };
+          // else {
+     
+          //     var voteChoiceAttributes = {
+          //       voteChoiceId: result.voteChoiceId,
+          //       upVote: result.upVote
+          //     };
 
-              // var updatedCount = 0;
+          //     Meteor.call('updateVoteCount', voteChoiceAttributes, function (error, result) {
 
-              // if (result.upVote) {
-              //  updatedCount = 1;
-              // } else {
-              //  updatedCount = -1;
-              // };
-
-              var voteChoiceAttributes = {
-                voteChoiceId: result.voteChoiceId,
-                upVote: result.upVote
-              };
-
-              Meteor.call('updateVoteCount', voteChoiceAttributes, function (error, result) {
-
-                if (error){
-                  console.log(error.reason);
-                } else {
-                  console.log("added to vote count: " + result);
-               }
-             }); 
-          }
+          //       if (error){
+          //         console.log(error.reason);
+          //       };
+          //      //  else {
+          //      //    // console.log("added to vote count: " + result);
+          //      // }
+          //    }); 
+          // }
         });
       };
     }
