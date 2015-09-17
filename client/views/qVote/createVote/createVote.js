@@ -18,5 +18,10 @@ Template.createVote.events({
       }
     });
 
+  },
+  "click .cancel-create-vote": function(event,template){
+    event.preventDefault();
+    Session.set("newVote", false);
   }
+
 });

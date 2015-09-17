@@ -21,7 +21,7 @@ Meteor.startup(function(){
 
   // Set default session values
   Session.setDefault({
-    "newVote": true,
+    "newVote": false,
     "logout":false,
     "loginViaModal":false
   });

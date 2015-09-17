@@ -1,3 +1,22 @@
+Template.appHeader.onCreated(function(){
+
+  var currentView   = Router.current().route.getName(),
+      templateInstance  = this;
+
+  templateInstance.headerCenterTemplate = new ReactiveVar(currentView);
+     
+  templateInstance.autorun(function(){
+
+    if (Session.get("newVote")) {
+      templateInstance.headerCenterTemplate.set('createVote');
+    } else {
+      templateInstance.headerCenterTemplate.set(Router.current().route.getName());
+    };
+
+  });
+
+});
+
 Template.appHeader.helpers({
   headerLeft: function(){
 
@@ -17,30 +36,26 @@ Template.appHeader.helpers({
         };
     };
   },
-    headerCenter: function(){
-    
-    switch (Router.current().route.getName()){
-      case 'voteDetail':
-        return "voteTitle";  
+    headerCenter: function(){    
+      switch (Template.instance().headerCenterTemplate.get()){
 
-      default:
-        return "appTitle";
+        case 'voteDetail':
+          return "voteTitle";
+
+        case 'createVote':
+          return "createVote";  
+
+        default:
+          return "appTitle";
     };
   }
-  // ,
-  // showLogin: function(){
-  //   return Router.current().route.getName() !== 'login';
-  // },
-  // addingNewVote: function(){
-  //   return Router.current().route.getName() === 'createVote';
-  // }
 });
 
 Template.appHeader.events({
 
   "click .new-vote": function(){
     if (Meteor.user()) {
-       Router.go('createVote');
+      Session.set("newVote", true);
     } else {
       console.log('show twbs login modal')
        // show twbs login modal $('#loginModal').modal('show');
