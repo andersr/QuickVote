@@ -76,6 +76,7 @@ Template.upDownVote.events({
 
     // if user is not signed in, ask to sign in before voting
     if (!Meteor.userId()) {
+       $('#loginModal').modal();
        console.log("please sign in to vote...");
        // $('#loginModal').modal('show');
     } else {

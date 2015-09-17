@@ -1,6 +1,6 @@
-Template.mainLayout.onRendered(function(){
-  // this.$('.ui.sidebar').sidebar();
-});
+// Template.mainLayout.onRendered(function(){
+ 
+// });
 
 Template.mainLayout.events({
 "click .logout":function(){ 
