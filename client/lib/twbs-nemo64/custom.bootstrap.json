@@ -5,7 +5,7 @@
     "glyphicons"           : false,
 
     "scaffolding"          : false,
-    "type"                 : false,
+    "type"                 : true,
     "code"                 : false,
     "grid"                 : false,
     "tables"               : true,

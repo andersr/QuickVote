@@ -1,5 +1,5 @@
 // ********************************************
-// GRAYSCALE THEME
+// SINGLE COLUMN GRAYSCALE THEME
 // ********************************************
 
 
@@ -18,8 +18,8 @@ $link-color:                            #4183c4
 // TEXT
 // --------------------------------------------
 $font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
-$base-font-size:                        14px
-$base-line-height:                      1.4
+// $base-font-size:                        14px
+// $base-line-height:                      1.4
 // $small-text:                            .9em
 // $medium-text:                           1.25em
 // $large-text:                            1.75em
@@ -33,14 +33,13 @@ $base-line-height:                      1.4
 // // --------------------------------------------
 // $app-header:                             3em
 
-
 // APP SHELL
 // --------------------------------------------
 body
   font-family: $font-family
-  font-size: $base-font-size
-  line-height: $base-line-height
-  background-color: $app-background-color
+//   font-size: $base-font-size
+//   line-height: $base-line-height
+//   background-color: $app-background-color
 
 
 // APP HEADER
@@ -55,4 +54,28 @@ body
 
   a
     color: $gray
+
+// TABLES
+// --------------------------------------------
+
+// specificity required to override twbs
+.table > tbody > tr > td.vertical-middle
+  vertical-align:middle
+
+.table > tbody > tr > td.text-center
+  text-align:center
+
+
+// TEXT
+// --------------------------------------------
+.table
+  h2
+    a
+      text-decoration: none
+
+      &:hover
+        text-decoration: underline
+
+
+  
 

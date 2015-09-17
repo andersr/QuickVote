@@ -1,33 +1,24 @@
 <template name="votesList">
-<table class="full-height">
- <tbody>
-    {{#each this}}
-    <tr>
-      <td>
-        <h2 class="ui header">
-          {{#linkTo route='voteDetail'}}{{title}}{{/linkTo}}
-        </h2>
-      </td>
-      <td>
-        <div class="sub header">
-          {{#if votingEnabled}}
-             <span class="color-positive bold-text"> Voting Open</span>
-          {{else}}
-             Voting Closed
-          {{/if}}
-        </div>
-      </td>
-    </tr>
-    {{/each}}
-  </tbody>
-  </table>
-</template>
-
-<template name="votesListSideBar">
-  <div class="header">Recent Votes</div>
-      {{#each this}}
-      <div class="item">
-      <h3>{{#linkTo route='voteDetail'}}{{title}}{{/linkTo}}</h3>
-      </div>
-     {{/each}}
+  <div class="table-responsive">
+    <table class="table">
+       <tbody>
+          {{#each this}}
+          <tr>
+            <td>
+              <h2>
+                {{#linkTo route='voteDetail'}}{{title}}{{/linkTo}}
+              </h2>
+            </td>
+            <td class="vertical-middle text-center">
+                {{#if votingEnabled}}
+                   Voting Open
+                {{else}}
+                   Voting Closed
+                {{/if}}
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+    </table>
+  </div>
 </template>
