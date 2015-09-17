@@ -1,9 +1,7 @@
 Template.appHeader.helpers({
   headerLeft: function(){
-    
-    var current_view = Router.current().route.getName();
 
-    switch (current_view){
+    switch (Router.current().route.getName()){
       case 'voteDetail':
         return {
           icon: "chevron-left",
@@ -17,6 +15,16 @@ Template.appHeader.helpers({
           event: "new-vote",
           title: "New Vote"
         };
+    };
+  },
+    headerCenter: function(){
+    
+    switch (Router.current().route.getName()){
+      case 'voteDetail':
+        return "voteTitle";  
+
+      default:
+        return "appTitle";
     };
   }
   // ,

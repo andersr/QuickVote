@@ -32,18 +32,11 @@ Template.upDownVote.onCreated(function(){
           templateInstance.currentVote.set(userVote.upVote);
           templateInstance.firstVote.set(false);
         };
-        // else {
-        //   templateInstance.firstVote.set(true);
-        //   templateInstance.currentVote.set(false);
-        // }
-
       } else {
         templateInstance.firstVote.set(true);
         templateInstance.currentVote.set(false);
       };
     };
-
-
   });
 
 });
@@ -74,7 +67,7 @@ Template.upDownVote.events({
 
     var voteChoiceId = Template.instance().currentVoteChoice.get();
     var upVote = Template.instance().currentVote.get();
-    console.log("upVote on click: " + upVote);
+    // console.log("upVote on click: " + upVote);
 
     // if user is not signed in, ask to sign in before voting
     if (!Meteor.userId()) {
@@ -92,7 +85,7 @@ Template.upDownVote.events({
 
       } else {
         //if not, updating their existing vote choice
-        console.log("not first vote...");
+        // console.log("not first vote...");
 
         var userVoteAttributes = {
           voteChoiceId: voteChoiceId,
