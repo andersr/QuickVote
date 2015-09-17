@@ -60,9 +60,9 @@ Template.upDownVote.helpers({
 
   upDownVoteMsg: function(){
     if (Template.instance().currentVote.get()) {
-      return "Upvote this choice";
-    } else {
       return "Undo your upvote";
+    } else {
+      return "Upvote this choice";
     };
   }
 
