@@ -6,6 +6,7 @@ Meteor.publish('voteChoices', function() {
   return VoteChoices.find(); 
 });
 
-// Meteor.publish('userVotes', function() {
-//   return UserVotes.find(); 
-// });
+Meteor.publish('userVotes', function() {
+  // return UserVotes.find(); 
+  return UserVotes.find({voterId: this.userId}); 
+});

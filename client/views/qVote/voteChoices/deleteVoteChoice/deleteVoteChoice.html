@@ -1,0 +1,5 @@
+<template name="deleteVoteChoice">
+  {{#if isOwner}}
+   {{> actionButton event="delete-vote-choice" icon="trash-o" title="Delete this vote choice" currentVoteChoiceId=this._id}}
+  {{/if}}
+</template>

@@ -1,0 +1,8 @@
+<template name="upDownVote">
+  {{#if votingIsOpen}}
+    {{> actionButton event="toggle-up-down-vote" icon=thumbIconToggle title=upDownVoteMsg currentVoteChoiceId=this._id}}
+  {{else}}
+    Votes: 
+  {{/if}}
+  {{count}} 
+</template>

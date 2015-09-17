@@ -1,56 +1,15 @@
-@import "alerts"
+// CORE
+@import "core/normalize"
+@import "core/variables"
+@import "core/helpers"
 
-// .main-content
-//   margin-top: 5em
-//   margin-left: auto
-//   margin-right: auto 
+// LAYOUTS
+@import "layouts/full_height_single_column"
 
-// .display-inline
-//   display: inline
+// COMPONENTS
+@import "components/alerts"
+@import "components/buttons"
 
-// .page-header
-//   .inline-title
-//     display: inline
-
-// .centered-block
-//   margin-left: auto
-//   margin-right: auto
-// .vertical-baseline
-//   display:flex
-//   align-items:center
-
-// .align-center
-//   text-align: center
-
-// .header
-//   width:100%
-// .table
-//   width:97%
-
-.main.container
-  margin-top: 9em;
-
-.avatar-dropdown .avatar
-  display: inline-block;
-  // margin-right: .25em;
-
-.color-positive
-  color: #186D17;
-
-.bold-text
-  font-weight: bold;
-
-.full-width
-  width:100%
-
-.max-width-hack
-  max-width: 40em
-  
-.align-right
-  text-align: right
-
-.ui.sidebar
-  position: absolute
-  z-index: 10
-
+// THEME
+@import "themes/grayscale"
 
