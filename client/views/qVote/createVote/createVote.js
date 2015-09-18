@@ -16,6 +16,7 @@ Template.createVote.events({
       if (error){
         console.log(error.reason);
       } else {
+        Session.set("newVote", false);
         Router.go('voteDetail', { _id: result.voteId });
       }
     });
