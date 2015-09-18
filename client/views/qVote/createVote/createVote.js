@@ -19,9 +19,5 @@ Template.createVote.events({
         Router.go('voteDetail', { _id: result.voteId });
       }
     });
-  },
-  "click .cancel-create-vote": function(event,template){
-    event.preventDefault();
-    Session.set("newVote", false);
   }
 });

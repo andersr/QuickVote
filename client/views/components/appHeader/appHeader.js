@@ -1,16 +1,20 @@
 Template.appHeader.onCreated(function(){
 
-  var currentView   = Router.current().route.getName(),
-      templateInstance  = this;
+  var currentView       = Router.current().route.getName(),
+      templateInstance  = this
+  ;
 
-  templateInstance.headerCenterTemplate = new ReactiveVar(currentView);
+  templateInstance.headerLeft = new ReactiveVar();
+  templateInstance.headerCenter = new ReactiveVar();
      
   templateInstance.autorun(function(){
 
     if (Session.get("newVote")) {
-      templateInstance.headerCenterTemplate.set('createVote');
+      templateInstance.headerLeft.set('createVote');
+      templateInstance.headerCenter.set('createVote');
     } else {
-      templateInstance.headerCenterTemplate.set(Router.current().route.getName());
+      templateInstance.headerLeft.set(Router.current().route.getName());
+      templateInstance.headerCenter.set(Router.current().route.getName());
     };
 
   });
@@ -20,12 +24,19 @@ Template.appHeader.onCreated(function(){
 Template.appHeader.helpers({
   headerLeft: function(){
 
-    switch (Router.current().route.getName()){
+    switch (Template.instance().headerLeft.get()){
       case 'voteDetail':
         return {
           icon: "chevron-left",
           event: "go-to-homepage",
           title: "View all Votes"
+        };      
+
+      case 'createVote':
+        return {
+          icon: "times",
+          event: "cancel-create-vote",
+          title: "Cancel creating vote"
         };      
 
       default:
@@ -37,7 +48,7 @@ Template.appHeader.helpers({
     };
   },
     headerCenter: function(){    
-      switch (Template.instance().headerCenterTemplate.get()){
+      switch (Template.instance().headerCenter.get()){
 
         case 'voteDetail':
           return "voteTitle";
@@ -65,6 +76,10 @@ Template.appHeader.events({
   },
   "click .go-to-homepage": function(){
      Router.go('home');
+  },
+  "click .cancel-create-vote": function(event){
+    event.preventDefault();
+    Session.set("newVote", false);
   }
   
 });
