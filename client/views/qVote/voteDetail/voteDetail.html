@@ -25,10 +25,13 @@
         </td>
       </tr>
     {{/each}}
+      {{#if isOwner}}
+      <tr class="vote-settings">
+      <td>&nbsp;</td>
+      <td class="align-center">{{> votingEnabled}}</td>
+      <td>&nbsp;</td>
+      </tr>
+     {{/if}}
   </tbody>
 </table>
-  {{#if isOwner}}
-    <h2>Vote Settings</h2>
-    {{> votingEnabled}}
-  {{/if}}
 </template>
