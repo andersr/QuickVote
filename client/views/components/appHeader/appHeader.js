@@ -21,6 +21,10 @@ Template.appHeader.onCreated(function(){
 
 });
 
+Template.appHeader.onRendered(function(){
+  $('.dropdown-toggle').dropdown();
+});
+
 Template.appHeader.helpers({
   headerLeft: function(){
 
