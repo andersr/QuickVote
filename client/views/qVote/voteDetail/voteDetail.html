@@ -1,4 +1,34 @@
 <template name="voteDetail">
-  {{> voteChoicesList}}
-  {{> voteSettings}}
+   <table class="table">
+   <tbody>
+     {{#if isOwner}}
+       <tr>
+        <td>&nbsp;</td>
+        <td>
+          {{> addVoteChoice}}
+        </td>
+        <td>&nbsp;</td>
+      </tr>
+    {{/if}}
+    {{#each voteChoices}}
+      <tr>
+        <td>{{count}}</td>
+        <td>{{title}}</td>
+        <td>
+          {{#if votingIsOpen}}
+            {{> upDownVote}}
+          {{else}}
+            {{#if isOwner}}
+              {{> deleteVoteChoice}}
+            {{/if}}
+          {{/if}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+  {{#if isOwner}}
+    <h2>Vote Settings</h2>
+    {{> votingEnabled}}
+  {{/if}}
 </template>

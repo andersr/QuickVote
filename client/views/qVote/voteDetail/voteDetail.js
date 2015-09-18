@@ -1,9 +1,15 @@
 Template.voteDetail.helpers({
   
-  // votingOpen: function(){
-  //   return Votes.findOne({_id: Router.current().params._id}).votingEnabled;
-  // }
-})
+  voteChoices:function(){
+    return VoteChoices.find({voteId: Router.current().params._id }, {sort: {updatedAt: -1, count: -1, }});
+  }
+});
+
+// Template.voteChoicesList.helpers({
+//   voteChoices:function(){
+//     return VoteChoices.find({voteId: Router.current().params._id }, {sort: {updatedAt: -1, count: -1, }});
+//   }
+// });
 
 Template.voteDetail.events({
   "submit .vote-title-form": function(event,template){
