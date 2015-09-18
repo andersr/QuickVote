@@ -1,16 +1,14 @@
 <template name="appHeader">
-<header class="app-header">
-      <div class="header-left">
+  <header class="app-header">
+    <div class="header-left">
       {{> actionButton event=headerLeft.event icon=headerLeft.icon title=headerLeft.title size="2x"}}
-      </div>
-      <div class="header-center">
+    </div>
+    <div class="header-center">
       {{> Template.dynamic template=headerCenter}}
-      </div>
-      <div class="header-right">
-<!--       <ul class="nav navbar-nav navbar-right"> -->
+    </div>
+    <div class="header-right">
       {{> loginButtons align="right"}}
-<!--       </ul> -->
-      </div>
+    </div>
   </header>
 </template>
 
