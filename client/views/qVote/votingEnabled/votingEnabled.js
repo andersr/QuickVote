@@ -9,6 +9,9 @@ Template.votingEnabled.onDestroyed(function(){
 Template.votingEnabled.helpers({
   votingEnabled: function () {
     return Votes.findOne({_id: Router.current().params._id}).votingEnabled || false;
+  },
+  enableOpenCloseVoteControl: function () {
+    // return true if there are two or more items to vote on
   }
 });
 
