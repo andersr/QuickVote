@@ -7,7 +7,13 @@
       {{> Template.dynamic template=headerCenter}}
     </div>
     <div class="header-right">
-      {{> loginButtons align="right"}}
+    {{#if currentUser}}
+      {{#with currentUser}}
+        {{> avatar user=this shape="circle"}}
+      {{/with}}
+      {{else}}
+       {{> loginButtons}}
+      {{/if}}
     </div>
   </header>
 </template>

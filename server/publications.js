@@ -21,7 +21,7 @@ Meteor.publish("userData", function () {
         {
           "services.google.picture": true,
           "services.google.name": true,
-          "services.facebook.picture": true,
+          "services.facebook.id": true,
           "services.facebook.name": true
         }
       });
