@@ -23,7 +23,8 @@ Meteor.startup(function(){
   Session.setDefault({
     "newVote": false,
     "logout":false,
-    "loginViaModal":false
+    "loginViaModal":false,
+    "userNavOpen": false
   });
 
   Template.body.onRendered(function(){
