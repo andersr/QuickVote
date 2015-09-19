@@ -6,10 +6,10 @@
     <div class="header-center">
       {{> Template.dynamic template=headerCenter}}
     </div>
-    <div class="header-right">
+    <div class="header-right user-nav">
     {{#if currentUser}}
       {{#with currentUser}}
-            <div class="dropdown user-nav">
+            <div class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
                 {{> avatar user=this shape="circle" size="small"}}
                 <span class="caret"></span>
