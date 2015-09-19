@@ -9,8 +9,7 @@
     <div class="header-right">
     {{#if currentUser}}
       {{#with currentUser}}
-     <!-- <div class="nav navbar-nav navbar-right"> -->
-            <div class="dropdown">
+            <div class="dropdown user-nav">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
                 {{> avatar user=this shape="circle" size="small"}}
                 <span class="caret"></span>
@@ -19,8 +18,7 @@
                 <li><a href="#">Sign Out</a></li>
               </ul>
             </div>
-   <!--        </div>
- -->      {{/with}}
+    {{/with}}
       {{else}}
        {{> loginButtons}}
       {{/if}}
