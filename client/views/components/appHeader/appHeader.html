@@ -1,5 +1,6 @@
 <template name="appHeader">
-  <header class="app-header">
+  <div class="app-header">
+
       <div class="header-left">
         {{> actionButton event=headerLeft.event icon=headerLeft.icon title=headerLeft.title size="2x"}}
       </div>
@@ -8,20 +9,35 @@
       </div>
       <div class="header-right user-nav {{#if userNavOpen}}dropdown-open{{/if}}">
       {{#if currentUser}}
-        {{#with currentUser}}
-              <div class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                  {{> avatar user=this shape="circle" size="small"}}
-                  <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right">
-                  <li><a href="#" class="sign-out">Sign Out</a></li>
-                </ul>
-              </div>
-      {{/with}}
+
+         {{#with currentUser}}
+         {{> avatar user=this shape="circle" size="small"}}
+          {{/with}}
+           <span class="caret"></span>
+
+
         {{else}}
          {{> loginButtons}}
         {{/if}}
-      </div>
-  </header>
+ 
+    </div>
+  </div>
+</template>
+
+<template name="tmpHeader">
+ <!--    <div class="table-row"> -->
+      <!--           <div class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"> -->
+             
+     <!--          <span class="caret"></span> -->
+          <!--   </a> -->
+           <!--  <ul class="dropdown-menu dropdown-menu-right">
+              <li><a href="#" class="sign-out">Sign Out</a></li>
+            </ul> -->
+       <!--    </div> -->
+ 
+
+       
+    <!--   <a href="#" class="sign-out">Sign Out</a> -->
+  <!--       </div> -->     
 </template>
