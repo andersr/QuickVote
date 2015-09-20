@@ -16,34 +16,33 @@ html, body, .app-container
 .app-container
   margin-left: auto
   margin-right: auto
+  max-width: $app-max-width
+
 
 // Apply flex layout
 .app-container
   display: flex
   flex-direction: column
 
-.app-header, .app-footer
-  display: flex
-  flex-direction: row
-  flex-wrap: nowrap
-  align-items: center
-  justify-content: center
+.app-header
+  position:fixed
+  top:0
+  z-index: 1
+  width: 100%
+  display: table
+  border-collapse:collapse
   height: $app-header-height
 
-  .header-center, .footer-center
+  .header-left, .header-center, .header-right
+    display: table-cell
     text-align: center
-    flex: 1
+    vertical-align:middle
 
   .header-left
-    text-align: center
-    width: 3em
-    
+    width: 3.5em
+
   .header-right
-    height: 100%
-    padding-top:1em
-    padding-right:1em
-    width: 4.5em
-    padding-right:.25em
+    widht: 5em
 
 .main-content
   display: flex
@@ -52,16 +51,25 @@ html, body, .app-container
   padding-left: 1.5em
   padding-right: 1.5em
 
-.app-container 
-  max-width: $app-max-width
 
-.app-header
-  height: 4em
 
-//   margin-top: 0
-// .app-header, .app-footer
-//   padding:1.25em 2.25em
-// .app-header
-//   height: 3em
-// .app-footer
-//   height: 6em
+// UNUSED
+// .header-center, .footer-center
+//   text-align: center
+//   flex: 1
+
+//   h1
+//     display: inline
+//     margin:0
+//     padding:0
+
+// .header-left
+//   text-align: center
+//   width: 2em
+
+// .header-right
+//   height: 100%
+//   padding-top:1em
+//   // padding-right:1em
+//   padding-right:.25em
+//   flex:2
