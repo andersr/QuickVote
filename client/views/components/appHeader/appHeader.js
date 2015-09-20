@@ -93,17 +93,14 @@ Template.appHeader.events({
   "click .go-to-homepage": function(){
      Router.go('home');
   },
-  // ,
-  // "click body": function(event){
-  //   Template.instance().userNavOpen.set(false);
-  // },
-  // "click .user-nav": function(event){
-  //   // event.stopPropagation();
-  //   Template.instance().userNavOpen.set(true);
-  // },
   "click .cancel-create-vote": function(event){
     event.preventDefault();
     Session.set("newVote", false);
+  },
+  "click .sign-out": function(event){
+    event.preventDefault();
+    Meteor.logout();
+    Router.go('login');
   }
   
 });
