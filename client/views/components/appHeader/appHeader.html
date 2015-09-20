@@ -10,11 +10,18 @@
       <div class="header-right user-nav {{#if userNavOpen}}dropdown-open{{/if}}">
       {{#if currentUser}}
 
+      <div class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+
          {{#with currentUser}}
          {{> avatar user=this shape="circle" size="small"}}
           {{/with}}
            <span class="caret"></span>
-
+</a>
+<div class="dropdown-menu dropdown-menu-right">
+             <a href="#" class="sign-out">Sign Out</a>
+            </div>
+</div>
 
         {{else}}
          {{> loginButtons}}
