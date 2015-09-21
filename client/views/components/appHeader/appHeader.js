@@ -97,9 +97,10 @@ Template.appHeader.events({
     event.preventDefault();
     Session.set("newVote", false);
   },
-  "click .sign-out": function(event){
+  "click .logout": function(event){
     event.preventDefault();
     Meteor.logout();
+    Session.set("logout",true);
     Router.go('login');
   }
   

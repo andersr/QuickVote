@@ -17,9 +17,9 @@ $link-color:                            #4183c4
 
 // TEXT
 // --------------------------------------------
-// $font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
-// $base-font-size:                        14px
-// $base-line-height:                      1.4
+$font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
+$base-font-size:                        16px
+$base-line-height:                      1.6
 // $small-text:                            .9em
 // $medium-text:                           1.25em
 // $large-text:                            1.75em
@@ -36,11 +36,15 @@ $link-color:                            #4183c4
 // APP SHELL
 // --------------------------------------------
 body
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
-//   font-size: $base-font-size
-//   line-height: $base-line-height
-//   background-color: $app-background-color
+  font-family: $font-family
+  font-size: $base-font-size
+  line-height: $base-line-height
+  background-color: $very-light-gray
 
+.app-container
+  background-color: #ffffff
+  border-left: 1px solid $light-gray
+  border-right: 1px solid $light-gray
 
 // APP HEADER
 // --------------------------------------------
