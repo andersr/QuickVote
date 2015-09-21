@@ -23,10 +23,10 @@
       </tr>
     {{/if}}
     {{#each voteChoices}}
-      <tr>
-        <td>{{count}}</td>
-        <td>{{title}}</td>
-        <td>
+      <tr class="vote-choices">
+        <td class="large-text vertical-middle">{{count}}</td>
+        <td class="large-text">{{title}}</td>
+        <td class="large-text vertical-middle">
           {{#if votingIsOpen}}
             {{> upDownVote}}
           {{else}}
