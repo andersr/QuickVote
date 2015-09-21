@@ -23,14 +23,14 @@ Template.appHeader.onCreated(function(){
 
 Template.appHeader.onRendered(function(){
 
-  $('.user-nav .dropdown').on('shown.bs.dropdown', function(){
-    Session.set("userNavOpen", true);   
-  });
+  // $('.user-nav .dropdown').on('shown.bs.dropdown', function(){
+  //   Session.set("userNavOpen", true);   
+  // });
 
-  $('.user-nav .dropdown').on('hidden.bs.dropdown', function(){
-    Session.set("userNavOpen", false);
+  // $('.user-nav .dropdown').on('hidden.bs.dropdown', function(){
+  //   Session.set("userNavOpen", false);
      
-  });
+  // });
 
 });
 

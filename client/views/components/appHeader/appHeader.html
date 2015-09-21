@@ -1,50 +1,25 @@
 <template name="appHeader">
   <div class="app-header">
-
-      <div class="header-left">
-        {{> actionButton event=headerLeft.event icon=headerLeft.icon title=headerLeft.title size="2x"}}
-      </div>
-      <div class="header-center">
-        {{> Template.dynamic template=headerCenter}}
-      </div>
-      <div class="header-right user-nav {{#if userNavOpen}}dropdown-open{{/if}}">
+    <div class="header-left">
+      {{> actionButton event=headerLeft.event icon=headerLeft.icon title=headerLeft.title size="2x"}}
+    </div>
+    <div class="header-center">
+      {{> Template.dynamic template=headerCenter}}
+    </div>
+    <div class="header-right user-nav">
       {{#if currentUser}}
-
-      <div class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-
-         {{#with currentUser}}
-         {{> avatar user=this shape="circle" size="small"}}
-          {{/with}}
+        <div class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+           {{#with currentUser}}{{> avatar user=this shape="circle" size="small"}}{{/with}}
            <span class="caret"></span>
-</a>
-<div class="dropdown-menu dropdown-menu-right">
-             <a href="#" class="sign-out">Sign Out</a>
-            </div>
-</div>
-
-        {{else}}
-         {{> loginButtons}}
-        {{/if}}
- 
+          </a>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li><a href="#" class="sign-out">Sign Out</a></li>
+          </ul>
+        </div>
+      {{else}}
+        {{> loginButtons}}
+      {{/if}}
     </div>
   </div>
-</template>
-
-<template name="tmpHeader">
- <!--    <div class="table-row"> -->
-      <!--           <div class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"> -->
-             
-     <!--          <span class="caret"></span> -->
-          <!--   </a> -->
-           <!--  <ul class="dropdown-menu dropdown-menu-right">
-              <li><a href="#" class="sign-out">Sign Out</a></li>
-            </ul> -->
-       <!--    </div> -->
- 
-
-       
-    <!--   <a href="#" class="sign-out">Sign Out</a> -->
-  <!--       </div> -->     
 </template>
