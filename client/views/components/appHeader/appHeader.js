@@ -10,8 +10,8 @@ Template.appHeader.onCreated(function(){
   templateInstance.autorun(function(){
 
     if (Session.get("newVote")) {
-      templateInstance.headerLeft.set('createVote');
-      templateInstance.headerCenter.set('createVote');
+      templateInstance.headerLeft.set('newVote');
+      templateInstance.headerCenter.set('newVote');
     } else {
       templateInstance.headerLeft.set(Router.current().route.getName());
       templateInstance.headerCenter.set(Router.current().route.getName());
@@ -45,7 +45,7 @@ Template.appHeader.helpers({
           title: "View all Votes"
         };      
 
-      case 'createVote':
+      case 'newVote':
         return {
           icon: "times",
           event: "cancel-create-vote",
@@ -66,8 +66,8 @@ Template.appHeader.helpers({
         case 'voteDetail':
           return "voteTitle";
 
-        case 'createVote':
-          return "createVote";  
+        case 'newVote':
+          return "newVote";  
 
         default:
           return "appTitle";

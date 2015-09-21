@@ -1,9 +1,9 @@
-Template.createVote.onRendered(function(){
+Template.newVote.onRendered(function(){
   $( "input[name=voteTitle]" ).focus();
 });
 
-Template.createVote.events({
-  "submit .create-vote-form": function(event,template){
+Template.newVote.events({
+  "submit .new-vote-form": function(event,template){
     event.preventDefault();
 
     var voteTitle = event.target.voteTitle.value;
