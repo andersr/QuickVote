@@ -1,7 +1,9 @@
 <template name="appHeader">
   <div class="app-header">
     <div class="header-left">
+    {{#unless isLoginPage}}
       {{> actionButton event=headerLeft.event icon=headerLeft.icon title=headerLeft.title size="2x"}}
+      {{/unless}}
     </div>
     <div class="header-center">
       {{> Template.dynamic template=headerCenter}}
@@ -18,7 +20,9 @@
           </ul>
         </div>
       {{else}}
-        {{> loginButtons align="right"}}
+        {{#unless isLoginPage}}
+          {{> loginButtons align="right"}}
+        {{/unless}}
       {{/if}}
     </div>
   </div>
