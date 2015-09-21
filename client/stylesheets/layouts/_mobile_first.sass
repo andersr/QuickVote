@@ -17,15 +17,15 @@ html, body, .app-container
   margin-right: auto
   max-width: $app-max-width
 
-  // display: flex
-  // flex-direction: column
+  display: flex
+  flex-direction: column
 
 .app-header
   display: flex
-  flex-direction: row
+  flex-flow: row nowrap
   align-items:center
-  height: $app-header-height
   width: 100%
+  height: $app-header-height
   // justify-content: center 
   // position:fixed
   // top:0
@@ -40,14 +40,11 @@ html, body, .app-container
     // width: 4em
     padding-right: $app-padding
 
-  // .header-center
-  //   text-align: center 
-  //   flex: 1
+  .header-center
+    text-align: center 
+    flex: 1
 
 .main-content
-  // margin-top: $app-header-height
-  display: flex
-  flex-direction: column
   flex: 1
   padding-left: 1.5em
   padding-right: 1.5em

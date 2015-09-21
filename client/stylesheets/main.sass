@@ -5,39 +5,12 @@
 // @import "core/mixins"
 
 // LAYOUTS
-// @import "layouts/full_height_single_column"
+@import "layouts/mobile_first"
 
 // COMPONENTS
 @import "components/alerts"
 @import "components/buttons"
 @import "components/dropdowns"
-// @import "components/lookback_dropdown"
-
 
 // THEME
 @import "themes/grayscale"
-
-
-// TEXT
-// --------------------
-.truncate-text
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-
-html,body
-  box-sizing: border-box
-*, *:before, *:after
-    box-sizing: inherit
-
-.app-header
-  display: flex
-  flex-flow: row
-  align-items: center
-
-  .header-left, .header-right
-    width: 4em
-
-  .header-center
-    flex: 1
