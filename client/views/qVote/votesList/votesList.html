@@ -1,6 +1,9 @@
 <template name="votesList">
     <table class="table">
        <tbody>
+         {{#if noVotes}}
+           Sorry, no votes created yet
+          {{else}}
           {{#each this}}
           <tr>
             <td>
@@ -17,6 +20,7 @@
             </td>
           </tr>
           {{/each}}
+          {{/if}}
         </tbody>
     </table>
 </template>

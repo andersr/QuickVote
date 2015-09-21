@@ -1,4 +1,5 @@
 Meteor.publish('votes', function() {
+  Counts.publish(this, 'votesCount', Votes.find());
   return Votes.find(); 
 });
 
@@ -6,9 +7,9 @@ Meteor.publish('voteChoices', function() {
   return VoteChoices.find(); 
 });
 
-Meteor.publish('voteChoiceCount', function() {
-  Counts.publish(this, 'voteChoiceCount', VoteChoices.find());
-});
+// Meteor.publish('votes', function() {
+  
+// });
 
 Meteor.publish('userVotes', function() {
   // return UserVotes.find(); 

@@ -1,5 +1,5 @@
-// Template.votesList.helpers({
-//   votesList:function(){
-//     return Votes.find({}, {sort: {updatedAt: -1, count: -1, })
-//   }
-// })
+Template.votesList.helpers({
+  noVotes:function(){
+    return Counts.get('votesCount') === 0;
+  }
+})
