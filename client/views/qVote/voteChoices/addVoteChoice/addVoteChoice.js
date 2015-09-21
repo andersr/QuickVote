@@ -8,6 +8,7 @@ Template.addVoteChoice.events({
 
     //get text entered into topicTitle field
     var voteChoiceTitle = event.target.voteChoiceTitle.value;
+    template.find("form").reset();
 
     var voteId = Router.current().params._id;
 
@@ -25,7 +26,7 @@ Template.addVoteChoice.events({
       } else {
 
         //clear out form data after insert
-        template.find("form").reset();
+        // template.find("form").reset();
      };
 
     });

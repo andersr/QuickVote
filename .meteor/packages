@@ -28,3 +28,5 @@ useraccounts:bootstrap
 accounts-ui
 accounts-password
 tmeasday:publish-counts
+fastclick
+meteorhacks:fast-render
