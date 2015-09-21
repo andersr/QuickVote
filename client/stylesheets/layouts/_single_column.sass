@@ -26,11 +26,10 @@ html, body, .app-container
   align-items:center
   width: 100%
   height: $app-header-height
+  position:fixed
+  top:0
+  z-index: 1
   // justify-content: center 
-  // position:fixed
-  // top:0
-  // z-index: 1
-
 
   .header-left
     padding-left: 1.25em
@@ -45,6 +44,8 @@ html, body, .app-container
     flex: 1
 
 .main-content
+  margin-top: $app-header-height
   flex: 1
   padding-left: 2.5em
   padding-right: 2.5em
+
