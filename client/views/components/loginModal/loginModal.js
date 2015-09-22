@@ -16,7 +16,10 @@ Template.loginModal.helpers({
 
     switch (Router.current().route.getName()){
       case 'voteDetail':
-        return "Please sign in to vote";      
+        return "Please sign in to vote";
+
+      case 'home':
+        return "Please sign in to create a new vote";
 
       default:
         return "Please sign in to continue";
