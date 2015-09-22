@@ -4,6 +4,9 @@ Template.votesList.helpers({
   },
   creatingVote:function(){
     return Session.get("newVote");
+  },
+  isOwner:function(){
+    return this.owner === Meteor.userId();
   }
 });
 
