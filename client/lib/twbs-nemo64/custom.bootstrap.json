@@ -33,7 +33,7 @@
     "panels"               : false,
     "responsive-embed"     : false,
     "wells"                : false,
-    "close"                : false,
+    "close"                : true,
 
     "modals"               : true,
     "tooltip"              : false,

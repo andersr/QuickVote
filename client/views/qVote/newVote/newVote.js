@@ -4,6 +4,7 @@ Template.newVote.onRendered(function(){
 
 Template.newVote.events({
   "submit .new-vote-form": function(event,template){
+    // console.log("submitted new vote");
     event.preventDefault();
 
     var voteTitle = event.target.voteTitle.value;
