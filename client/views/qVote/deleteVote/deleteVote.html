@@ -1,9 +1,5 @@
 <template name="deleteVote">
-  {{#if isOwner}}
-        <td class="vertical-middle text-center">
-                Delete vote
-              </td>
-    {{> actionButton event="delete-vote" icon="trash-o" title="Delete this vote" size="2x"}}
-  {{/if}}
+  <td class="vertical-middle text-center">
+  {{> actionButton event="delete-vote" icon="trash-o" title="Delete this vote" size="2x"}}
+  </td>
 </template>
-
