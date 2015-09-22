@@ -9,3 +9,19 @@ Template.loginModal.onCreated(function(){
 
   });
 });
+
+Template.loginModal.helpers({
+
+  loginMessage: function(){
+
+    switch (Router.current().route.getName()){
+      case 'voteDetail':
+        return "Please sign in to vote";      
+
+      default:
+        return "Please sign in to continue";
+    };
+
+  }
+
+});
