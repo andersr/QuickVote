@@ -1,17 +1,6 @@
 <template name="voteDetail">
   <table class="table">
   <tbody>
-    {{#unless isOwner}}
-      {{#unless votingIsOpen}}
-        <tr>
-          <td>&nbsp;</td>
-          <td class="align-center">
-            <h2>Voting is closed <i class="fa fa-frown-o"></i></h2>
-          </td>
-          <td>&nbsp;</td>
-        </tr>
-      {{/unless}}
-    {{/unless}}
     {{#if isOwner}}
        <tr>
         <td>&nbsp;</td>
@@ -43,6 +32,17 @@
       <td>&nbsp;</td>
       </tr>
      {{/if}}
+     {{#unless isOwner}}
+      {{#unless votingIsOpen}}
+        <tr>
+          <td>&nbsp;</td>
+          <td class="align-center">
+            <h2>Voting is closed <i class="fa fa-frown-o"></i></h2>
+          </td>
+          <td>&nbsp;</td>
+        </tr>
+      {{/unless}}
+    {{/unless}}
   </tbody>
 </table>
 </template>
