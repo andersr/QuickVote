@@ -21,22 +21,5 @@ Template.votesList.events({
       Session.set("newVote", true);
     }; 
   }
-
-  // ,
-
-  // "click .delete-vote": function(event, template){
-  //   console.log(event.target.currentVote);
-
-  //   // var confirmDelete = confirm("Really delete this vote?");
-
-  //   // if(confirmDelete){
-  //   //   Meteor.call('removeVote', this.voteId, function(error, result){
-  //   //     if (error){
-  //   //       console.log(error.reason);
-  //   //     }
-  //   //   });
-  //   // };
-  //   // sAlert.info("Vote deleted.");
-  // }
 });
 

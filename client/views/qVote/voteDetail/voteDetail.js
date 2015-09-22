@@ -1,15 +1,28 @@
+Template.appHeader.onCreated(function(){
+
+  // var templateInstance  = this;
+
+  // templateInstance.currentVoteId = new ReactiveVar(Router.current().params._id);
+     
+  // templateInstance.autorun(function(){
+
+  //   if (Votes.find({_id: templateInstance.currentVoteId.get()}) == undefined) {
+  //     Router.go('home');
+  //     sAlert.info("This vote has been deleted.");
+  //   };
+
+  // });
+
+});
+
+
+
 Template.voteDetail.helpers({
   
   voteChoices:function(){
-    return VoteChoices.find({voteId: Router.current().params._id }, {sort: {updatedAt: -1, count: -1, }});
+    return VoteChoices.find({voteId: Router.current().params._id }, {sort: {updatedAt: -1, count: -1, }});    
   }
 });
-
-// Template.voteChoicesList.helpers({
-//   voteChoices:function(){
-//     return VoteChoices.find({voteId: Router.current().params._id }, {sort: {updatedAt: -1, count: -1, }});
-//   }
-// });
 
 Template.voteDetail.events({
   "submit .vote-title-form": function(event,template){
