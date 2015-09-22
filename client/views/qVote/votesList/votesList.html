@@ -2,7 +2,12 @@
     <table class="table">
        <tbody>
          {{#if noVotes}}
-           Sorry, no votes created yet
+           {{#unless creatingVote}}
+              <div class="align-center">
+                <h3>Sorry, nothing to vote on :-/ </h3>
+                <p><a href="" class="lead new-vote">Create a new vote?</a></p>
+              </div>
+            {{/unless}}
           {{else}}
           {{#each this}}
           <tr>
