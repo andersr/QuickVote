@@ -15,11 +15,11 @@
         <td class="large-text vertical-middle">{{count}}</td>
         <td class="large-text">{{title}}</td>
         <td class="large-text vertical-middle">
-          {{#if votingIsOpen}}
-            {{> upDownVote}}
+          {{#if isOwner}}
+            {{> deleteVoteChoice}}
           {{else}}
-            {{#if isOwner}}
-              {{> deleteVoteChoice}}
+            {{#if votingIsOpen}}
+              {{> upDownVote}}
             {{/if}}
           {{/if}}
         </td>
