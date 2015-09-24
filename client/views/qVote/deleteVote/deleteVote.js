@@ -1,20 +1,8 @@
 Template.deleteVote.onCreated(function(){
 
-  // var templateInstance = this;
-
   this.voteId = new ReactiveVar(this.data._id);
 
-  // console.log(this.data._id);
-
-  // templateInstance.autorun(function(){
-  //   templateInstance.voteId.set(templateInstance.data._id);
-  // });
-
 });
-
-// Template.deleteVote.helpers({
-//   deleteVoteMsg
-// });
 
 Template.deleteVote.events({
   "click .delete-vote":function(){

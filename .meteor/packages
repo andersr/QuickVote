@@ -4,7 +4,6 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-platform
 fourseven:scss
 aldeed:template-extension
 ongoworks:security
@@ -30,3 +29,17 @@ accounts-password
 tmeasday:publish-counts
 fastclick
 meteorhacks:fast-render
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+random
+ejson
+spacebars
+check

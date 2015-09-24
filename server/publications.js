@@ -7,17 +7,10 @@ Meteor.publish('voteChoices', function() {
   return VoteChoices.find(); 
 });
 
-// Meteor.publish('votes', function() {
-  
-// });
-
 Meteor.publish('userVotes', function() {
-  // return UserVotes.find(); 
   return UserVotes.find({voterId: this.userId}); 
 });
 
-// TODO: Only publish tags for this author:
-/// return Tags.find({authors: Meteor.userId() }); 
 
 Meteor.publish("userData", function () {
   if (this.userId) {
