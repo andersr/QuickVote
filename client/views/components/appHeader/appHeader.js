@@ -1,43 +1,24 @@
 Template.appHeader.onCreated(function(){
+  
   var currentView;
-
-  if (Router.current().route != undefined) {
-    currentView = Router.current().route.getName();
-  } else {
-    currentView = "notFound";
-  };
-
-  // console.log("current view: " + currentView )
-
-  var templateInstance  = this;
-
+  var templateInstance = this;
   templateInstance.headerLeft = new ReactiveVar();
-  templateInstance.headerCenter = new ReactiveVar();
-     
+
   templateInstance.autorun(function(){
+
+    if (Router.current().route != undefined) {
+      currentView = Router.current().route.getName();
+    } else {
+      currentView = "notFound";
+    };
 
     if (Session.get("newVote")) {
       templateInstance.headerLeft.set('newVote');
-      templateInstance.headerCenter.set('newVote');
     } else {
       templateInstance.headerLeft.set(currentView);
-      templateInstance.headerCenter.set(currentView);
     };
 
   });
-
-});
-
-Template.appHeader.onRendered(function(){
-
-  // $('.user-nav .dropdown').on('shown.bs.dropdown', function(){
-  //   Session.set("userNavOpen", true);   
-  // });
-
-  // $('.user-nav .dropdown').on('hidden.bs.dropdown', function(){
-  //   Session.set("userNavOpen", false);
-     
-  // });
 
 });
 
@@ -59,14 +40,6 @@ Template.appHeader.helpers({
           title: "Cancel creating vote"
         };
 
-     case 'notFound':
-        return {
-          icon: "",
-          event: "",
-          title: ""
-        };      
-
-
       default:
         return {
           icon: "plus",
@@ -75,19 +48,7 @@ Template.appHeader.helpers({
         };
     };
   },
-  //   headerCenter: function(){    
-  //     switch (Template.instance().headerCenter.get()){
 
-  //       case 'voteDetail':
-  //         return "voteTitle";
-
-  //       case 'newVote':
-  //         return "newVote";  
-
-  //       default:
-  //         return "pageTitle";
-  //   };
-  // },
   userNavOpen: function(){
     return Session.get("userNavOpen");
   }
