@@ -6,7 +6,11 @@
       {{/unless}}
     </div>
     <div class="header-center">
-      {{> Template.dynamic template=headerCenter}}
+      {{#if newVote}}
+        {{> newVote}}
+      {{else}}
+        {{> pageTitle}}
+      {{/if}}
     </div>
     <div class="header-right user-nav">
       {{#if currentUser}}

@@ -7,6 +7,8 @@ Template.appHeader.onCreated(function(){
     currentView = "notFound";
   };
 
+  // console.log("current view: " + currentView )
+
   var templateInstance  = this;
 
   templateInstance.headerLeft = new ReactiveVar();
@@ -73,19 +75,19 @@ Template.appHeader.helpers({
         };
     };
   },
-    headerCenter: function(){    
-      switch (Template.instance().headerCenter.get()){
+  //   headerCenter: function(){    
+  //     switch (Template.instance().headerCenter.get()){
 
-        case 'voteDetail':
-          return "voteTitle";
+  //       case 'voteDetail':
+  //         return "voteTitle";
 
-        case 'newVote':
-          return "newVote";  
+  //       case 'newVote':
+  //         return "newVote";  
 
-        default:
-          return "pageTitle";
-    };
-  },
+  //       default:
+  //         return "pageTitle";
+  //   };
+  // },
   userNavOpen: function(){
     return Session.get("userNavOpen");
   }

@@ -24,14 +24,21 @@ Template.registerHelper('isLoginPage', function(){
 
 });
 
-Template.registerHelper('isCreatingVote', function(){
-        if (Router.current().route != undefined) {
-     return Router.current().route.getName() === 'createVote';
-    };
+Template.registerHelper('newVote', function(){
+  return Session.get("newVote");
+});
+
+
+
+
+// Template.registerHelper('isCreatingVote', function(){
+//         if (Router.current().route != undefined) {
+//      return Router.current().route.getName() === 'createVote';
+//     };
 
 
   
-});
+// });
 
 
 // Template.registerHelper('appTitle', function(){

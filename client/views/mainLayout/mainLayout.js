@@ -11,15 +11,15 @@ Template.mainLayout.events({
     });
 
   }
-  ,
-  "click .toggle-sidebar":function(){
+  // ,
+  // "click .toggle-sidebar":function(){
 
-    $('.ui.sidebar').sidebar('toggle');
+  //   $('.ui.sidebar').sidebar('toggle');
 
-  },
-  "click .close-sidebar":function(){
+  // },
+  // "click .close-sidebar":function(){
 
-    $('.ui.sidebar').sidebar('toggle');
+  //   $('.ui.sidebar').sidebar('toggle');
 
-  }
+  // }
 });

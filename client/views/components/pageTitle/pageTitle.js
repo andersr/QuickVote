@@ -1,14 +1,26 @@
 Template.pageTitle.helpers({
   pageTitle: function () {
-    var currentView;
+    
+    var currentRoute;
 
     if (Router.current().route != undefined) {
-     currentView = Router.current().route.getName();
+      currentRoute = Router.current().route.getName();
     } else {
-     currentView = "notFound";
+      currentRoute = "notFound";
     };
 
-    return QV.pageTitles[currentView];
+    switch (currentRoute){
+
+        case 'voteDetail':
+          return this.title;
+
+        case 'notFound':
+          return "Page Not Found";  
+
+        default:
+          return "QuickVote";
+    };
+    
     
   }
 });
