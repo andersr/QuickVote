@@ -13,17 +13,24 @@ Template.loginModal.onCreated(function(){
 Template.loginModal.helpers({
 
   loginMessage: function(){
+     return "Please sign in to continue";
 
-    switch (Router.current().route.getName()){
-      case 'voteDetail':
-        return "Please sign in to vote";
+    // var currentView = Router.current().route.getName();
 
-      case 'home':
-        return "Please sign in to create a new vote";
+  //   if (currentView != undefined) {
 
-      default:
-        return "Please sign in to continue";
-    };
+  //     switch (Router.current().route.getName()){
+  //       case 'voteDetail':
+  //         return "Please sign in to vote";
+
+  //     case 'home':
+  //       return "Please sign in to create a new vote";
+
+  //     default:
+  //       return "Please sign in to continue";
+  //     };
+
+  //   };
 
   }
 

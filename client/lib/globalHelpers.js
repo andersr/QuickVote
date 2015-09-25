@@ -2,25 +2,53 @@ Template.registerHelper('isOwner', function(){
   // var owner = Votes.findOne({_id: Router.current().params._id}).owner;
   // var user = Meteor.userId();
   // console.log("owner: " + owner + ", user: " + user);
-  return Votes.findOne({_id: Router.current().params._id}).owner === Meteor.userId();
+     if (Router.current().route != undefined) {
+     return Votes.findOne({_id: Router.current().params._id}).owner === Meteor.userId();
+    }
+  
 });
 
 Template.registerHelper('isHomePage', function(){
-  return Router.current().route.getName() === 'home';
+     if (Router.current().route != undefined) {
+     return Router.current().route.getName() === 'home';
+    };
+  
+ 
 });
 
 Template.registerHelper('isLoginPage', function(){
-  return Router.current().route.getName() === 'login';
+       if (Router.current().route != undefined) {
+      return Router.current().route.getName() === 'login';
+    };
+
+
 });
 
 Template.registerHelper('isCreatingVote', function(){
-  return Router.current().route.getName() === 'createVote';
+        if (Router.current().route != undefined) {
+     return Router.current().route.getName() === 'createVote';
+    };
+
+
+  
 });
 
 
-Template.registerHelper('appTitle', function(){
-  return QVConstants.appTitle;
-});
+// Template.registerHelper('appTitle', function(){
+//   return QVConstants.appTitle;
+// });
+
+// Template.registerHelper('pageTitle', function(){
+//   var currentView;
+//   console.log('pageTitle helper: ' + Router.current().route);
+
+//   if (Router.current().route != undefined) {
+//     currentView = Router.current().route.getName();
+//   } else {
+//     currentView = "notFound";
+//   };
+//   return QV.pageTitles.currentView;
+// });
 
 
 Template.registerHelper('votingIsOpen', function(){

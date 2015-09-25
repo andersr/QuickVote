@@ -1,8 +1,13 @@
 Template.appHeader.onCreated(function(){
+  var currentView;
 
-  var currentView       = Router.current().route.getName(),
-      templateInstance  = this
-  ;
+  if (Router.current().route != undefined) {
+    currentView = Router.current().route.getName();
+  } else {
+    currentView = "notFound";
+  };
+
+  var templateInstance  = this;
 
   templateInstance.headerLeft = new ReactiveVar();
   templateInstance.headerCenter = new ReactiveVar();
@@ -13,8 +18,8 @@ Template.appHeader.onCreated(function(){
       templateInstance.headerLeft.set('newVote');
       templateInstance.headerCenter.set('newVote');
     } else {
-      templateInstance.headerLeft.set(Router.current().route.getName());
-      templateInstance.headerCenter.set(Router.current().route.getName());
+      templateInstance.headerLeft.set(currentView);
+      templateInstance.headerCenter.set(currentView);
     };
 
   });
@@ -50,7 +55,15 @@ Template.appHeader.helpers({
           icon: "times",
           event: "cancel-create-vote",
           title: "Cancel creating vote"
+        };
+
+     case 'notFound':
+        return {
+          icon: "",
+          event: "",
+          title: ""
         };      
+
 
       default:
         return {
@@ -70,7 +83,7 @@ Template.appHeader.helpers({
           return "newVote";  
 
         default:
-          return "appTitle";
+          return "pageTitle";
     };
   },
   userNavOpen: function(){
