@@ -64,10 +64,15 @@ Template.upDownVote.events({
     } else {
 
       if (Template.instance().firstVote.get()) {
+
         Meteor.call('newUserVote', voteChoiceId, function (error, result) {
           if (error){
             console.log(error.reason);
+          } else {
+            //call update winning vote
+            QV.updateWinners(voteChoiceId);
           };
+
         });
 
       } else {
