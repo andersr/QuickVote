@@ -69,7 +69,6 @@ Template.upDownVote.events({
           if (error){
             console.log(error.reason);
           } else {
-            //call update winning vote
             QV.updateWinners(voteChoiceId);
           };
 
@@ -86,6 +85,8 @@ Template.upDownVote.events({
 
           if (error){
             console.log(error.reason);
+          } else {
+            QV.updateWinners(voteChoiceId);
           };
         });
       };

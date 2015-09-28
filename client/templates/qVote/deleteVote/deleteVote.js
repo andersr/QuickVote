@@ -11,7 +11,7 @@ Template.deleteVote.events({
     var deleteVote = confirm("Really delete this vote?");
 
     if(deleteVote){
-
+      
       VoteChoices.find({voteId: voteId}).forEach(function (doc) {
           Meteor.call('removeVoteChoice', doc._id, function(error, result){
             if (error){
