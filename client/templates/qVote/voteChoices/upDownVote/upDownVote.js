@@ -1,6 +1,6 @@
 Template.upDownVote.onCreated(function(){
   var templateInstance = this;
-  templateInstance.currentVoteChoice = new ReactiveVar(templateInstance.data._id);
+  templateInstance.currentVoteChoiceId = new ReactiveVar(templateInstance.data._id);
 
   templateInstance.firstVote = new ReactiveVar(true);
   templateInstance.currentVote = new ReactiveVar(false);
@@ -13,18 +13,18 @@ Template.upDownVote.onCreated(function(){
 
       if (Meteor.userId()) {
         var userVote = UserVotes.findOne({
-          voteChoiceId:templateInstance.currentVoteChoice.get(),
+          voteChoiceId:templateInstance.currentVoteChoiceId.get(),
           voterId: Meteor.userId()
         });
 
         if (userVote != undefined) {
-          templateInstance.currentVote.set(userVote.upVote);
           templateInstance.firstVote.set(false);
+          templateInstance.currentVote.set(userVote.upVote);
         };
 
       } else {
-        templateInstance.firstVote.set(true);
-        templateInstance.currentVote.set(false);
+          templateInstance.firstVote.set(true);
+          templateInstance.currentVote.set(false);
       };
     };
   });
@@ -55,41 +55,51 @@ Template.upDownVote.events({
 
   "click .toggle-up-down-vote":function(){
 
-    var voteChoiceId = Template.instance().currentVoteChoice.get();
-    var upVote = Template.instance().currentVote.get();
-
     if (!Meteor.userId()) {
+
       Session.set("loginViaModal", true);
       $('#loginModal').modal('show');
+
     } else {
+
+      var currentVoteChoice = VoteChoices.findOne({_id: Template.instance().currentVoteChoiceId.get()});
+
+      var userVoteAttributes = {
+        voteChoiceId: Template.instance().currentVoteChoiceId.get()
+      };
 
       if (Template.instance().firstVote.get()) {
 
-        Meteor.call('newUserVote', voteChoiceId, function (error, result) {
+        _.extend(userVoteAttributes, { 
+          upVote: true,
+          voteId: currentVoteChoice.voteId
+        });
+
+        Meteor.call('newUserVote', userVoteAttributes, function (error, result) {
           if (error){
             console.log(error.reason);
           } else {
-            QV.updateWinners(voteChoiceId);
+            QV.updateWinners(userVoteAttributes.voteChoiceId);
           };
-
         });
+ 
 
       } else {
 
-        var userVoteAttributes = {
-          voteChoiceId: voteChoiceId,
-          upVote: upVote
-        };
+        _.extend(userVoteAttributes, {
+          upVote: !Template.instance().currentVote.get()
+        });
 
         Meteor.call('toggleUpDownVote', userVoteAttributes, function (error, result) {
-
           if (error){
             console.log(error.reason);
           } else {
-            QV.updateWinners(voteChoiceId);
+            QV.updateWinners(userVoteAttributes.voteChoiceId);
           };
-        });
-      };
+       });
+    
+     };
+
     }
   }
 });
