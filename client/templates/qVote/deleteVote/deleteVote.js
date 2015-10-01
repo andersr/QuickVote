@@ -12,22 +12,6 @@ Template.deleteVote.events({
 
     if(confirmDeleteVote){
 
-      // VoteChoices.find({voteId: voteId}).forEach(function (doc) {
-      //     Meteor.call('removeVoteChoice', doc._id, function(error, result){
-      //       if (error){
-      //         console.log(error.reason);
-      //       }
-      //     });
-      // });
-
-      // UserVotes.find({voteId: voteId}).forEach(function (doc) {
-      //     Meteor.call('removeVoteChoice', doc._id, function(error, result){
-      //       if (error){
-      //         console.log(error.reason);
-      //       }
-      //     });
-      // });
-
       Meteor.call('deleteVote', voteId, function(error, result){
         if (error){
           console.log(error.reason);

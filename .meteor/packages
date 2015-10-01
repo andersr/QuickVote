@@ -4,7 +4,6 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-fourseven:scss
 aldeed:template-extension
 ongoworks:security
 kit:basic-auth
@@ -45,3 +44,4 @@ spacebars
 check
 matb33:collection-hooks
 peppelg:mongo-sum
+fourseven:scss@=3.2.0
