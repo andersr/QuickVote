@@ -79,7 +79,7 @@ Template.upDownVote.events({
           if (error){
             console.log(error.reason);
           } else {
-            QV.updateWinners(userVoteAttributes.voteChoiceId);
+            // QV.updateWinners(userVoteAttributes.voteChoiceId);
           };
         });
  
@@ -94,7 +94,7 @@ Template.upDownVote.events({
           if (error){
             console.log(error.reason);
           } else {
-            QV.updateWinners(userVoteAttributes.voteChoiceId);
+            // QV.updateWinners(userVoteAttributes.voteChoiceId);
           };
        });
     

@@ -11,6 +11,10 @@ Meteor.publish('userVotes', function() {
   return UserVotes.find({voterId: this.userId}); 
 });
 
+Meteor.publish('voteWinners', function() {
+  return VoteWinners.find(); 
+});
+
 
 Meteor.publish("userData", function () {
   if (this.userId) {
