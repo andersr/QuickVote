@@ -4,7 +4,7 @@ Template.registerHelper('isOwner', function(){
   if (route != undefined){
 
     var votes = Votes.find({_id: Router.current().params._id}, {limit: 1});
-    
+
     if (votes.count() > 0){
       var vote = votes.fetch();
       return vote[0].owner === Meteor.userId();
@@ -33,5 +33,12 @@ Template.registerHelper('newVote', function(){
 });
 
 Template.registerHelper('votingIsOpen', function(){
-   return Votes.findOne({_id: Router.current().params._id}).votingEnabled;
+  var route = Router.current().route;
+
+  if (route != undefined){
+     return Votes.findOne({_id: Router.current().params._id}).votingEnabled;
+  } else {
+    return false;
+  };
+  
 });

@@ -1,7 +1,7 @@
 Template.upDownVote.onCreated(function(){
   var templateInstance = this;
-  templateInstance.currentVoteChoiceId = new ReactiveVar(templateInstance.data._id);
 
+  templateInstance.currentVoteChoiceId = new ReactiveVar(templateInstance.data._id);
   templateInstance.previousVote = new ReactiveVar(false);
 
   templateInstance.autorun(function(){
@@ -56,14 +56,12 @@ Template.upDownVote.events({
 
     } else {
 
-      var currentVoteChoice = VoteChoices.findOne({_id: Template.instance().currentVoteChoiceId.get()});
-
-      var firstVote = UserVotes.find({userId: Meteor.userId(), voteChoiceId: currentVoteChoice._id }).count() > 0;
-
-      console.log("first vote: " + firstVote);
+      var firstVote = UserVotes.find({
+        userId: Meteor.userId(),
+        voteChoiceId:Template.instance().currentVoteChoiceId.get() 
+      }).count() === 0;
 
       var userVoteAttributes = {
-        voteId: currentVoteChoice.voteId, 
         voteChoiceId: Template.instance().currentVoteChoiceId.get()
       };
 
