@@ -2,8 +2,7 @@ Template.upDownVote.onCreated(function(){
   var templateInstance = this;
   templateInstance.currentVoteChoiceId = new ReactiveVar(templateInstance.data._id);
 
-  templateInstance.firstVote = new ReactiveVar(true);
-  templateInstance.currentVote = new ReactiveVar(false);
+  templateInstance.previousVote = new ReactiveVar(false);
 
   templateInstance.autorun(function(){
 
@@ -12,19 +11,14 @@ Template.upDownVote.onCreated(function(){
     if (userVotesSubscription.ready()) {
 
       if (Meteor.userId()) {
-        var userVote = UserVotes.findOne({
+        var userVote = UserVotes.find({
           voteChoiceId:templateInstance.currentVoteChoiceId.get(),
-          voterId: Meteor.userId()
-        });
+          userId: Meteor.userId()
+        }, {limit: 1});
 
-        if (userVote != undefined) {
-          templateInstance.firstVote.set(false);
-          templateInstance.currentVote.set(userVote.upVote);
+        if (userVote.count() > 0) {
+          templateInstance.previousVote.set(userVote.upVote);
         };
-
-      } else {
-          templateInstance.firstVote.set(true);
-          templateInstance.currentVote.set(false);
       };
     };
   });
@@ -34,7 +28,7 @@ Template.upDownVote.onCreated(function(){
 Template.upDownVote.helpers({
 
   thumbIconToggle: function(){
-    if (Template.instance().currentVote.get()) {
+    if (Template.instance().previousVote.get()) {
       return "thumbs-up";
     } else {
       return "thumbs-o-up";
@@ -42,7 +36,7 @@ Template.upDownVote.helpers({
   },
 
   upDownVoteMsg: function(){
-    if (Template.instance().currentVote.get()) {
+    if (Template.instance().previousVote.get()) {
       return "Undo your upvote";
     } else {
       return "Upvote this choice";
@@ -64,16 +58,16 @@ Template.upDownVote.events({
 
       var currentVoteChoice = VoteChoices.findOne({_id: Template.instance().currentVoteChoiceId.get()});
 
+      var firstVote = UserVotes.find({userId: Meteor.userId(), voteChoiceId: currentVoteChoice._id }).count() > 0;
+
+      console.log("first vote: " + firstVote);
+
       var userVoteAttributes = {
+        voteId: currentVoteChoice.voteId, 
         voteChoiceId: Template.instance().currentVoteChoiceId.get()
       };
 
-      if (Template.instance().firstVote.get()) {
-
-        _.extend(userVoteAttributes, { 
-          upVote: true,
-          voteId: currentVoteChoice.voteId
-        });
+      if (firstVote) {
 
         Meteor.call('newUserVote', userVoteAttributes, function (error, result) {
           if (error){
@@ -82,23 +76,19 @@ Template.upDownVote.events({
             // QV.updateWinners(userVoteAttributes.voteChoiceId);
           };
         });
- 
 
       } else {
 
-        _.extend(userVoteAttributes, {
-          upVote: !Template.instance().currentVote.get()
-        });
+        _.extend(userVoteAttributes, { upVote: !Template.instance().previousVote.get() });
 
-        Meteor.call('toggleUpDownVote', userVoteAttributes, function (error, result) {
+        Meteor.call('upDownVote', userVoteAttributes, function (error, result) {
           if (error){
             console.log(error.reason);
           } else {
             // QV.updateWinners(userVoteAttributes.voteChoiceId);
           };
-       });
-    
-     };
+        });
+      };
 
     }
   }

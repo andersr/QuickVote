@@ -1,7 +1,12 @@
 Template.registerHelper('isOwner', function(){
-  if (Router.current().route != undefined) {
-    return Votes.findOne({_id: Router.current().params._id}).owner === Meteor.userId();
-  }
+  var route = Router.current().route;
+
+  if (route != undefined){
+    var vote = Votes.find({_id: Router.current().params._id}, {limit: 1});
+    if (vote.count() > 0){
+      return vote.owner === Meteor.userId();
+    };
+  };
   
 });
 
