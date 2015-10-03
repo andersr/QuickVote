@@ -18,7 +18,7 @@
           {{#if isOwner}}
             {{> deleteVoteChoice}}
           {{else}}
-            {{#if votingIsOpen}}
+            {{#if votingEnabled}}
               {{> upDownVote}}
             {{/if}}
           {{/if}}
@@ -33,7 +33,7 @@
       </tr>
      {{/if}}
      {{#unless isOwner}}
-      {{#unless votingIsOpen}}
+      {{#unless votingEnabled}}
         <tr>
           <td>&nbsp;</td>
           <td class="align-center">

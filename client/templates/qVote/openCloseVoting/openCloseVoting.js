@@ -1,19 +1,3 @@
-Template.openCloseVoting.onCreated(function(){
-
-  // var templateInstance  = this;
-  // var voteId = Router.current().params._id;
-  // var voteChoices = VoteChoices.find({voteId: voteId });
-  // templateInstance.voteChoiceCount = new ReactiveVar();
-     
-  // templateInstance.autorun(function(){
-
-  //   // var voteChoiceCount = VoteChoices.find({voteId: Router.current().params._id }).count();
-  //   templateInstance.voteChoiceCount.set(voteChoices.count());
-
-  // });
-
-});
-
 Template.openCloseVoting.onRendered(function(){
   this.$('.voteOpenClose').bootstrapToggle();
 });
@@ -23,24 +7,9 @@ Template.openCloseVoting.onDestroyed(function(){
 });
 
 Template.openCloseVoting.helpers({
-  votingIsOpen: function () {
+  votingEnabled: function () {
     return Votes.findOne({_id: Router.current().params._id}).votingEnabled || false;
   }
-  // ,
-  // disableOpenCloseControl: function () {
-  //   // var voteChoiceCount = VoteChoices.find({voteId: Router.current().params._id }).count();
-
-  //   // if (voteChoiceCount <= 1) {
-  //   //   return "disabled";
-  //   // } else {
-  //   //   return "";
-  //   // };
-  //   if (Template.instance().voteChoiceCount.get() < 2) {
-  //     return "disabled";
-  //   } else {
-  //     return "";
-  //   };
-  // }
 });
 
 

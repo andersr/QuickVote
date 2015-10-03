@@ -32,7 +32,7 @@ Template.registerHelper('newVote', function(){
   return Session.get("newVote");
 });
 
-Template.registerHelper('votingIsOpen', function(){
+Template.registerHelper('votingEnabled', function(){
   var route = Router.current().route;
 
   if (route != undefined){
