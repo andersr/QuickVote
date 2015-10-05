@@ -5,11 +5,21 @@
         {{#if hasWinner}}
        <tr>
         <td>&nbsp;</td>
-        <td>
-          We have a winner!
+        <td class="align-center">
+         <h2>We have a winner!</h2>
         </td>
         <td>&nbsp;</td>
       </tr>
+      {{else}}
+         {{#unless isOwner}}
+        <tr>
+          <td>&nbsp;</td>
+          <td class="align-center">
+            <h2>Voting is closed <i class="fa fa-frown-o"></i></h2>
+          </td>
+          <td>&nbsp;</td>
+        </tr>
+    {{/unless}}
       {{/if}}
     {{/unless}}
     {{#if isOwner}}
@@ -43,17 +53,6 @@
       <td>&nbsp;</td>
       </tr>
      {{/if}}
-     {{#unless isOwner}}
-      {{#unless votingEnabled}}
-        <tr>
-          <td>&nbsp;</td>
-          <td class="align-center">
-            <h2>Voting is closed <i class="fa fa-frown-o"></i></h2>
-          </td>
-          <td>&nbsp;</td>
-        </tr>
-      {{/unless}}
-    {{/unless}}
   </tbody>
 </table>
 </template>
