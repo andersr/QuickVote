@@ -8,7 +8,15 @@ Template.voteDetail.helpers({
     var vote = Votes.findOne({_id: Router.current().params._id });
     return vote.winningCount > 0;
   },
-  
+  displayWinners: function(){
+    //if winningChoice.length() === 1
+    // return "winningChoice.title is the winner!"
+
+    //else
+    // return "It's a #{winningChoices.length()}-way tie: forEach winningChoice, display winningChoice.title";
+
+  }
+
 });
 
 Template.voteDetail.events({
