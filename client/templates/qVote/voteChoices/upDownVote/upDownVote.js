@@ -70,8 +70,7 @@ Template.upDownVote.events({
     } else {
 
       var userVoteAttributes = {
-        voteChoiceId: Template.instance().currentVoteChoiceId.get(),
-        upVote: !Template.instance().previousVote.get()
+        voteChoiceId: Template.instance().currentVoteChoiceId.get()
       };
 
       if (Template.instance().firstVote.get()) {
@@ -80,19 +79,22 @@ Template.upDownVote.events({
           if (error){
             console.log(error.reason);
           } else {
-            // QV.updateWinners(userVoteAttributes.voteChoiceId);
+            console.log(result);
+           QV.updateVoteWinners(userVoteAttributes.voteChoiceId);
           };
         });
 
       } else {
 
-        // _.extend(userVoteAttributes, { upVote: !Template.instance().previousVote.get() });
+        _.extend(userVoteAttributes, {
+          upVote: !Template.instance().previousVote.get()
+        });
 
         Meteor.call('upDownVote', userVoteAttributes, function (error, result) {
           if (error){
             console.log(error.reason);
           } else {
-            // QV.updateWinners(userVoteAttributes.voteChoiceId);
+            QV.updateVoteWinners(userVoteAttributes.voteChoiceId);
           };
         });
       };
