@@ -1,8 +1,11 @@
 Template.upDownVote.onCreated(function(){
-  var templateInstance = this;
+  var
+  templateInstance                      = this;
 
-  templateInstance.currentVoteChoiceId = new ReactiveVar(templateInstance.data._id);
-  templateInstance.previousVote = new ReactiveVar();
+  templateInstance.currentVoteChoiceId  = new ReactiveVar(templateInstance.data._id),
+  templateInstance.firstVote            = new ReactiveVar(true),
+  templateInstance.previousVote         = new ReactiveVar(false)
+  ;
 
   templateInstance.autorun(function(){
 
@@ -12,19 +15,20 @@ Template.upDownVote.onCreated(function(){
 
       if (Meteor.userId()) {
 
-        var hasVoted = UserVotes.find({
+        var firstVote = UserVotes.find({
           voteChoiceId:templateInstance.currentVoteChoiceId.get(),
           userId: Meteor.userId()
-        }, {limit: 1}).count() > 0;
+        }, {limit: 1}).count() === 0;
+        templateInstance.firstVote.set(firstVote); 
 
-        if (hasVoted) {
-          var upVote = UserVotes.findOne({
-          voteChoiceId:templateInstance.currentVoteChoiceId.get(),
-          userId: Meteor.userId()
-          }).upVote;
-          templateInstance.previousVote.set(upVote);
+        if (templateInstance.firstVote.get()) {
+          templateInstance.previousVote.set(false);
         } else {
-          templateInstance.previousVote.set(false);          
+          var userVote = UserVotes.findOne({
+            voteChoiceId:templateInstance.currentVoteChoiceId.get(),
+            userId: Meteor.userId()
+          });
+          templateInstance.previousVote.set(userVote.upVote);      
         };
       };
     };
@@ -35,8 +39,9 @@ Template.upDownVote.onCreated(function(){
 Template.upDownVote.helpers({
 
   thumbIconToggle: function(){
+    console.log("toggle: " + Template.instance().previousVote.get());
+
     if (Template.instance().previousVote.get()) {
-      console.log("toggle: " + Template.instance().previousVote.get());
       return "thumbs-up";
     } else {
       return "thumbs-o-up";
@@ -63,18 +68,13 @@ Template.upDownVote.events({
       $('#loginModal').modal('show');
 
     } else {
-      var firstVote = UserVotes.find({
-        userId: Meteor.userId(),
-        voteChoiceId:Template.instance().currentVoteChoiceId.get() 
-      }).count() === 0;
-
-      // console.log("vote choice id: " + Template.instance().currentVoteChoiceId.get());
 
       var userVoteAttributes = {
-        voteChoiceId: Template.instance().currentVoteChoiceId.get()
+        voteChoiceId: Template.instance().currentVoteChoiceId.get(),
+        upVote: !Template.instance().previousVote.get()
       };
 
-      if (firstVote) {
+      if (Template.instance().firstVote.get()) {
 
         Meteor.call('newUserVote', userVoteAttributes, function (error, result) {
           if (error){
