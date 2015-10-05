@@ -3,7 +3,12 @@ Template.voteDetail.helpers({
   
   voteChoices:function(){
     return VoteChoices.find({voteId: Router.current().params._id }, {sort: { updatedAt: -1 }});
-  }
+  },
+  hasWinner: function(){
+    var vote = Votes.findOne({_id: Router.current().params._id });
+    return vote.winningCount > 0;
+  },
+  
 });
 
 Template.voteDetail.events({

@@ -16,6 +16,7 @@ Template.registerHelper('isOwner', function(){
   
 });
 
+
 Template.registerHelper('isHomePage', function(){
   if (Router.current().route != undefined) {
     return Router.current().route.getName() === 'home';

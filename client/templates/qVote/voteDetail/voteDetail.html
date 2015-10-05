@@ -1,6 +1,17 @@
 <template name="voteDetail">
   <table class="table">
   <tbody>
+      {{#unless votingEnabled}}
+        {{#if hasWinner}}
+       <tr>
+        <td>&nbsp;</td>
+        <td>
+          We have a winner!
+        </td>
+        <td>&nbsp;</td>
+      </tr>
+      {{/if}}
+    {{/unless}}
     {{#if isOwner}}
        <tr>
         <td>&nbsp;</td>

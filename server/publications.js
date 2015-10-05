@@ -11,9 +11,9 @@ Meteor.publish('userVotes', function() {
   return UserVotes.find({userId: this.userId}); 
 });
 
-Meteor.publish('voteWinners', function() {
-  return VoteWinners.find(); 
-});
+// Meteor.publish('voteWinners', function() {
+//   return VoteWinners.find(); 
+// });
 
 
 Meteor.publish("userData", function () {
