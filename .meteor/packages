@@ -7,7 +7,6 @@
 fourseven:scss
 aldeed:template-extension
 ongoworks:security
-kit:basic-auth
 iron:router
 sacha:spin
 dburles:collection-helpers
