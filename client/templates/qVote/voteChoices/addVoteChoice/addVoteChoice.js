@@ -23,11 +23,7 @@ Template.addVoteChoice.events({
 
         console.log(error.reason);
 
-      } else {
-
-        //clear out form data after insert
-        // template.find("form").reset();
-     };
+      };
 
     });
 

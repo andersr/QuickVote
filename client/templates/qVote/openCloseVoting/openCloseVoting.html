@@ -1,0 +1,9 @@
+<template name="openCloseVoting">
+{{#if isOwner}}
+  <div class="checkbox">
+     <label>
+     <input  type="checkbox" class="voteOpenClose" data-toggle="toggle" data-on="Voting Open" data-off="Voting Closed" data-onstyle="success" data-offstyle="danger" data-size="large" checked={{votingEnabled}}>
+    </label>
+    </div>
+{{/if}}
+</template>

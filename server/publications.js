@@ -8,8 +8,12 @@ Meteor.publish('voteChoices', function() {
 });
 
 Meteor.publish('userVotes', function() {
-  return UserVotes.find({voterId: this.userId}); 
+  return UserVotes.find({userId: this.userId}); 
 });
+
+// Meteor.publish('voteWinners', function() {
+//   return VoteWinners.find(); 
+// });
 
 
 Meteor.publish("userData", function () {
