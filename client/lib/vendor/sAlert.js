@@ -6,12 +6,4 @@ Meteor.startup(function(){
      timeout: 3500
   });
 
-  Session.setDefault({
-    "newVote": false,
-    "logout":false,
-    "loginViaModal":false,
-    "userNavOpen": false
-  });
-
 });
-

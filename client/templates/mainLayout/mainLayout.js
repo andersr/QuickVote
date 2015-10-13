@@ -9,17 +9,5 @@ Template.mainLayout.events({
         Router.go("login");
       };
     });
-
   }
-  // ,
-  // "click .toggle-sidebar":function(){
-
-  //   $('.ui.sidebar').sidebar('toggle');
-
-  // },
-  // "click .close-sidebar":function(){
-
-  //   $('.ui.sidebar').sidebar('toggle');
-
-  // }
 });
