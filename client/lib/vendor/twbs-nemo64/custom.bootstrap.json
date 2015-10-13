@@ -1,6 +1,6 @@
 {
   "modules" : {
-    "normalize"            : false,
+    "normalize"            : true,
     "print"                : false,
     "glyphicons"           : false,
 
@@ -16,8 +16,8 @@
     "dropdowns"            : true,
     "button-groups"        : false,
     "input-groups"         : false,
-    "navs"                 : true,
-    "navbar"               : true,
+    "navs"                 : false,
+    "navbar"               : false,
     "breadcrumbs"          : false,
     "pagination"           : false,
     "pager"                : false,
