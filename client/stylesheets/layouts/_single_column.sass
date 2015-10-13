@@ -1,5 +1,12 @@
-// FULL HEIGHT, SINGLE COLUMN LAYOUT
-// _______________________________________________________
+// FULL HEIGHT, SINGLE COLUMN
+// ____________________________________________
+
+// VARS
+$app-max-width:                           60em
+$app-header-height:                       11em
+$app-shell-padding:                        1em
+$page-title-padding:  $app-shell-padding
+$app-content-padding: $app-shell-padding + 1em
 
 html,body
   box-sizing: border-box
@@ -7,9 +14,10 @@ html,body
     box-sizing: inherit
 
 html, body, .app-container
-  // height: 100%
   min-height: 100vh
 
+
+// CONTAINER
 .app-container
   margin-left: auto
   margin-right: auto
@@ -17,15 +25,50 @@ html, body, .app-container
   display: flex
   flex-direction: column
 
+
+//HEADER
+.app-header
+  display: flex
+  flex-flow: row nowrap
+  align-items:center
+  width:100%
+  height: $app-header-height
+
+  .header-left
+    padding-left: $app-shell-padding
+    align-self: flex-start
+    padding-top:1em
+
+  .header-right
+    padding-right: $app-shell-padding
+    align-self: flex-start
+    padding-top:1em
+
+  .header-center
+    padding-left: 0
+    padding-right: 0
+    align-self: flex-end
+    padding-bottom:1em
+    flex: 1
+
+
+
+//MAIN CONTENT
 .main-content
-  margin-top: $app-header-height
+  // margin-top: $app-header-height
   flex: 1
-  padding-left: $app-shell-padding + 4em
-  padding-right: $app-shell-padding + 4em
+  padding-left: $app-content-padding
+  padding-right:  $app-content-padding
 
-// @media screen and (min-width: 60em)
-//   .app-header
-//     position:static
 
-//   .main-content
-//     margin-top: 0
+@media screen and (min-width: 700px)
+
+  .app-header
+
+    .header-center
+      padding-left: $app-content-padding + 6em
+
+
+  .main-content
+    padding-left: 10em
+    padding-right:10em
