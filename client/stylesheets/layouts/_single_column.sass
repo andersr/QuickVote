@@ -1,5 +1,6 @@
 // FULL HEIGHT, SINGLE COLUMN LAYOUT
 // _______________________________________________________
+
 html,body
   box-sizing: border-box
 *, *:before, *:after
@@ -20,12 +21,12 @@ html, body, .app-container
 .main-content
   margin-top: $app-header-height
   flex: 1
-  padding-left: $app-shell-padding
-  padding-right: $app-shell-padding
+  padding-left: $app-shell-padding + 4em
+  padding-right: $app-shell-padding + 4em
 
-@media screen and (min-width: 60em)
-  .app-header
-    position:static
+// @media screen and (min-width: 60em)
+//   .app-header
+//     position:static
 
-  .main-content
-    margin-top: 0
+//   .main-content
+//     margin-top: 0
