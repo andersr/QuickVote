@@ -1,8 +1,5 @@
 // FULL HEIGHT, SINGLE COLUMN LAYOUT
 // _______________________________________________________
-
-// Apply a box layout to all elements
-// http://www.paulirish.com/2012/box-sizing-border-box-ftw/
 html,body
   box-sizing: border-box
 *, *:before, *:after
@@ -20,32 +17,15 @@ html, body, .app-container
   display: flex
   flex-direction: column
 
-.app-header
-  display: flex
-  flex-flow: row nowrap
-  align-items:center
-  width: 100%
-  height: $app-header-height
-  position:fixed
-  top:0
-  z-index: 1
-  // justify-content: center 
-
-  .header-left
-    padding-left: $app-shell-padding
-
-  .header-right
-    padding-right: $app-shell-padding
-
-  .header-center
-    text-align: center
-    padding-left: 0
-    padding-right: 1em
-    flex: 1
-
 .main-content
   margin-top: $app-header-height
   flex: 1
   padding-left: $app-shell-padding
   padding-right: $app-shell-padding
 
+@media screen and (min-width: 60em)
+  .app-header
+    position:static
+
+  .main-content
+    margin-top: 0
