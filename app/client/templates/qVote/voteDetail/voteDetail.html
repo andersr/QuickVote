@@ -3,16 +3,7 @@
   <table class="table">
   <tbody>
       {{#unless votingEnabled}}
-        {{#if hasWinner}}
-       <tr>
-        <td>&nbsp;</td>
-        <td class="align-center">
-         <h2>We have a winner!</h2>
-        </td>
-        <td>&nbsp;</td>
-      </tr>
-      {{else}}
-         {{#unless isOwner}}
+        {{#unless isOwner}}
         <tr>
           <td>&nbsp;</td>
           <td class="align-center">
@@ -20,7 +11,15 @@
           </td>
           <td>&nbsp;</td>
         </tr>
-    {{/unless}}
+        {{/unless}}
+        {{#if hasWinner}}
+       <tr>
+        <td>&nbsp;</td>
+        <td class="align-center">
+         <h2>"Winning choice" has the most votes</h2>
+        </td>
+        <td>&nbsp;</td>
+      </tr>
       {{/if}}
     {{/unless}}
     {{#if isOwner}}
