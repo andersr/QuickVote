@@ -1,11 +1,15 @@
-// h1 {
-//   font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
-//   font-size: 24px;
-//   font-style: normal;
-//   font-variant: normal;
-//   font-weight: 500;
-//   line-height: 26.4px;
-// }
+// VARS
+// --------------------------------------------
+$base-font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif
+$base-font-size:                        16px
+$base-line-height:                      1.6
+
+
+
+html, body
+  font-family: $base-font-family
+  font-size: $base-font-size
+  line-height: $base-line-height
 
 // HEADINGS
 // --------------------------------------------
@@ -17,19 +21,28 @@ h1
   h1
     font-size: 2em
 
-// TEXT IN TABLES
-// --------------------------------------------
-.table
-  h2
-    a
-      text-decoration: none
-
-      &:hover
-        text-decoration: underline
-
 
 
 // HELPERS
 // --------------------------------------------
 .large-text
-  font-size: 1.5em
+  // font-size: 1.5em
+
+// h1 {
+//   font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+//   font-size: 24px;
+//   font-style: normal;
+//   font-variant: normal;
+//   font-weight: 500;
+//   line-height: 26.4px;
+// }
+
+
+// $small-text:                            .9em
+// $medium-text:                           1.25em
+// $large-text:                            1.75em
+// $post-text:                             1.25em
+// $post-line-height:                      1.5
+// $header-text:                           1em
+// $editor-text:                           1.75em
+// $editor-line-height:                    2.2
