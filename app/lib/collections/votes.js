@@ -102,7 +102,8 @@ Meteor.methods({
     } else if(vote.winningCount === 0){
       Votes.update(vote._id, {
         $set: { 
-          winningChoices: []
+          winningChoices: [],
+          winningCount: 0
         }
       }); 
     };
