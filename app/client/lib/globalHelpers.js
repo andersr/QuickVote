@@ -41,7 +41,6 @@ Template.registerHelper('votingEnabled', function(){
 
     if (votes.count() > 0){
       var vote = votes.fetch();
-      console.log("voting enabled: " + vote);
       return vote[0].votingEnabled;
     };
 

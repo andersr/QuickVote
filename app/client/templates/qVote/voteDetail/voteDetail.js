@@ -9,6 +9,37 @@ Template.voteDetail.helpers({
     return vote.winningCount > 0;
   },
   displayWinners: function(){
+
+    var vote = Votes.findOne({_id: Router.current().params._id }, {winningChoices: 1 });
+    
+    // console.log("winning choices: " + vote.winningChoices);
+
+    var voteWinnerIds = vote.winningChoices.toString().split(',');
+
+    console.log("winning choices: " + voteWinnerIds);
+
+    var voteWinnerTitles = _.map(voteWinnerIds, function(voteWinnerId){
+      return VoteChoices.findOne({_id: voteWinnerId }).title;
+    });
+
+    console.log("winning titles: " + voteWinnerTitles);
+
+    return "Winning titles are: " + voteWinnerTitles;
+
+    // Votes.findOne( { field: { $size: 1 } } );
+
+      // if (vote.winningChoices.length() > 0) {
+
+      //   var winningVoteChoiceTitles = _.map(vote.winningChoices,
+      //     function(choiceId){
+      //       return VoteChoices.findOne({_id: choiceId }).title;
+      //     }
+      //   );
+
+      // };
+
+      // return "Winners: " + voteWinnerIds;
+
     //if winningChoice.length() === 1
     // return "winningChoice.title is the winner!"
 
