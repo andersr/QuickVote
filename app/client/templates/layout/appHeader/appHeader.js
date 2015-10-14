@@ -35,7 +35,7 @@ Template.appHeader.helpers({
 
       case 'newVote':
         return {
-          icon: "times",
+          icon: "close",
           event: "cancel-create-vote",
           title: "Cancel creating vote"
         };

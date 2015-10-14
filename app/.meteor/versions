@@ -73,6 +73,7 @@ meteorhacks:fast-render@2.10.0
 meteorhacks:inject-data@1.4.1
 meteorhacks:inject-initial@1.0.2
 meteorhacks:picker@1.0.3
+meteoric:ionicons-sass@0.1.7
 minifiers@1.1.7
 minimongo@1.0.10
 mobile-experience@1.0.1
