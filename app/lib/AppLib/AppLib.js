@@ -1,4 +1,8 @@
 AppLib = {
+  
+  constants: {
+    appName: "QuickVote"
+  },
 
   txtHelpers: {
     capitalizeFirstLetter: function(str){

@@ -3,7 +3,7 @@
 
 // VARS
 $app-max-width:                           60em
-$app-header-height:                       11em
+$app-header-height:                        4em
 $app-shell-padding:                        1em
 $page-title-padding:  $app-shell-padding
 $app-content-padding: $app-shell-padding + 1em
@@ -25,7 +25,6 @@ html, body, .app-container
   display: flex
   flex-direction: column
 
-
 //HEADER
 .app-header
   display: flex
@@ -36,19 +35,19 @@ html, body, .app-container
 
   .header-left
     padding-left: $app-shell-padding
-    align-self: flex-start
-    padding-top:1em
+    align-self: center
+    // padding-top:1em
 
   .header-right
     padding-right: $app-shell-padding
-    align-self: flex-start
-    padding-top:1em
+    // align-self: flex-start
+    // padding-top:1em
 
   .header-center
-    padding-left: 0
-    padding-right: 0
-    align-self: flex-end
-    padding-bottom:1em
+    padding-left: $page-title-padding
+    padding-right: $page-title-padding
+    // align-self: flex-end
+    // padding-bottom:1em
     flex: 1
 
 
