@@ -42,9 +42,9 @@ Template.upDownVote.helpers({
     console.log("toggle: " + Template.instance().previousVote.get());
 
     if (Template.instance().previousVote.get()) {
-      return "thumbs-up";
+      return "fa fa-thumbs-up";
     } else {
-      return "thumbs-o-up";
+      return "fa fa-thumbs-o-up";
     };
   },
 

@@ -28,21 +28,21 @@ Template.appHeader.helpers({
     switch (Template.instance().headerLeft.get()){
       case 'voteDetail':
         return {
-          icon: "chevron-left",
+          icon: "icon ion-chevron-left",
           event: "go-to-homepage",
           title: "View all Votes"
         };      
 
       case 'newVote':
         return {
-          icon: "close",
+          icon: "icon ion-close",
           event: "cancel-create-vote",
           title: "Cancel creating vote"
         };
 
       default:
         return {
-          icon: "plus",
+          icon: "icon ion-plus",
           event: "new-vote",
           title: "New Vote"
         };
