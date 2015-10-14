@@ -35,10 +35,13 @@ Template.registerHelper('newVote', function(){
 
 Template.registerHelper('votingEnabled', function(){
   var route = Router.current().route;
+ 
   if (route != undefined){
    var votes = Votes.find({_id: Router.current().params._id}, {limit: 1});
+
     if (votes.count() > 0){
       var vote = votes.fetch();
+      console.log("voting enabled: " + vote);
       return vote[0].votingEnabled;
     };
 
