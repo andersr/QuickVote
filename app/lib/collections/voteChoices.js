@@ -89,6 +89,8 @@ Meteor.methods({
       upVote: Boolean
     });
 
+    
+
     var voteChoice = VoteChoices.findOne({
         _id: voteChoiceAttributes.voteChoiceId 
     });

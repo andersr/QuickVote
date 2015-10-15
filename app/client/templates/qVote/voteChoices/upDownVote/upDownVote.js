@@ -39,7 +39,7 @@ Template.upDownVote.onCreated(function(){
 Template.upDownVote.helpers({
 
   thumbIconToggle: function(){
-    console.log("toggle: " + Template.instance().previousVote.get());
+    // console.log("toggle: " + Template.instance().previousVote.get());
 
     if (Template.instance().previousVote.get()) {
       return "fa fa-thumbs-up";
@@ -75,11 +75,15 @@ Template.upDownVote.events({
 
       if (Template.instance().firstVote.get()) {
 
+        // 1. add a new vote for this user
+        // 2. increase the vote count for this vote choice
+        // 3. check for a winner
+
         Meteor.call('newUserVote', userVoteAttributes, function (error, result) {
           if (error){
             console.log(error.reason);
           } else {
-            console.log(result);
+            // console.log(result);
            QV.updateVoteWinners(userVoteAttributes.voteChoiceId);
           };
         });

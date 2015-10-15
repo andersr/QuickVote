@@ -86,27 +86,45 @@ Meteor.methods({
     var vote = Votes.findOne({_id: voteAttributes.voteId });
     var voteChoice = VoteChoices.findOne({_id: voteAttributes.voteChoiceId });
 
-    if (voteChoice.count === vote.winningCount){
-      Votes.update(vote._id, {
-        $push: { 
-          winningChoices: voteChoice._id
-        }
-      });
+    
+    if (voteChoice.count === vote.winningCount){ 
+      // add to voteWinners if vote counts are the same
+      Votes.update(vote._id, { $push: { winningChoices: voteChoice._id } });
+
     } else if (voteChoice.count > vote.winningCount) {
-      Votes.update(vote._id, {
-        $set: { 
-          winningChoices: [voteChoice._id],
-          winningCount: voteChoice.count
-        }
-      });       
-    } else if(vote.winningCount === 0){
-      Votes.update(vote._id, {
-        $set: { 
-          winningChoices: [],
-          winningCount: 0
-        }
-      }); 
+      // replace voteWinners if voteChoice count is higher
+      Votes.update(vote._id, { $set: { winningChoices: [voteChoice._id] } });
+
+      //TODO: increase winningCount
+
+    } else if (voteChoice.count < vote.winningCount){
+      // remove choice from voteWinners if lower than winningCount
+      Votes.update(vote._id, { $pull: { winningChoices: voteChoice._id } });
+
+      //TODO: decrease winningCount
+      
     };
+  },
+  addWinner: function(voteAttributes){
+
+  },
+  removeWinner: function(voteAttributes){
+
+  },
+
+  resetVoteWinningCount: function(voteAttributes){
+
+    check(voteAttributes, {
+      voteId: String,
+      winningCount: Number
+    });
+
+    Votes.update(voteAttributes.voteId, {
+      $set: { 
+        winningCount: voteAttributes.winningCount
+      }
+    }); 
+
   },
 
   deleteVote:function(voteId){
