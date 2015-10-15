@@ -76,17 +76,13 @@ Meteor.methods({
     }
   },
   
-  updateVoteWinners: function(voteAttributes){
+  updateVoteWinners: function(voteChoiceId){
     check(Meteor.userId(), String);
-    check(voteAttributes, {
-      voteId: String,
-      voteChoiceId: String
-    });
- 
-    var vote = Votes.findOne({_id: voteAttributes.voteId });
-    var voteChoice = VoteChoices.findOne({_id: voteAttributes.voteChoiceId });
+    check(voteChoiceId, String);
 
-    
+    var voteChoice = VoteChoices.findOne({_id: voteChoiceId });
+    var vote = Votes.findOne({_id: voteChoice.voteId });
+
     if (voteChoice.count === vote.winningCount){ 
       // add to voteWinners if vote counts are the same
       Votes.update(vote._id, { $push: { winningChoices: voteChoice._id } });

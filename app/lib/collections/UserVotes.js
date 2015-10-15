@@ -1,12 +1,12 @@
 UserVotes = new Mongo.Collection('userVotes');
 
-UserVotes.after.insert(function (userVoteId, doc) {  
+UserVotes.after.insert(function (userId, doc) {  
   Meteor.call('increaseVoteChoiceCount', doc.voteChoiceId, function (error, result) {
     if (error){ console.log(error.reason);};
   });
 });
 
-UserVotes.after.update(function (userVoteId, doc) {
+UserVotes.after.update(function (userId, doc) {
   Meteor.call('updateVoteChoiceVoteCount', {voteChoiceId: doc.voteChoiceId, upVote: doc.upVote }, function (error, result) {
     if (error){
       console.log(error.reason);
@@ -14,7 +14,7 @@ UserVotes.after.update(function (userVoteId, doc) {
   });
 });
 
-// add upDownVote after hook: 
+
 
 // from http://joshowens.me/meteor-security-101/
 
@@ -61,7 +61,7 @@ Meteor.methods({
 
   },
 
-  upDownVote:function(userVoteAttributes){
+  userVoteUpDownVote:function(userVoteAttributes){
 
     check(Meteor.userId(), String);
     check(userVoteAttributes, {

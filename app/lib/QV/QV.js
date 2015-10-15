@@ -1,23 +1,23 @@
 QV = {
 
-  updateVoteWinners: function(voteChoiceId){
+  // updateVoteWinners: function(voteChoiceId){
 
-    var voteChoice = VoteChoices.findOne({ _id: voteChoiceId });
-    var vote = Votes.findOne({ _id: voteChoice.voteId });
+  //   var voteChoice = VoteChoices.findOne({ _id: voteChoiceId });
+  //   var vote = Votes.findOne({ _id: voteChoice.voteId });
 
-    var voteAttributes = {
-      voteId: vote._id,
-      voteChoiceId: voteChoice._id
-    };
+  //   var voteAttributes = {
+  //     voteId: vote._id,
+  //     voteChoiceId: voteChoice._id
+  //   };
 
-    Meteor.call('updateVoteWinners', voteAttributes, function (error, result) {
-      if (error){
-        console.log(error.reason);
-      } else {
-        //get the return value and handle it from here
-      }
-    });
-  },
+  //   Meteor.call('updateVoteWinners', voteAttributes, function (error, result) {
+  //     if (error){
+  //       console.log(error.reason);
+  //     } else {
+  //       //get the return value and handle it from here
+  //     }
+  //   });
+  // },
   resetIfNoWinners: function(voteId){
 
     var vote = Votes.findOne(
@@ -40,7 +40,7 @@ QV = {
 
     };
 
-    console.log("winningVoteChoiceCount: " + winningVoteChoiceCount);
+    // console.log("winningVoteChoiceCount: " + winningVoteChoiceCount);
     //if winningChoices array is empty
     // set voteChoice count to 0
     // return false

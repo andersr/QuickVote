@@ -75,16 +75,13 @@ Template.upDownVote.events({
 
       if (Template.instance().firstVote.get()) {
 
-        // 1. add a new vote for this user
-        // 2. increase the vote count for this vote choice
+        // 1. add a new vote for this user (DONE)
+        // 2. increase the vote count for this vote choice (DONE)
         // 3. check for a winner
 
         Meteor.call('newUserVote', userVoteAttributes, function (error, result) {
           if (error){
             console.log(error.reason);
-          } else {
-            // console.log(result);
-           QV.updateVoteWinners(userVoteAttributes.voteChoiceId);
           };
         });
 
@@ -94,11 +91,9 @@ Template.upDownVote.events({
           upVote: !Template.instance().previousVote.get()
         });
 
-        Meteor.call('upDownVote', userVoteAttributes, function (error, result) {
+        Meteor.call('userVoteUpDownVote', userVoteAttributes, function (error, result) {
           if (error){
             console.log(error.reason);
-          } else {
-            QV.updateVoteWinners(userVoteAttributes.voteChoiceId);
           };
         });
       };
