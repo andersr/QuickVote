@@ -10,6 +10,11 @@ UserVotes.after.update(function (userId, doc) {
   Meteor.call('updateVoteChoiceVoteCount', {voteChoiceId: doc.voteChoiceId, upVote: doc.upVote }, function (error, result) {
     if (error){
       console.log(error.reason);
+    } else {
+      QV.getWinningVoteChoices(result.voteId);
+      // Meteor.call('updateVoteWinners', doc.voteChoiceId, function (error, result) {
+      //   if (error){ console.log(error.reason);}
+      // });
     }
   });
 });

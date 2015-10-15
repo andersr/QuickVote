@@ -89,7 +89,12 @@ Meteor.methods({
 
     } else if (voteChoice.count > vote.winningCount) {
       // replace voteWinners if voteChoice count is higher
-      Votes.update(vote._id, { $set: { winningChoices: [voteChoice._id] } });
+      Votes.update(vote._id, { 
+        $set: { 
+          winningChoices: [voteChoice._id],
+          winningCount: voteChoice.count
+         } 
+      });
 
       //TODO: increase winningCount
 
@@ -97,7 +102,9 @@ Meteor.methods({
       // remove choice from voteWinners if lower than winningCount
       Votes.update(vote._id, { $pull: { winningChoices: voteChoice._id } });
 
-      //TODO: decrease winningCount
+      // TODO: find next highest vote choices and add to winningChoices
+      // decrease winningCount to next highest count
+      // if no vote choices with a count value are found, set winningCount to 0
       
     };
   },

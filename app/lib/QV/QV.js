@@ -39,41 +39,38 @@ QV = {
       });
 
     };
-
-    // console.log("winningVoteChoiceCount: " + winningVoteChoiceCount);
-    //if winningChoices array is empty
-    // set voteChoice count to 0
-    // return false
    
+  },
+  getWinningVoteChoices: function(voteId){
+    //1. get matching vote and voteChoices
+    var winningChoicesCount = [];
+    var topVoteChoiceCount = 0;
+    var vote = Votes.findOne({_id: voteId});
+    var voteChoicesArray = VoteChoices.find({voteId: vote._id}, {sort: { count: -1 }}).fetch();
+    // console.log("voteChoicesArray: " + voteChoicesArray );
+    //foreach item in voteChoices
+
+    // 1. find highest voteChoiceCount
+    voteChoices.forEach(function (voteChoice) {
+      if (voteChoice.count > topVoteChoiceCount) {
+        topVoteChoiceCount = voteChoice.count;
+      };
+    });
+
+    if (topVoteChoiceCount > 0) {
+      // 2. add all voteChoices with this count to winners array
+      voteChoices.forEach(function (voteChoice) {
+        if (voteChoice.count === topVoteChoiceCount) {
+          topVoteChoiceCount = voteChoice.count;
+        };
+      });
+
+      //update vote winningCount and winningChoices
+
+    } else {
+      // reset winningCount and winningChoices
+    };
+ 
   }
 };
 
-
-    // ){
-    //         Meteor.call('resetVoteWinningCount', 0, function (error, result) {
-    //            if (error){
-    //         console.log(error.reason);
-    //         } 
-
-    //         });
-
-    //        };
-
-      // Meteor.call('removeWinningChoice',voteAttributes, function (error, result) {
-      //   if (error){
-      //     console.log(error.reason);
-      //   } else {
-      //     QV.resetIfNoWinners(vote._id);
-      //   };
-      // });
-
-    
-      //check to see if any items remaining in array, if none, set winningCount to 0 
-      // call this after winner has been removed, ie in result
-      // QV.hasWinners(vote._id);
-
-
-      // var winningChoiceCount = Votes.aggregate(
-      //   vote._id, { $size: winningChoices});
-
-      // console.log("winningChoiceCount: " + winningChoiceCount);

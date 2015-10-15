@@ -1,13 +1,13 @@
 VoteChoices = new Mongo.Collection('voteChoices');
 
-VoteChoices.after.update(function (userId, doc) {
-  // console.log("voteChoiceId: " + voteChoiceId);
-  console.log("voteChoice doc id: " + doc._id);
-  Meteor.call('updateVoteWinners', doc._id, function (error, result) {
-    if (error){ console.log(error.reason);} 
-  });
-  // QV.updateVoteWinners(doc._id);
-});
+// VoteChoices.after.update(function (userId, doc) {
+//   // console.log("voteChoiceId: " + voteChoiceId);
+//   console.log("voteChoice doc id: " + doc._id);
+//   Meteor.call('updateVoteWinners', doc._id, function (error, result) {
+//     if (error){ console.log(error.reason);} 
+//   });
+//   // QV.updateVoteWinners(doc._id);
+// });
 
 // from http://joshowens.me/meteor-security-101/
 
@@ -119,6 +119,11 @@ Meteor.methods({
       });
 
     };
+
+    return {
+      voteId: voteChoice.voteId
+    }
+
 
   }
   
