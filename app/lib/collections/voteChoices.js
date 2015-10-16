@@ -1,14 +1,5 @@
 VoteChoices = new Mongo.Collection('voteChoices');
 
-// VoteChoices.after.update(function (userId, doc) {
-//   // console.log("voteChoiceId: " + voteChoiceId);
-//   console.log("voteChoice doc id: " + doc._id);
-//   Meteor.call('updateVoteWinners', doc._id, function (error, result) {
-//     if (error){ console.log(error.reason);} 
-//   });
-//   // QV.updateVoteWinners(doc._id);
-// });
-
 // from http://joshowens.me/meteor-security-101/
 
 VoteChoices.allow({  
@@ -73,26 +64,6 @@ Meteor.methods({
     check(voteChoiceId, String);
     VoteChoices.remove(voteChoiceId);
   },
-  //REMOVE?
-  // increaseVoteChoiceCount:function(voteChoiceId){
-
-  //   check(Meteor.userId(), String);
-  //   check(voteChoiceId, String);
-
-  //   var voteChoice = VoteChoices.findOne({
-  //       _id: voteChoiceId 
-  //   });
-
-  //   VoteChoices.update(voteChoice._id, {
-  //     $inc: { 
-  //       count: 1
-  //     }
-  //   });
-
-  //   return {
-  //     voteId: voteChoice.voteId
-  //   }
-  // },
 
   updateVoteChoiceCount:function(voteChoiceAttributes){
 
@@ -127,7 +98,6 @@ Meteor.methods({
     return {
       voteId: voteChoice.voteId
     }
-
 
   }
   

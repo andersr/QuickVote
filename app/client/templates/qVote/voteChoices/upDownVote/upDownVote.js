@@ -85,22 +85,5 @@ Template.upDownVote.events({
 
     };
 
-    //   if (Template.instance().firstVote.get()) {
-
-    //     Meteor.call('newUserVote', userVoteAttributes, function (error, result) {
-    //       if (error){
-    //         console.log(error.reason);
-    //       };
-    //     });
-
-    //   } else {
-
-    //     _.extend(userVoteAttributes, {
-    //       upVote: !Template.instance().previousVote.get()
-    //     });
-
-   
-
-    // }
   }
 });

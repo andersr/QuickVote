@@ -94,40 +94,7 @@ Meteor.methods({
        } 
     });
 
-    // if (voteChoice.count === vote.winningCount){ 
-    //   // add to voteWinners if vote counts are the same
-    //   Votes.update(vote._id, { $push: { winningChoices: voteChoice._id } });
-
-    // } else if (voteChoice.count > vote.winningCount) {
-    //   // replace voteWinners if voteChoice count is higher
-    
-
-      //TODO: increase winningCount
-
-    // } else if (voteChoice.count < vote.winningCount){
-    //   // remove choice from voteWinners if lower than winningCount
-    //   Votes.update(vote._id, { $pull: { winningChoices: voteChoice._id } });
-
-    //   // TODO: find next highest vote choices and add to winningChoices
-    //   // decrease winningCount to next highest count
-    //   // if no vote choices with a count value are found, set winningCount to 0
-      
-    // };
   },
-
-  // clearVoteWinners: function(voteId){
-
-  //   check(Meteor.userId(), String);
-  //   check(voteId, String);
-
-  //   Votes.update(voteId, {
-  //     $set: { 
-  //       winningChoices:[],
-  //       winningCount: 0
-  //     }
-  //   }); 
-
-  // },
 
   deleteVote:function(voteId){
 
