@@ -1,8 +1,32 @@
+Template.voteDetail.onCreated(function(){
+  var
+  templateInstance                  = this;
+  templateInstance.sortByVoteCount  = new ReactiveVar(false);
+   
+  templateInstance.autorun(function(){
+
+    var votesSubscription = templateInstance.subscribe('votes');
+
+    if (votesSubscription.ready()) {
+      var vote = Votes.findOne({_id: Router.current().params._id});
+      templateInstance.sortByVoteCount.set(!vote.votingEnabled && vote.votingInitiated);      
+    };
+  });
+
+});
+
 
 Template.voteDetail.helpers({
   
   voteChoices:function(){
-    return VoteChoices.find({voteId: Router.current().params._id }, {sort: { updatedAt: -1 }});
+    console.log("sort by vote count: " + Template.instance().sortByVoteCount.get());
+
+    if (Template.instance().sortByVoteCount.get()) {
+      return VoteChoices.find({voteId: Router.current().params._id }, {sort: {  count: -1, title: 1, updatedAt: 1 }});
+    } else {
+      return VoteChoices.find({voteId: Router.current().params._id }, {sort: { updatedAt: -1 }});
+    };
+   
   },
   votingInitiated: function(){
     var vote = Votes.findOne({_id: Router.current().params._id });
