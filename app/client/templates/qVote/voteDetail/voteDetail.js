@@ -19,7 +19,6 @@ Template.voteDetail.onCreated(function(){
 Template.voteDetail.helpers({
   
   voteChoices:function(){
-    console.log("sort by vote count: " + Template.instance().showVoteResults.get());
 
     if (Template.instance().showVoteResults.get()) {
       return VoteChoices.find({voteId: Router.current().params._id }, {sort: {  count: -1, title: 1, updatedAt: 1 }});
@@ -39,66 +38,19 @@ Template.voteDetail.helpers({
       return VoteChoices.findOne({_id: winningChoice }, {title: 1}).title;
     });
 
-        // winningChoices = _.pluck(vote.fetch(), 'winningChoices');
-    
-    // console.log("winning choices: " + vote.winningChoices[0]);
+    if (numberOfWinners === 0) {
+      return "No winners yet :-/";
+    } else if (numberOfWinners === 1){
+      return winningChoiceTitles[0] + " got the most votes!";
+    } else if (numberOfWinners === 2){
+      return "It's a tie between '" + winningChoiceTitles[0] + "' and '" + winningChoiceTitles[1] + "'!";
 
-    // var winningChoiceIds = vote.winningChoices.toString().split(',');
-
-    // console.log("voteWinnerIds: " + winningChoiceIds);
-
-    // console.log("winning titles: " + winningChoiceTitles);
-
-    // return "Winning titles are: " + winningChoiceTitles;
-
-
-      if (numberOfWinners === 0) {
-        return "No winners yet :-/";
-      } else if (numberOfWinners === 1){
-        return winningChoiceTitles[0] + " got the most votes!";
-      } else if (numberOfWinners === 2){
-        return "It's a tie between '" + winningChoiceTitles[0] + "' and '" + winningChoiceTitles[1] + "'!";
-
-      } else if (numberOfWinners > 2){
-         return "Three or more winners";
-        
-      } else {
-         return "";  //something went wrong
-      };
-
-      // var winningVoteChoiceTitles = _.map(vote.winningChoices,
-      //     function(choiceId){
-      //       return VoteChoices.findOne({_id: choiceId }).title;
-      //     }
-      //   );
-
-      // return "Winners: " + voteWinnerIds;
-
-    //if winningChoice.length() === 1
-    // return "winningChoice.title is the winner!"
-
-    //else
-    // return "It's a #{winningChoices.length()}-way tie: forEach winningChoice, display winningChoice.title";
-
-
-    // switch(voteWinners.length) {
-    //   case 0:
-    //     return "No winners yet :-/";
- 
-    //   case 1:
-    //     return "We have one winner!";
- 
-    //   case 2:
-    //     return "We have one winner!";
- 
-    //   case > 2:
-    //     return "We have one winner!";
-
-    //   case 1:
-    //     return "We have one winner!";
-
-    // default:
-    
+    } else if (numberOfWinners > 2){
+       return "Three or more winners";
+      
+    } else {
+       return "";  //something went wrong
+    };
 
   }
 
