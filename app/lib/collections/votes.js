@@ -70,7 +70,8 @@ Meteor.methods({
 
       Votes.upsert(voteAttributes.voteId, {
         $set: { 
-          votingEnabled: voteAttributes.votingEnabled
+          votingEnabled: voteAttributes.votingEnabled,
+          votingInitiated: true
         }
       });
 

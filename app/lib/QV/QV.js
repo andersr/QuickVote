@@ -1,16 +1,16 @@
 QV = {
     updateVoteWinners: function(voteId){
 
-    var vote            = Votes.findOne({_id: voteId});
-    var winningChoices  = [];
-    var winningCount    = VoteChoices.findOne({voteId: vote._id}, {count: 1, sort: { count: -1 }}).count;
-    var voteChoices     = VoteChoices.find({ voteId: vote._id });
-    // console.log("winningCount: " + winningCount );
+    var vote                   = Votes.findOne({_id: voteId});
+    var winningChoices         = [];
+    var voteChoicesTopCount    = VoteChoices.findOne({voteId: vote._id}, {count: 1, sort: { count: -1 }}).count;
+    var voteChoices            = VoteChoices.find({ voteId: vote._id });
+    console.log("voteChoicesTopCount: " + voteChoicesTopCount );
 
-    if (winningCount > 0) {
+    if (voteChoicesTopCount > 0) {
 
       voteChoices.forEach(function (voteChoice) {
-        if (voteChoice.count === winningCount) {
+        if (voteChoice.count === voteChoicesTopCount) {
           winningChoices.push(voteChoice._id);
         };
       });
@@ -20,7 +20,7 @@ QV = {
     var voteAttributes = {
       voteId:          vote._id,
       winningChoices:  winningChoices,
-      winningCount:    winningCount
+      winningCount:    voteChoicesTopCount
     };
 
     Meteor.call('updateVoteWinners',voteAttributes, function (error, result) {

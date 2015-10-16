@@ -6,37 +6,49 @@ Template.voteDetail.helpers({
   },
   votingInitiated: function(){
     var vote = Votes.findOne({_id: Router.current().params._id });
+    // console.log("voting initiated: " + vote.votingInitiated);
     return vote.votingInitiated;
   },
   displayWinners: function(){
 
     var vote = Votes.findOne({_id: Router.current().params._id }, {winningChoices: 1, winningCount: 1 });
-    
-    // console.log("winning choices: " + vote.winningChoices);
-
-    var voteWinnerIds = vote.winningChoices.toString().split(',');
-
-    console.log("voteWinnerIds: " + voteWinnerIds);
-
-    var voteWinnerTitles = _.map(voteWinnerIds, function(voteWinnerId){
-      return VoteChoices.findOne({_id: voteWinnerId }).title;
+    var numberOfWinners = vote.winningChoices.length;
+    var winningChoiceTitles = _.map(vote.winningChoices, function(winningChoice){
+      return VoteChoices.findOne({_id: winningChoice }, {title: 1}).title;
     });
 
-    console.log("winning titles: " + voteWinnerTitles);
+        // winningChoices = _.pluck(vote.fetch(), 'winningChoices');
+    
+    // console.log("winning choices: " + vote.winningChoices[0]);
 
-    return "Winning titles are: " + voteWinnerTitles;
+    // var winningChoiceIds = vote.winningChoices.toString().split(',');
 
-    // Votes.findOne( { field: { $size: 1 } } );
+    // console.log("voteWinnerIds: " + winningChoiceIds);
 
-      // if (vote.winningChoices.length() > 0) {
+    // console.log("winning titles: " + winningChoiceTitles);
 
-      //   var winningVoteChoiceTitles = _.map(vote.winningChoices,
+    // return "Winning titles are: " + winningChoiceTitles;
+
+
+      if (numberOfWinners === 0) {
+        return "No winners yet :-/";
+      } else if (numberOfWinners === 1){
+        return winningChoiceTitles[0] + " got the most votes!";
+      } else if (numberOfWinners === 2){
+        return "It's a tie between '" + winningChoiceTitles[0] + "' and '" + winningChoiceTitles[1] + "'!";
+
+      } else if (numberOfWinners > 2){
+         return "Three or more winners";
+        
+      } else {
+         return "";  //something went wrong
+      };
+
+      // var winningVoteChoiceTitles = _.map(vote.winningChoices,
       //     function(choiceId){
       //       return VoteChoices.findOne({_id: choiceId }).title;
       //     }
       //   );
-
-      // };
 
       // return "Winners: " + voteWinnerIds;
 
@@ -45,6 +57,26 @@ Template.voteDetail.helpers({
 
     //else
     // return "It's a #{winningChoices.length()}-way tie: forEach winningChoice, display winningChoice.title";
+
+
+    // switch(voteWinners.length) {
+    //   case 0:
+    //     return "No winners yet :-/";
+ 
+    //   case 1:
+    //     return "We have one winner!";
+ 
+    //   case 2:
+    //     return "We have one winner!";
+ 
+    //   case > 2:
+    //     return "We have one winner!";
+
+    //   case 1:
+    //     return "We have one winner!";
+
+    // default:
+    
 
   }
 

@@ -76,18 +76,18 @@ Meteor.methods({
     check(userVoteAttributes, {
       voteChoiceId: String,
       upVote: Boolean,
-      newVote: Boolean
+      firstVote: Boolean
     });
 
     var voteChoice = VoteChoices.findOne({ _id: userVoteAttributes.voteChoiceId });
 
-    if (userVoteAttributes.newVote) {
+    if (userVoteAttributes.firstVote) {
 
       var userVote = UserVotes.insert({
         voteChoiceId: userVoteAttributes.voteChoiceId,
         voteId: voteChoice.voteId,
         userId: Meteor.userId(),
-        upVote: upVote
+        upVote: userVoteAttributes.upVote
       });
 
     } else {

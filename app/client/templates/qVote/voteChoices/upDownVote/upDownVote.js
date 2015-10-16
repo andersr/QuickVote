@@ -74,7 +74,7 @@ Template.upDownVote.events({
       var userVoteAttributes = {
         voteChoiceId: Template.instance().currentVoteChoiceId.get(),
         upVote:       thisVote,
-        newVote:      Template.instance().firstVote.get()
+        firstVote:      Template.instance().firstVote.get()
       };
 
       Meteor.call('userVoteUpDownVote', userVoteAttributes, function (error, result) {
