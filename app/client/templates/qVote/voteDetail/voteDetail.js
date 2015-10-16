@@ -4,19 +4,19 @@ Template.voteDetail.helpers({
   voteChoices:function(){
     return VoteChoices.find({voteId: Router.current().params._id }, {sort: { updatedAt: -1 }});
   },
-  hasWinner: function(){
+  votingInitiated: function(){
     var vote = Votes.findOne({_id: Router.current().params._id });
-    return vote.winningCount > 0;
+    return vote.votingInitiated;
   },
   displayWinners: function(){
 
-    var vote = Votes.findOne({_id: Router.current().params._id }, {winningChoices: 1 });
+    var vote = Votes.findOne({_id: Router.current().params._id }, {winningChoices: 1, winningCount: 1 });
     
     // console.log("winning choices: " + vote.winningChoices);
 
     var voteWinnerIds = vote.winningChoices.toString().split(',');
 
-    console.log("winning choices: " + voteWinnerIds);
+    console.log("voteWinnerIds: " + voteWinnerIds);
 
     var voteWinnerTitles = _.map(voteWinnerIds, function(voteWinnerId){
       return VoteChoices.findOne({_id: voteWinnerId }).title;

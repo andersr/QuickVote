@@ -18,7 +18,8 @@ Template.openCloseVoting.events({
 
     var voteAttributes = {
       voteId: Router.current().params._id,
-      votingEnabled: $(event.target).is(':checked')
+      votingEnabled: $(event.target).is(':checked'),
+      votingInitiated: true
     };
 
     Meteor.call('openCloseVote', voteAttributes, function(error, result){
@@ -28,4 +29,6 @@ Template.openCloseVoting.events({
     });
   }
 });
+
+//the first time votingenabled is set to true, set votingStarted to true:
 

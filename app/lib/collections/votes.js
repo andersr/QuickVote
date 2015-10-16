@@ -38,6 +38,7 @@ Meteor.methods({
       owner: Meteor.userId(),
       updatedAt: new Date(),
       votingEnabled: false,
+      votingInitiated: false,
       winningCount: 0,
       winningChoices: []
     });
