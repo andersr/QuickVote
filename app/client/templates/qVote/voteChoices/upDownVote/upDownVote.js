@@ -69,35 +69,38 @@ Template.upDownVote.events({
 
     } else {
 
+      var thisVote = Template.instance().firstVote.get()? true : !Template.instance().previousVote.get();
+
       var userVoteAttributes = {
-        voteChoiceId: Template.instance().currentVoteChoiceId.get()
+        voteChoiceId: Template.instance().currentVoteChoiceId.get(),
+        upVote:       thisVote,
+        newVote:      Template.instance().firstVote.get()
       };
 
-      if (Template.instance().firstVote.get()) {
+      Meteor.call('userVoteUpDownVote', userVoteAttributes, function (error, result) {
+        if (error){
+          console.log(error.reason);
+        };
+      });
 
-        // 1. add a new vote for this user (DONE)
-        // 2. increase the vote count for this vote choice (DONE)
-        // 3. check for a winner
+    };
 
-        Meteor.call('newUserVote', userVoteAttributes, function (error, result) {
-          if (error){
-            console.log(error.reason);
-          };
-        });
+    //   if (Template.instance().firstVote.get()) {
 
-      } else {
+    //     Meteor.call('newUserVote', userVoteAttributes, function (error, result) {
+    //       if (error){
+    //         console.log(error.reason);
+    //       };
+    //     });
 
-        _.extend(userVoteAttributes, {
-          upVote: !Template.instance().previousVote.get()
-        });
+    //   } else {
 
-        Meteor.call('userVoteUpDownVote', userVoteAttributes, function (error, result) {
-          if (error){
-            console.log(error.reason);
-          };
-        });
-      };
+    //     _.extend(userVoteAttributes, {
+    //       upVote: !Template.instance().previousVote.get()
+    //     });
 
-    }
+   
+
+    // }
   }
 });

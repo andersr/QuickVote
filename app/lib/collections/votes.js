@@ -76,59 +76,58 @@ Meteor.methods({
     }
   },
   
-  updateVoteWinners: function(voteChoiceId){
+  // MAKE SURE THIS WORKS NOW
+  updateVoteWinners: function(voteAttributes){
     check(Meteor.userId(), String);
-    check(voteChoiceId, String);
+    check(voteAttributes, {
+      voteId:          String,
+      winningChoices:  [String],
+      winningCount:    Number
+    });
 
-    var voteChoice = VoteChoices.findOne({_id: voteChoiceId });
-    var vote = Votes.findOne({_id: voteChoice.voteId });
+    var vote = Votes.findOne({_id: voteAttributes.voteId });
 
-    if (voteChoice.count === vote.winningCount){ 
-      // add to voteWinners if vote counts are the same
-      Votes.update(vote._id, { $push: { winningChoices: voteChoice._id } });
+    Votes.update(vote._id, { 
+      $set: { 
+        winningChoices: voteAttributes.winningChoices,
+        winningCount: voteAttributes.winningCount
+       } 
+    });
 
-    } else if (voteChoice.count > vote.winningCount) {
-      // replace voteWinners if voteChoice count is higher
-      Votes.update(vote._id, { 
-        $set: { 
-          winningChoices: [voteChoice._id],
-          winningCount: voteChoice.count
-         } 
-      });
+    // if (voteChoice.count === vote.winningCount){ 
+    //   // add to voteWinners if vote counts are the same
+    //   Votes.update(vote._id, { $push: { winningChoices: voteChoice._id } });
+
+    // } else if (voteChoice.count > vote.winningCount) {
+    //   // replace voteWinners if voteChoice count is higher
+    
 
       //TODO: increase winningCount
 
-    } else if (voteChoice.count < vote.winningCount){
-      // remove choice from voteWinners if lower than winningCount
-      Votes.update(vote._id, { $pull: { winningChoices: voteChoice._id } });
+    // } else if (voteChoice.count < vote.winningCount){
+    //   // remove choice from voteWinners if lower than winningCount
+    //   Votes.update(vote._id, { $pull: { winningChoices: voteChoice._id } });
 
-      // TODO: find next highest vote choices and add to winningChoices
-      // decrease winningCount to next highest count
-      // if no vote choices with a count value are found, set winningCount to 0
+    //   // TODO: find next highest vote choices and add to winningChoices
+    //   // decrease winningCount to next highest count
+    //   // if no vote choices with a count value are found, set winningCount to 0
       
-    };
-  },
-  addWinner: function(voteAttributes){
-
-  },
-  removeWinner: function(voteAttributes){
-
+    // };
   },
 
-  resetVoteWinningCount: function(voteAttributes){
+  // clearVoteWinners: function(voteId){
 
-    check(voteAttributes, {
-      voteId: String,
-      winningCount: Number
-    });
+  //   check(Meteor.userId(), String);
+  //   check(voteId, String);
 
-    Votes.update(voteAttributes.voteId, {
-      $set: { 
-        winningCount: voteAttributes.winningCount
-      }
-    }); 
+  //   Votes.update(voteId, {
+  //     $set: { 
+  //       winningChoices:[],
+  //       winningCount: 0
+  //     }
+  //   }); 
 
-  },
+  // },
 
   deleteVote:function(voteId){
 

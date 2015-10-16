@@ -74,23 +74,27 @@ Meteor.methods({
     VoteChoices.remove(voteChoiceId);
   },
   //REMOVE?
-  increaseVoteChoiceCount:function(voteChoiceId){
+  // increaseVoteChoiceCount:function(voteChoiceId){
 
-    check(Meteor.userId(), String);
-    check(voteChoiceId, String);
+  //   check(Meteor.userId(), String);
+  //   check(voteChoiceId, String);
 
-    var voteChoice = VoteChoices.findOne({
-        _id: voteChoiceId 
-    });
+  //   var voteChoice = VoteChoices.findOne({
+  //       _id: voteChoiceId 
+  //   });
 
-    VoteChoices.update(voteChoice._id, {
-      $inc: { 
-        count: 1
-      }
-    });
-  },
+  //   VoteChoices.update(voteChoice._id, {
+  //     $inc: { 
+  //       count: 1
+  //     }
+  //   });
 
-  updateVoteChoiceVoteCount:function(voteChoiceAttributes){
+  //   return {
+  //     voteId: voteChoice.voteId
+  //   }
+  // },
+
+  updateVoteChoiceCount:function(voteChoiceAttributes){
 
     check(Meteor.userId(), String);
     check(voteChoiceAttributes, {

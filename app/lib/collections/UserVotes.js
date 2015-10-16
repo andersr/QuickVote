@@ -1,17 +1,21 @@
 UserVotes = new Mongo.Collection('userVotes');
 
 UserVotes.after.insert(function (userId, doc) {  
-  Meteor.call('increaseVoteChoiceCount', doc.voteChoiceId, function (error, result) {
-    if (error){ console.log(error.reason);};
+  Meteor.call('updateVoteChoiceCount', {voteChoiceId: doc.voteChoiceId, upVote: doc.upVote }, function (error, result) {
+    if (error){
+      console.log(error.reason);
+    } else {
+      QV.updateVoteWinners(result.voteId);
+    };
   });
 });
 
 UserVotes.after.update(function (userId, doc) {
-  Meteor.call('updateVoteChoiceVoteCount', {voteChoiceId: doc.voteChoiceId, upVote: doc.upVote }, function (error, result) {
+  Meteor.call('updateVoteChoiceCount', {voteChoiceId: doc.voteChoiceId, upVote: doc.upVote }, function (error, result) {
     if (error){
       console.log(error.reason);
     } else {
-      QV.getWinningVoteChoices(result.voteId);
+      QV.updateVoteWinners(result.voteId);
       // Meteor.call('updateVoteWinners', doc.voteChoiceId, function (error, result) {
       //   if (error){ console.log(error.reason);}
       // });
@@ -48,54 +52,65 @@ UserVotes.deny({
 
 Meteor.methods({
 
-  newUserVote:function(userVoteAttributes){
+  // newUserVote:function(userVoteAttributes){
 
-    check(Meteor.userId(), String);
-    check(userVoteAttributes, {
-      voteChoiceId: String
-    });
+  //   check(Meteor.userId(), String);
+  //   check(userVoteAttributes, {
+  //     voteChoiceId: String
+  //   });
 
-    var voteChoice = VoteChoices.findOne({ _id: userVoteAttributes.voteChoiceId });
+  //   var voteChoice = VoteChoices.findOne({ _id: userVoteAttributes.voteChoiceId });
  
-    var userVote = UserVotes.insert({
-      voteChoiceId: userVoteAttributes.voteChoiceId,
-      voteId: voteChoice.voteId,
-      userId: Meteor.userId(),
-      upVote: true
-    });
+  //   var userVote = UserVotes.insert({
+  //     voteChoiceId: userVoteAttributes.voteChoiceId,
+  //     voteId: voteChoice.voteId,
+  //     userId: Meteor.userId(),
+  //     upVote: true
+  //   });
 
-  },
+  // },
 
   userVoteUpDownVote:function(userVoteAttributes){
 
     check(Meteor.userId(), String);
     check(userVoteAttributes, {
       voteChoiceId: String,
-      upVote: Boolean
+      upVote: Boolean,
+      newVote: Boolean
     });
 
-    var userId = Meteor.userId();    
     var voteChoice = VoteChoices.findOne({ _id: userVoteAttributes.voteChoiceId });
 
-    var userVote = UserVotes.findOne({
-      voteChoiceId: userVoteAttributes.voteChoiceId,
-      userId: userId
-    });
+    if (userVoteAttributes.newVote) {
 
-    UserVotes.update(userVote._id, {
-      $set: { 
-        upVote: userVoteAttributes.upVote
-      }
-    });
+      var userVote = UserVotes.insert({
+        voteChoiceId: userVoteAttributes.voteChoiceId,
+        voteId: voteChoice.voteId,
+        userId: Meteor.userId(),
+        upVote: upVote
+      });
+
+    } else {
+
+      var userVote = UserVotes.findOne({
+        voteChoiceId: userVoteAttributes.voteChoiceId,
+        userId: Meteor.userId()
+      });
+
+      UserVotes.update(userVote._id, {
+        $set: { 
+          upVote: userVoteAttributes.upVote
+        }
+      });
+
+    };
 
   },
-  removeUserVote:function(userVoteId){
 
+  removeUserVote:function(userVoteId){
       check(Meteor.userId(), String);
       check(userVoteId, String);
-
       UserVotes.remove(userVoteId);
-
   }
 
 });
