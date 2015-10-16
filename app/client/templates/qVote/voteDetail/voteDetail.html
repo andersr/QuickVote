@@ -3,26 +3,16 @@
 
   <table class="table">
   <tbody>
-      {{#unless votingEnabled}}
-        {{#unless isOwner}}
+      {{#if showVoteResults}}
+ 
         <tr>
           <td>&nbsp;</td>
           <td class="align-center">
-            <h2>Voting is closed <i class="fa fa-frown-o"></i></h2>
+            <h2>Vote Results</h2>
           </td>
           <td>&nbsp;</td>
         </tr>
-        {{/unless}}
-        {{#if votingInitiated}}
-       <tr>
-        <td>&nbsp;</td>
-        <td class="align-center">
-         <h2>{{displayWinners}}</h2>
-        </td>
-        <td>&nbsp;</td>
-      </tr>
-      {{/if}}
-    {{/unless}}
+    {{/if}}
     {{#if isOwner}}
        <tr>
         <td>&nbsp;</td>
