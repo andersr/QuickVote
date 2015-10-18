@@ -1,13 +1,37 @@
 <template name="appFooter">
   <div class="ar-navbar app-footer">
      <div class="nav-left">
-     left
+      {{#if voteDetails}}
+        {{#if isOwner}}
+          Owner vote details view
+        {{else}}
+          Participant vote details view
+        {{/if}}
+      {{else}}
+        All other views
+      {{/if}}
     </div>
     <div class="nav-center">
-    center
+      {{#if voteDetails}}
+        {{#if isOwner}}
+          Owner vote details view
+        {{else}}
+          Participant vote details view
+        {{/if}}
+      {{else}}
+        All other views
+      {{/if}}
     </div>
     <div class="nav-right">
-      right
+      {{#if voteDetails}}
+        {{#if isOwner}}
+          Owner vote details view
+        {{else}}
+          Participant vote details view
+        {{/if}}
+      {{else}}
+        All other views
+      {{/if}}
     </div>
   </div>
 </template>

@@ -1,7 +1,9 @@
 AppLib = {
   
   constants: {
-    appName: "QuickVote"
+    appName: "QuickVote",
+    appContactEmail: "&#97;&#110;&#100;&#101;&#114;&#115;&#43;&#113;&#118;&#111;&#116;&#101;&#64;&#97;&#110;&#100;&#101;&#114;&#115;&#46;&#99;&#111;"
+    //anders+qvote@anders.co, ion-email
   },
 
   txtHelpers: {
