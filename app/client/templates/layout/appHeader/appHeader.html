@@ -1,18 +1,18 @@
 <template name="appHeader">
-  <div class="app-header">
-    <div class="header-left">
+  <div class="ar-navbar app-header">
+    <div class="nav-left">
     {{#unless isLoginPage}}
       {{> actionButton event=headerLeft.event icon=headerLeft.icon title=headerLeft.title size="2x"}}
       {{/unless}}
     </div>
-    <div class="header-center">
+    <div class="nav-center">
       {{#if newVote}}
         {{> newVote}}
       {{else}}
         {{> appBrand}}
       {{/if}}
     </div>
-    <div class="header-right user-nav">
+    <div class="nav-right user-nav">
       {{#if currentUser}}
         <div class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">

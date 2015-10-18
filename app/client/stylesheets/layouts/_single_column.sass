@@ -25,39 +25,33 @@ html, body, .app-container
   display: flex
   flex-direction: column
 
-//HEADER
+//HEADER - uses ar-navbar
 .app-header
-  display: flex
-  flex-flow: row nowrap
-  align-items:center
-  width:100%
   height: $app-header-height
 
-  .header-left
-    padding-left: $app-shell-padding
-    align-self: center
-    // padding-top:1em
 
-  .header-right
-    padding-right: $app-shell-padding
-    // align-self: flex-start
-    // padding-top:1em
-
-  .header-center
-    padding-left: $page-title-padding
-    padding-right: $page-title-padding
-    // align-self: flex-end
-    // padding-bottom:1em
-    flex: 1
-
-
+//FOOTER - uses ar-navbar
 .app-footer
-  justify-content: center
-  display: flex
-  flex-flow: row nowrap
-  align-items:center
-  width:100%
   height: $app-header-height
+
+  // .header-left
+  //   padding-left: $app-shell-padding
+  //   align-self: center
+  //   // padding-top:1em
+
+  // .header-right
+  //   padding-right: $app-shell-padding
+  //   // align-self: flex-start
+  //   // padding-top:1em
+
+  // .header-center
+  //   padding-left: $page-title-padding
+  //   padding-right: $page-title-padding
+  //   // align-self: flex-end
+  //   // padding-bottom:1em
+  //   flex: 1
+
+
 
 //MAIN CONTENT
 .main-content
@@ -66,13 +60,14 @@ html, body, .app-container
   padding-left: $app-content-padding
   padding-right:  $app-content-padding
 
+.app-footer
 
 @media screen and (min-width: 700px)
 
-  .app-header
+  // .app-header
 
-    .header-center
-      padding-left: $app-content-padding + 6em
+  //   .header-center
+  //     padding-left: $app-content-padding + 6em
 
 
   .main-content
