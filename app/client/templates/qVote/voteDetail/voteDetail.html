@@ -1,14 +1,14 @@
 <template name="voteDetail">
-    {{> pageTitle}}
-      {{> voteChoicesList}}
+  {{> pageTitle}}
+  {{> voteChoicesList}}
 </template>
 
 <template name="tmp">
-       {{#if isOwner}}
-      <tr class="vote-settings">
-      <td>&nbsp;</td>
-      <td class="align-center">{{> openCloseVoting}}</td>
-      <td>&nbsp;</td>
-      </tr>
-     {{/if}}
+  {{#if isOwner}}
+  <tr class="vote-settings">
+  <td>&nbsp;</td>
+  <td class="align-center">{{> openCloseVoting}}</td>
+  <td>&nbsp;</td>
+  </tr>
+ {{/if}}
 </template>

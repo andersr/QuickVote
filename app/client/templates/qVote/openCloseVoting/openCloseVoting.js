@@ -6,11 +6,11 @@ Template.openCloseVoting.onDestroyed(function(){
    this.$('.voteOpenClose').bootstrapToggle('destroy');
 });
 
-Template.openCloseVoting.helpers({
-  votingEnabled: function () {
-    return Votes.findOne({_id: Router.current().params._id}).votingEnabled || false;
-  }
-});
+// Template.openCloseVoting.helpers({
+//   votingEnabled: function () {
+//     return Votes.findOne({_id: Router.current().params._id}).votingEnabled || false;
+//   }
+// });
 
 
 Template.openCloseVoting.events({
