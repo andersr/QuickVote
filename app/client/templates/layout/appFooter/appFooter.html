@@ -15,18 +15,14 @@
           Participant vote details view
         {{/if}}
       {{else}}
-        All other views
+        {{> newVote linkText="Create your own QuickVote"}}
       {{/if}}
     </div>
     <div class="nav-right">
       {{#if voteDetails}}
         {{#if isOwner}}
           Owner vote details view
-        {{else}}
-          Participant vote details view
         {{/if}}
-      {{else}}
-        All other views
       {{/if}}
     </div>
   </div>
