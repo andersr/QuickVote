@@ -1,12 +1,16 @@
 <template name="appFooter">
 {{#if voteDetail}}
   <div class="ar-navbar app-footer">
-     <div class="nav-left">
+<!--      <div class="nav-left">
 
-    </div>
+    </div> -->
     <div class="nav-center">
       {{#if isOwner}}
-        {{> openCloseVoting}}        
+        {{> openCloseVoting}}
+        {{else}}
+        {{#unless votingEnabled}}
+         Voting is currently closed.
+        {{/unless}}
       {{/if}}
     </div>
     <div class="nav-right">
@@ -14,18 +18,18 @@
   </div>
 {{/if}}
   <div class="ar-navbar app-footer">
-     <div class="nav-left">
+  <!--    <div class="nav-left">
 
-    </div>
+    </div> -->
     <div class="nav-center">
 {{> contactEmail}}&nbsp;&nbsp;{{> gitHubLink}}
 {{#if voteDetail}}
 {{#unless isOwner}} | {{> newVote linkText="Create your own QuickVote"}}
 {{/unless}}
-{{#if}}
+{{/if}}
     </div>
-    <div class="nav-right">
+<!--     <div class="nav-right">
   
-    </div>
+    </div> -->
   </div>
 </template>
