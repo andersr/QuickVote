@@ -36,7 +36,7 @@
     "close"                : true,
 
     "modals"               : true,
-    "tooltip"              : false,
+    "tooltip"              : true,
     "popovers"             : false,
     "carousel"             : false,
 
