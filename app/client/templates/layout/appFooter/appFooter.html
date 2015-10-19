@@ -12,10 +12,10 @@
         {{#if isOwner}}
           Owner vote details view
         {{else}}
-          Participant vote details view
+          {{> newVote linkText="Create your own QuickVote"}}
         {{/if}}
       {{else}}
-        {{> newVote linkText="Create your own QuickVote"}}
+        {{> contactEmail}}
       {{/if}}
     </div>
     <div class="nav-right">
