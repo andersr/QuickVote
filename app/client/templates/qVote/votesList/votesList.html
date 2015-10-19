@@ -5,7 +5,7 @@
            {{#unless creatingVote}}
               <div class="align-center">
                 <h3>Sorry, nothing to vote on <i class="fa fa-frown-o"></i></h3>
-                <p><a href="" class="lead new-vote">Create a new vote?</a></p>
+                <p>{{> newVote linkText="Create a new vote?"}}</p>
               </div>
             {{/unless}}
           {{else}}
