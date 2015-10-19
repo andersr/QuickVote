@@ -27,3 +27,21 @@
     </div>
   </div>
 </template>
+
+<template name="voteFooter">
+  <div class="ar-navbar app-footer">
+     <div class="nav-left">
+        {{#if isOwner}}
+          +
+        {{/if}}
+    </div>
+    <div class="nav-center">
+    {{> openCloseVoting}}
+    </div>
+    <div class="nav-right">
+        {{#if isOwner}}
+          Share
+        {{/if}}
+    </div>
+  </div>
+</template>

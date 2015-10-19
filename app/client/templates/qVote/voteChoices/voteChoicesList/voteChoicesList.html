@@ -1,0 +1,41 @@
+<template name="voteChoicesList">
+  <table class="table">
+    <tbody>
+      {{#if showVoteResults}}
+      <tr>
+        <td>&nbsp;</td>
+        <td class="align-center">
+          <h2>Results</h2>
+        </td>
+        <td>&nbsp;</td>
+      </tr>
+      {{/if}}
+      {{#if isOwner}}
+      {{#unless showVoteResults}}
+      <tr>
+        <td>&nbsp;</td>
+        <td>
+          {{> addVoteChoice}}
+        </td>
+        <td>&nbsp;</td>
+      </tr>
+      {{/unless}}
+      {{/if}}
+      {{#each voteChoices}}
+      <tr class="vote-choices">
+        <td class="large-text vertical-middle">{{count}}</td>
+        <td class="large-text">{{title}}</td>
+        <td class="large-text vertical-middle">
+          {{#if isOwner}}
+          {{> deleteVoteChoice}}
+          {{else}}
+          {{#if votingEnabled}}
+          {{> upDownVote}}
+          {{/if}}
+          {{/if}}
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</template>

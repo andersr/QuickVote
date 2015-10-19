@@ -1,3 +1,9 @@
+// Template.mainLayout.helpers({
+//   foo: function () {
+//     // ...
+//   }
+// });
+
 Template.mainLayout.events({
 "click .logout":function(){ 
 
