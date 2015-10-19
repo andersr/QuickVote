@@ -1,57 +1,61 @@
 Template.appFooter.onCreated(function(){
   
-  var currentView;
-  var templateInstance = this;
-  templateInstance.headerLeft = new ReactiveVar();
+  // var currentView;
+  // var templateInstance = this;
+  // templateInstance.headerLeft = new ReactiveVar();
 
-  templateInstance.autorun(function(){
+  // templateInstance.autorun(function(){
 
-    if (Router.current().route != undefined) {
-      currentView = Router.current().route.getName();
-    } else {
-      currentView = "notFound";
-    };
+  //   if (Router.current().route != undefined) {
+  //     currentView = Router.current().route.getName();
+  //   } else {
+  //     currentView = "notFound";
+  //   };
 
-    if (Session.get("newVote")) {
-      templateInstance.headerLeft.set('newVote');
-    } else {
-      templateInstance.headerLeft.set(currentView);
-    };
+  //   if (Session.get("newVote")) {
+  //     templateInstance.headerLeft.set('newVote');
+  //   } else {
+  //     templateInstance.headerLeft.set(currentView);
+  //   };
 
-  });
+  // });
 
 });
 
 Template.appFooter.helpers({
-  headerLeft: function(){
-
-    switch (Template.instance().headerLeft.get()){
-      case 'voteDetail':
-        return {
-          icon: "icon ion-chevron-left",
-          event: "go-to-homepage",
-          title: "View all Votes"
-        };      
-
-      case 'newVote':
-        return {
-          icon: "icon ion-close",
-          event: "cancel-create-vote",
-          title: "Cancel creating vote"
-        };
-
-      default:
-        return {
-          icon: "icon ion-plus",
-          event: "new-vote",
-          title: "New Vote"
-        };
-    };
-  },
-
-  userNavOpen: function(){
-    return Session.get("userNavOpen");
+  voteDetail: function(){
+    return Router.current().route.getName() === 'voteDetail';
   }
+
+  // headerLeft: function(){
+
+  //   switch (Template.instance().headerLeft.get()){
+  //     case 'voteDetail':
+  //       return {
+  //         icon: "icon ion-chevron-left",
+  //         event: "go-to-homepage",
+  //         title: "View all Votes"
+  //       };      
+
+  //     case 'newVote':
+  //       return {
+  //         icon: "icon ion-close",
+  //         event: "cancel-create-vote",
+  //         title: "Cancel creating vote"
+  //       };
+
+  //     default:
+  //       return {
+  //         icon: "icon ion-plus",
+  //         event: "new-vote",
+  //         title: "New Vote"
+  //       };
+  //   };
+  // },
+
+  // userNavOpen: function(){
+  //   return Session.get("userNavOpen");
+  // }
 });
 
 Template.appFooter.events({
