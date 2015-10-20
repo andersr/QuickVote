@@ -31,6 +31,10 @@ var logoutAlert = function(pause) {
   };
 };
 
+var closeVoteChoiceForm = function() {
+  Session.set("addVoteChoice", false);
+};
+
 
 // var redirectIfDeleted = function(pause) {
 //   if (this.params._id == null || this.params._id == undefined) {
@@ -43,6 +47,8 @@ var logoutAlert = function(pause) {
 Router.onBeforeAction(anonymousCreateVote, {only: ['createVote']});
 Router.onBeforeAction(goToHomeByDefault, {only: ['login']});
 Router.onAfterAction(logoutAlert, {only: ['login']});
+Router.onStop(closeVoteChoiceForm, {only: ['voteDetail']});
+
 // Router.onAfterAction(redirectIfDeleted, {only: ['voteDetail']});
 
 
