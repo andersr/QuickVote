@@ -12,13 +12,14 @@
         {{else}}
           {{> newVote linkText="Create your own QuickVote"}}
         {{/if}}
+        {{else}}
+        {{> footerLinks}}
       {{/if}}
     </div>
     <div class="nav-right">
-      <ul class="list-inline">
-        <li>{{> contactEmail}}</li>
-        <li>{{> gitHubLink}}</li>
-      </ul>
+      {{#if voteDetail}}
+      {{> footerLinks}}
+      {{/if}}
     </div>
   </div>
 </template>
