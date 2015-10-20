@@ -1,5 +1,5 @@
 Template.addVoteChoice.onRendered(function(){
-  $( ".newVoteChoice" ).focus();
+  $( "input[name=voteChoiceTitle]" ).focus();
 });
 
 Template.addVoteChoice.events({

@@ -27,6 +27,9 @@ Template.voteChoicesList.helpers({
     };
    
   },
+  showVoteChoiceForm: function(){
+    return Session.get("addVoteChoice");
+  },
   showVoteResults: function(){
     return Template.instance().showVoteResults.get();
   },

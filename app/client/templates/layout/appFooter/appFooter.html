@@ -1,6 +1,9 @@
 <template name="appFooter">
   <div class="ar-navbar app-footer">
     <div class="nav-left">
+      {{#if voteDetail}}
+        {{> voteControls}}
+      {{/if}}
     </div>
     <div class="nav-center">
       {{#if voteDetail}}
