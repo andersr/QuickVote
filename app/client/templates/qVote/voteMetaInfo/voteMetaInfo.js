@@ -4,10 +4,16 @@
 
 Template.voteMetaInfo.helpers({
   voteCreatorName: function () {
-    // var vote = Votes.findOne({_id: Router.current().params._id }).ownerPublicName;
+    var vote = Votes.findOne({_id: Router.current().params._id });
+    
+    if (vote.owner === Meteor.userId()) {
+      return "you";
+    } else {
+      return vote.ownerPublicName;
+    };
     // var voteOwner = Votes.findOne({_id: Router.current().params._id }).owner;
     // var owner = Meteor.users.findOne({_id: vote.owner });
-    return Votes.findOne({_id: Router.current().params._id }).ownerPublicName;
+    // return Votes.findOne({_id: Router.current().params._id }).ownerPublicName;
     
     
   }
