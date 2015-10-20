@@ -8,8 +8,15 @@ AppLib = {
   },
 
   txtHelpers: {
+
     capitalizeFirstLetter: function(str){
       return str[0].toUpperCase() + str.substr(1);
+    },
+
+    firstWordFirstCharOfSecondWord: function(str){
+      var words = str.split(' ');
+
+      return words[0] + " " + words[1].charAt(0);
     }
   }
   
