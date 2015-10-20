@@ -40,6 +40,7 @@ Meteor.methods({
     var voteAttributes = _.extend(voteAttributes, {
       owner: Meteor.userId(),
       ownerPublicName: ownerPublicName,
+      createdAt: new Date(),
       updatedAt: new Date(),
       votingEnabled: false,
       votingInitiated: false,

@@ -1,7 +1,19 @@
-// Template.voteMetaInfo.onRendered(function(){
-//   $( "input[name=voteTitle]" ).focus();
-// });
+Template.voteMetaInfo.onCreated(function(){
+  var
+  templateInstance                      = this;
+  templateInstance.createdAtTimeAgo     = new ReactiveVar();
 
+  templateInstance.autorun(function(){
+
+    var votesSubscription = templateInstance.subscribe('votes');
+
+    if (votesSubscription.ready()) {
+      var vote = Votes.findOne({_id: Router.current().params._id });      
+      templateInstance.createdAtTimeAgo.set(moment(vote.createdAt).fromNow());
+    };
+  });
+
+});
 Template.voteMetaInfo.helpers({
   voteCreatorName: function () {
     var vote = Votes.findOne({_id: Router.current().params._id });
@@ -11,11 +23,10 @@ Template.voteMetaInfo.helpers({
     } else {
       return vote.ownerPublicName;
     };
-    // var voteOwner = Votes.findOne({_id: Router.current().params._id }).owner;
-    // var owner = Meteor.users.findOne({_id: vote.owner });
-    // return Votes.findOne({_id: Router.current().params._id }).ownerPublicName;
     
-    
+  },
+  createdAtTimeAgo: function(){
+    return Template.instance().createdAtTimeAgo.get();
   }
 });
 
