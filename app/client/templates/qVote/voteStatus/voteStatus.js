@@ -40,20 +40,36 @@ Template.voteStatus.onCreated(function(){
 Template.voteStatus.helpers({
 
   currentStatus: function(){
-    var currentVote = Votes.find({_id: Router.current().params._id });
-    var currentStatus = currentVote.votingInitiated;
+    var currentVote = Votes.findOne({_id: Router.current().params._id });
+    var votingEnabled = currentVote.votingEnabled;
+    var votingInitiated = currentVote.votingInitiated;
 
-    return currentStatus? "Voting is currently in progress." : "Voting hasn't started yet.";
 
-  }
-  ,
+    if (votingEnabled && !votingInitiated) { 
 
-  ownerActions: function(){
+      return {
+        message: "Voting hasn't started yet.",
+        ownerAction: "Start this vote",
+        classes: "btn btn-default start-vote"
+      }
 
-    return {
-      label: "Start this vote",
-      action: "foo"
-    }
+    } else if (votingEnabled && votingInitiated){
+
+      return {
+        message: "Voting is currently in progress.",
+        ownerAction: "End Voting",
+        classes: "btn btn-default end-vote"
+      }
+
+    } else if (!votingEnabled && votingInitiated){
+
+      return {
+        message: "Voting has ended.",
+        ownerAction: "Re-open this vote",
+        classes: "start-vote"
+      }
+
+    };
 
   }
 
