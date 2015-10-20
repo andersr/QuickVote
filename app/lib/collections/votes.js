@@ -56,12 +56,10 @@ Meteor.methods({
     }
 
   },
-
-  openCloseVote: function(voteAttributes){
+  startVote: function(voteAttributes){
     check(Meteor.userId(), String);
     check(voteAttributes, {
-      voteId: String,
-      votingEnabled: Boolean
+      voteId: String
     });
  
     var vote = Votes.findOne({_id: voteAttributes.voteId });
@@ -70,13 +68,51 @@ Meteor.methods({
 
       Votes.upsert(voteAttributes.voteId, {
         $set: { 
-          votingEnabled: voteAttributes.votingEnabled,
+          votingEnabled: true,
           votingInitiated: true
         }
       });
 
     }
   },
+  endVote: function(voteAttributes){
+    check(Meteor.userId(), String);
+    check(voteAttributes, {
+      voteId: String
+    });
+ 
+    var vote = Votes.findOne({_id: voteAttributes.voteId });
+
+    if(vote.owner === Meteor.userId()){
+
+      Votes.upsert(voteAttributes.voteId, {
+        $set: { 
+          votingEnabled: false
+        }
+      });
+
+    }
+  },
+  // openCloseVote: function(voteAttributes){
+  //   check(Meteor.userId(), String);
+  //   check(voteAttributes, {
+  //     voteId: String,
+  //     votingEnabled: Boolean
+  //   });
+ 
+  //   var vote = Votes.findOne({_id: voteAttributes.voteId });
+
+  //   if(vote.owner === Meteor.userId()){
+
+  //     Votes.upsert(voteAttributes.voteId, {
+  //       $set: { 
+  //         votingEnabled: voteAttributes.votingEnabled,
+  //         votingInitiated: true
+  //       }
+  //     });
+
+  //   }
+  // },
   
   // MAKE SURE THIS WORKS NOW
   updateVoteWinners: function(voteAttributes){

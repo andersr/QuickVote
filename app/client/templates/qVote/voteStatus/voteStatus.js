@@ -45,7 +45,7 @@ Template.voteStatus.helpers({
     var votingInitiated = currentVote.votingInitiated;
 
 
-    if (votingEnabled && !votingInitiated) { 
+    if (!votingEnabled && !votingInitiated) { 
 
       return {
         message: "Voting hasn't started yet.",
@@ -75,32 +75,29 @@ Template.voteStatus.helpers({
 
 });
 
-Template.upDownVote.events({
+Template.voteStatus.events({
 
-  "click .toggle-up-down-vote":function(){
+  "click .start-vote":function(){
+    var voteAttributes = {
+      voteId: Router.current().params._id
+    };
+    Meteor.call('startVote', voteAttributes, function(error, result){
+      if (error){
+        console.log(error.reason);
+      }
+    });
+  },
 
-    if (!Meteor.userId()) {
+  "click .end-vote":function(){
 
-      Session.set("loginViaModal", true);
-      $('#loginModal').modal('show');
-
-    } else {
-
-      var thisVote = Template.instance().firstVote.get()? true : !Template.instance().previousVote.get();
-
-      var userVoteAttributes = {
-        voteChoiceId: Template.instance().currentVoteChoiceId.get(),
-        upVote:       thisVote,
-        firstVote:      Template.instance().firstVote.get()
-      };
-
-      Meteor.call('userVoteUpDownVote', userVoteAttributes, function (error, result) {
-        if (error){
-          console.log(error.reason);
-        };
-      });
-
+    var voteAttributes = {
+      voteId: Router.current().params._id
     };
 
+    Meteor.call('endVote', voteAttributes, function(error, result){
+      if (error){
+        console.log(error.reason);
+      }
+    });
   }
 });

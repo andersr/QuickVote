@@ -3,7 +3,7 @@
   {{currentStatus.message}}
 </div>
   {{#if isOwner}}
-  <a href="" class="btn btn-default {{currentStatus.classes}}" role="button">{{currentStatus.ownerAction}}</a>
+  <a href="" class="{{currentStatus.classes}}" role="button">{{currentStatus.ownerAction}}</a>
   {{else}}
   {{> newVote linkText="Create your own QuickVote"}}
  {{/if}}
