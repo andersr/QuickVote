@@ -1,0 +1,12 @@
+<template name="voteStatus">
+<div class="flex-line">
+  {{currentStatus}}
+</div>
+  {{#if isOwner}}
+<button type="button" class="btn btn-default {{ownerActions.action}}">
+  {{ownerActions.label}}
+  </button>
+  {{else}}
+  {{> newVote linkText="Create your own QuickVote"}}
+ {{/if}}
+</template>

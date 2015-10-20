@@ -7,18 +7,14 @@
     </div>
     <div class="nav-center">
       {{#if voteDetail}}
-        {{#if isOwner}}
-          {{> openCloseVoting}}
-        {{else}}
-          {{> newVote linkText="Create your own QuickVote"}}
-        {{/if}}
-        {{else}}
+        {{> voteStatus}}
+      {{else}}
         {{> footerLinks}}
       {{/if}}
     </div>
     <div class="nav-right">
       {{#if voteDetail}}
-      {{> footerLinks}}
+        {{> footerLinks}}
       {{/if}}
     </div>
   </div>
