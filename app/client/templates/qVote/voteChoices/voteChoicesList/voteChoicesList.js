@@ -2,6 +2,7 @@ Template.voteChoicesList.onCreated(function(){
   var
   templateInstance                  = this;
   templateInstance.showVoteResults  = new ReactiveVar();
+ 
    
   templateInstance.autorun(function(){
 
@@ -9,7 +10,12 @@ Template.voteChoicesList.onCreated(function(){
 
     if (votesSubscription.ready()) {
       var vote = Votes.findOne({_id: Router.current().params._id});
-      templateInstance.showVoteResults.set(!vote.votingEnabled && vote.votingInitiated);      
+      templateInstance.showVoteResults.set(!vote.votingEnabled && vote.votingInitiated);
+
+      if(VoteChoices.find({voteId: vote._id }).count() === 0){
+        Session.set("addVoteChoice", true);
+      };
+
     };
   });
 

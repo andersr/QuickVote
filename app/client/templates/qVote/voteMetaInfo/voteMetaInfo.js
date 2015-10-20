@@ -4,10 +4,10 @@
 
 Template.voteMetaInfo.helpers({
   voteCreatorName: function () {
-    var vote = Votes.findOne({_id: Router.current().params._id });
+    // var vote = Votes.findOne({_id: Router.current().params._id }).ownerPublicName;
     // var voteOwner = Votes.findOne({_id: Router.current().params._id }).owner;
-    var owner = Meteor.users.findOne({_id: vote.owner });
-    return AppLib.txtHelpers.firstWordFirstCharOfSecondWord(owner.profile.name);
+    // var owner = Meteor.users.findOne({_id: vote.owner });
+    return Votes.findOne({_id: Router.current().params._id }).ownerPublicName;
     
     
   }

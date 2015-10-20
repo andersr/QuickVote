@@ -7,11 +7,18 @@ Template.createVote.events({
     // console.log("submitted new vote");
     event.preventDefault();
 
-    var voteTitle = event.target.voteTitle.value;
+    //check again for meteor user id
 
-    var voteAttributes = {
-      title: voteTitle
-    };
+    if (!Meteor.userId()) {
+      Session.set("loginViaModal", true);
+      $('#loginModal').modal('show');
+    } else {
+
+      var voteTitle = event.target.voteTitle.value;
+
+      var voteAttributes = {
+        title: voteTitle
+      };
 
     Meteor.call('createVote', voteAttributes, function(error, result){
       if (error){
@@ -22,6 +29,13 @@ Template.createVote.events({
         Session.set("addVoteChoice", true);
       }
     });
+
+
+
+      
+    };
+
+    
   }
   ,
   "keyup input": function(e,t){

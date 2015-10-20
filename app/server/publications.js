@@ -28,6 +28,6 @@ Meteor.publish("userData", function () {
         }
       });
   } else {
-    this.ready();
+   this.ready();
   }
 });
