@@ -19,7 +19,18 @@ Template.createVote.events({
       } else {
         Session.set("newVote", false);
         Router.go('voteDetail', { _id: result.voteId });
+        Session.set("addVoteChoice", true);
       }
     });
+  }
+  ,
+  "keyup input": function(e,t){
+    e.preventDefault();
+
+    if (e.keyCode == 27){
+      Session.set("newVote", false);
+    };
+    e.stopPropagation();
+
   }
 });
