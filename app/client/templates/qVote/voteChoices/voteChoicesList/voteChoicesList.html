@@ -2,6 +2,7 @@
   <table class="table">
     <tbody>
       {{#if showVoteResults}}
+        {{#unless showVoteChoiceForm}}
       <tr>
         <td>&nbsp;</td>
         <td class="align-center">
@@ -9,17 +10,18 @@
         </td>
         <td>&nbsp;</td>
       </tr>
+      {{/unless}}
       {{/if}}
       {{#if isOwner}}
-      {{#if showVoteChoiceForm}}
-      <tr>
-        <td>&nbsp;</td>
-        <td>
-          {{> addVoteChoice}}
-        </td>
-        <td>&nbsp;</td>
-      </tr>
-      {{/if}}
+        {{#if showVoteChoiceForm}}
+        <tr>
+          <td>{{> cancelAddVoteChoice}}</td>
+          <td>
+            {{> addVoteChoice}}
+          </td>
+          <td>&nbsp;</td>
+        </tr>
+        {{/if}}
       {{/if}}
       {{#each voteChoices}}
       <tr class="vote-choices">

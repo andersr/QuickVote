@@ -15,7 +15,6 @@ Template.voteChoicesList.onCreated(function(){
 
 });
 
-
 Template.voteChoicesList.helpers({
   
   voteChoices:function(){

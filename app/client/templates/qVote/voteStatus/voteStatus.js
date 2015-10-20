@@ -1,49 +1,33 @@
 Template.voteStatus.onCreated(function(){
-  // var
-  // templateInstance                 = this;
+  var
+  templateInstance                 = this;
 
-  // templateInstance.currentVote     = new ReactiveVar(),
-  // templateInstance.votingEnabled   = new ReactiveVar(),
-  // templateInstance.votingInitiated = new ReactiveVar(false)
-  // ;
+  templateInstance.votingEnabled   = new ReactiveVar(),
+  templateInstance.votingInitiated = new ReactiveVar()
+  ;
 
-  // templateInstance.autorun(function(){
+  templateInstance.autorun(function(){
 
-  //   var votesSubscription = templateInstance.subscribe('votes');
+    var votesSubscription = templateInstance.subscribe('votes');
 
-  //   if (votesSubscription.ready()) {
-  //     // templateInstance.currentVote.set()
-
-  //     if (Meteor.userId()) {
-
-  //       var firstVote = UserVotes.find({
-  //         voteChoiceId:templateInstance.currentVoteChoiceId.get(),
-  //         userId: Meteor.userId()
-  //       }, {limit: 1}).count() === 0;
-  //       templateInstance.firstVote.set(firstVote); 
-
-  //       if (templateInstance.firstVote.get()) {
-  //         templateInstance.previousVote.set(false);
-  //       } else {
-  //         var userVote = UserVotes.findOne({
-  //           voteChoiceId:templateInstance.currentVoteChoiceId.get(),
-  //           userId: Meteor.userId()
-  //         });
-  //         templateInstance.previousVote.set(userVote.upVote);      
-  //       };
-  //     };
-  //   };
-  // });
-
+    if (votesSubscription.ready()) {
+      var vote = Votes.findOne({_id: Router.current().params._id });
+          
+      templateInstance.votingEnabled.set(vote.votingEnabled);
+    
+      templateInstance.votingInitiated.set(vote.votingInitiated);
+     
+      
+    };
+  });
 });
 
 Template.voteStatus.helpers({
 
   currentStatus: function(){
-    var currentVote = Votes.findOne({_id: Router.current().params._id });
-    var votingEnabled = currentVote.votingEnabled;
-    var votingInitiated = currentVote.votingInitiated;
 
+    var votingEnabled = Template.instance().votingEnabled.get();
+    var votingInitiated = Template.instance().votingInitiated.get();
 
     if (!votingEnabled && !votingInitiated) { 
 
@@ -84,6 +68,8 @@ Template.voteStatus.events({
     Meteor.call('startVote', voteAttributes, function(error, result){
       if (error){
         console.log(error.reason);
+      } else{
+        Session.set("addVoteChoice", false);
       }
     });
   },

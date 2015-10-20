@@ -2,6 +2,16 @@ Template.addVoteChoice.onRendered(function(){
   $( "input[name=voteChoiceTitle]" ).focus();
 });
 
+Template.addVoteChoice.helpers({
+  cancelAddVoteChoice: function () {
+    return {
+      icon: "icon ion-close",
+      event: "cancel-add-vote-choice",
+      title: "Cancel adding vote choice"
+    };
+  }
+});
+
 Template.addVoteChoice.events({
   "submit .add-vote-choice-form": function(event,template){
     event.preventDefault();
