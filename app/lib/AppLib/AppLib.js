@@ -15,9 +15,7 @@ AppLib = {
 
     firstWordFirstCharOfSecondWord: function(str){
       var words = str.split(' ');
-      var firstWordAndFirstCharOfSecondWord = words[0] + " " + words[1].charAt(0) + ".";
-
-      return firstWordAndFirstCharOfSecondWord;
+      return words[0] + " " + words[1].charAt(0);
     }
   }
   
