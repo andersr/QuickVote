@@ -1,17 +1,31 @@
 Template.voteMetaInfo.onCreated(function(){
-  var
-  templateInstance                      = this;
-  templateInstance.createdAtTimeAgo     = new ReactiveVar();
+  // var
+  // templateInstance                      = this;
+  // // var checkCreatedTimeAgo;
+  // templateInstance.voteCreatedAt     = new ReactiveVar();
 
-  templateInstance.autorun(function(){
+  // var createdAt = Votes.findOne({_id: Router.current().params._id }).createdAt;
+    // console.log(createdAt);
+    // var createdAtTimeAgo;
 
-    var votesSubscription = templateInstance.subscribe('votes');
+  // var checkCreatedAt = Meteor.setInterval(function() {
+  //     Template.instance().voteCreatedAt.set(moment(createdAt).fromNow());
+  //   }, 60000);
 
-    if (votesSubscription.ready()) {
-      var vote = Votes.findOne({_id: Router.current().params._id });      
-      templateInstance.createdAtTimeAgo.set(moment(vote.createdAt).fromNow());
-    };
-  });
+  // templateInstance.autorun(function(){
+
+  //   var votesSubscription = templateInstance.subscribe('votes');
+
+  //   if (votesSubscription.ready()) {
+  //     var vote = Votes.findOne({_id: Router.current().params._id }); 
+
+  //     // templateInstance.createdAtTimeAgo.set(moment(vote.createdAt).fromNow());
+  //   };
+  // });
+
+    // checkCreatedTimeAgo = Meteor.setInterval(function() {
+    //  Template.instance().createdAtTimeAgo.set(moment(vote.createdAt).fromNow());
+    // }, 60000);
 
 });
 Template.voteMetaInfo.helpers({
@@ -26,7 +40,10 @@ Template.voteMetaInfo.helpers({
     
   },
   createdAtTimeAgo: function(){
-    return Template.instance().createdAtTimeAgo.get();
+    var createdAt = Votes.findOne({_id: Router.current().params._id }).createdAt;
+    return moment(createdAt).from(TimeSync.serverTime());
+
+    // return Template.instance().voteCreatedAt.get();
   }
 });
 
