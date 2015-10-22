@@ -52,6 +52,41 @@ UserVotes.deny({
 
 Meteor.methods({
 
+  userVoteUpVote:function(userVoteAttributes){
+
+    check(Meteor.userId(), String);
+    check(userVoteAttributes, {
+      voteChoiceId: String,
+      firstVote: Boolean
+    });
+
+    var voteChoice = VoteChoices.findOne({ _id: userVoteAttributes.voteChoiceId });
+
+    if (userVoteAttributes.firstVote) {
+
+      var userVote = UserVotes.insert({
+        voteChoiceId: userVoteAttributes.voteChoiceId,
+        voteId: voteChoice.voteId,
+        userId: Meteor.userId(),
+        upVote: true
+      });
+
+    } else {
+
+      var userVote = UserVotes.findOne({
+        voteChoiceId: userVoteAttributes.voteChoiceId,
+        userId: Meteor.userId()
+      });
+
+      UserVotes.update(userVote._id, {
+        $set: { 
+          upVote: true
+        }
+      });
+    };
+  },
+
+
   userVoteUpDownVote:function(userVoteAttributes){
 
     check(Meteor.userId(), String);
