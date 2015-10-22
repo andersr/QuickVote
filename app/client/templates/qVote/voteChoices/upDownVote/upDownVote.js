@@ -87,34 +87,26 @@ Template.upDownVote.events({
         firstVote:    true
       });
 
-      // upVote this vote
-      // Meteor.call('userVoteUpDownVote',
-      //   {
-      //     voteChoiceId: Template.instance().currentVoteChoiceId.get(),
-      //     upVote:       true,
-      //     firstVote:    true
-      //   },
-      //   function (error, result) {
-      //     if (error){
-      //       console.log(error.reason);
-      //     }; 
-      //   }
-      // );
-
       // otherwise, is the current vote already an upvote?
     } else if (Template.instance().previousVote.get() === true) {
 
       // then downVote this vote
-      Meteor.call('userVoteUpDownVote', {
+      QV.userVoteDownVote({
         voteChoiceId: Template.instance().currentVoteChoiceId.get(),
-        upVote: false,
-        firstVote: false
-      }, function (error, result) {
-          if (error){
-            console.log(error.reason);
-          }; 
-        }
-     );
+        firstVote:    false
+      });
+
+
+     //  Meteor.call('userVoteUpDownVote', {
+     //    voteChoiceId: Template.instance().currentVoteChoiceId.get(),
+     //    upVote: false,
+     //    firstVote: false
+     //  }, function (error, result) {
+     //      if (error){
+     //        console.log(error.reason);
+     //      }; 
+     //    }
+     // );
 
   } else {
 

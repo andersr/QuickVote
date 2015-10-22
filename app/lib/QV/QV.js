@@ -10,6 +10,16 @@ QV = {
 
   },
 
+  userVoteDownVote: function(userVoteAttributes){
+
+    Meteor.call('userVoteDownVote',userVoteAttributes, function (error, result) {
+      if (error){
+        console.log(error.reason);
+      }; 
+    });
+
+  },
+
   updateVoteWinners: function(voteId){
 
   var vote                   = Votes.findOne({_id: voteId});
