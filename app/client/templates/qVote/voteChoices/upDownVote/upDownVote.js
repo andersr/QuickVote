@@ -87,7 +87,7 @@ Template.upDownVote.events({
         firstVote:    true
       });
 
-      // otherwise, is the current vote already an upvote?
+      // otherwise, is the current vote already an upvote? THIS MAY BE THE ISSUE
     } else if (Template.instance().previousVote.get() === true) {
 
       // then downVote this vote
@@ -97,58 +97,26 @@ Template.upDownVote.events({
       });
 
 
-     //  Meteor.call('userVoteUpDownVote', {
-     //    voteChoiceId: Template.instance().currentVoteChoiceId.get(),
-     //    upVote: false,
-     //    firstVote: false
-     //  }, function (error, result) {
-     //      if (error){
-     //        console.log(error.reason);
-     //      }; 
-     //    }
-     // );
-
   } else {
 
     //upvote this vote
-    Meteor.call('userVoteUpDownVote',
-      {
-        voteChoiceId: Template.instance().currentVoteChoiceId.get(),
-        upVote:       true,
-        firstVote:    Template.instance().firstVote.get()
-      },
-      function (error, result) {
-        if (error){
-          console.log(error.reason);
-        }; 
-      }
-    );
+    QV.userVoteUpVote({
+      voteChoiceId: Template.instance().currentVoteChoiceId.get(),
+      firstVote:    Template.instance().firstVote.get()
+    });
 
-   // look for other upVotes and downvote them
-
+    // look for other upVotes and downvote them
     var votesByThisVoter = Template.instance().votesByThisVoter.get();
-    // console.log("votesByThisVoter: " + votesByThisVoter);
-
     votesByThisVoter.forEach(function (userVote) {
-
-      // if this is not the current vote choice AND it is an upVote
       if (userVote.voteChoiceId != Template.instance().currentVoteChoiceId.get() && userVote.upVote){
-
-        // downVote it
-         Meteor.call('userVoteUpDownVote', {
-            voteChoiceId: userVote.voteChoiceId,
-            upVote: false,
-            firstVote: false
-          }, function (error, result) {
-              if (error){
-                console.log(error.reason);
-              }; 
-            }
-         );
+        QV.userVoteDownVote({
+          voteChoiceId: userVote.voteChoiceId,
+          firstVote:    false
+        });
       };
     });
 
   };
-  // };
+
   }
 });

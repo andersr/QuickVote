@@ -26,7 +26,7 @@ QV = {
   var winningChoices         = [];
   var voteChoicesTopCount    = VoteChoices.findOne({voteId: vote._id}, {count: 1, sort: { count: -1 }}).count;
   var voteChoices            = VoteChoices.find({ voteId: vote._id });
-  console.log("voteChoicesTopCount: " + voteChoicesTopCount );
+  // console.log("voteChoicesTopCount: " + voteChoicesTopCount );
 
   if (voteChoicesTopCount > 0) {
 
