@@ -3,6 +3,8 @@ Template.upDownVote.onCreated(function(){
   templateInstance                      = this;
 
   templateInstance.currentVoteChoiceId  = new ReactiveVar(templateInstance.data._id),
+  templateInstance.currentVoteId        = new ReactiveVar(templateInstance.data.voteId),
+  templateInstance.votesByThisVoter     = new ReactiveVar(),
   templateInstance.firstVote            = new ReactiveVar(true),
   templateInstance.previousVote         = new ReactiveVar(false)
   ;
@@ -14,6 +16,9 @@ Template.upDownVote.onCreated(function(){
     if (userVotesSubscription.ready()) {
 
       if (Meteor.userId()) {
+
+        var votesByThisVoter = UserVotes.find({userId: Meteor.userId(), voteId: templateInstance.currentVoteId.get()});
+        templateInstance.votesByThisVoter.set(votesByThisVoter);      
 
         var firstVote = UserVotes.find({
           voteChoiceId:templateInstance.currentVoteChoiceId.get(),
@@ -69,7 +74,21 @@ Template.upDownVote.events({
 
     } else {
 
-      var thisVote = Template.instance().firstVote.get()? true : !Template.instance().previousVote.get();
+      votesByThisVoter.forEach(function (userVote) {
+        // if the current vote is an upvote
+        if (userVote.voteChoiceId === Template.instance().currentVoteChoiceId.get()){
+           if (userVote.upVote){
+          // update this userVote to be a downVote
+          } else {
+            // update this userVote to be an upVote
+          }
+        } else {
+          // downVote this userVote
+        };
+       
+      });
+        
+     var thisVote = Template.instance().firstVote.get()? true : !Template.instance().previousVote.get();
 
       var userVoteAttributes = {
         voteChoiceId: Template.instance().currentVoteChoiceId.get(),
