@@ -5,6 +5,7 @@ Template.upDownVote.onCreated(function(){
   templateInstance.currentVoteChoiceId  = new ReactiveVar(templateInstance.data._id),
   templateInstance.currentVoteId        = new ReactiveVar(templateInstance.data.voteId),
   templateInstance.votesByThisVoter     = new ReactiveVar(),
+  templateInstance.firstOverallVote     = new ReactiveVar(),
   templateInstance.firstVote            = new ReactiveVar(true),
   templateInstance.previousVote         = new ReactiveVar(false)
   ;
@@ -17,7 +18,12 @@ Template.upDownVote.onCreated(function(){
 
       if (Meteor.userId()) {
 
-        var votesByThisVoter = UserVotes.find({userId: Meteor.userId(), voteId: templateInstance.currentVoteId.get()});
+        var firstOverallVote = UserVotes.find({userId: Meteor.userId(), voteId: templateInstance.currentVoteId.get()}).count() === 0;
+
+        templateInstance.firstOverallVote.set(firstOverallVote);
+
+        var votesByThisVoter = UserVotes.find({userId: Meteor.userId(), voteId: templateInstance.currentVoteId.get()}).fetch();
+             
         templateInstance.votesByThisVoter.set(votesByThisVoter);      
 
         var firstVote = UserVotes.find({
@@ -68,41 +74,103 @@ Template.upDownVote.events({
   "click .toggle-up-down-vote":function(){
 
     if (!Meteor.userId()) {
-
       Session.set("loginViaModal", true);
       $('#loginModal').modal('show');
-
     } else {
 
-      votesByThisVoter.forEach(function (userVote) {
-        // if the current vote is an upvote
-        if (userVote.voteChoiceId === Template.instance().currentVoteChoiceId.get()){
-           if (userVote.upVote){
-          // update this userVote to be a downVote
-          } else {
-            // update this userVote to be an upVote
+      if (Template.instance().firstOverallVote.get()) {
+
+        // update this userVote to be an upVote
+        Meteor.call('userVoteUpDownVote',
+          {
+            voteChoiceId: Template.instance().currentVoteChoiceId.get(),
+            upVote:       true,
+            firstVote:    true
+          },
+          function (error, result) {
+            if (error){
+              console.log(error.reason);
+            }; 
           }
+        );
+
+      } else {
+
+      var votesByThisVoter = Template.instance().votesByThisVoter.get();
+      // console.log("votesByThisVoter: " + votesByThisVoter);
+
+      votesByThisVoter.forEach(function (userVote) {
+
+        // for the current vote choice...
+        if (userVote.voteChoiceId === Template.instance().currentVoteChoiceId.get()){
+
+           // if it is currently an upvote
+           if (userVote.upVote){
+
+             // update this userVote to be a downVote
+             Meteor.call('userVoteUpDownVote', {
+                voteChoiceId: userVote.voteChoiceId,
+                upVote: false,
+                firstVote: false
+              }, function (error, result) {
+                  if (error){
+                    console.log(error.reason);
+                  }; 
+                }
+             );
+
+           } else {
+
+            // update this userVote to be an upVote
+            Meteor.call('userVoteUpDownVote',
+              {
+                voteChoiceId: userVote.voteChoiceId,
+                upVote:       true,
+                firstVote:    Template.instance().firstVote.get()
+              },
+              function (error, result) {
+                if (error){
+                  console.log(error.reason);
+                }; 
+              }
+            );
+
+          };
+
+
         } else {
-          // downVote this userVote
+
+          // downVote all other userVotes
+          Meteor.call('userVoteUpDownVote',
+            {
+              voteChoiceId: userVote.voteChoiceId,
+              upVote:       false,
+              firstVote:    false
+            },
+            function (error, result) {
+              if (error){
+                console.log(error.reason);
+              }; 
+            }
+          );
         };
-       
-      });
-        
-     var thisVote = Template.instance().firstVote.get()? true : !Template.instance().previousVote.get();
-
-      var userVoteAttributes = {
-        voteChoiceId: Template.instance().currentVoteChoiceId.get(),
-        upVote:       thisVote,
-        firstVote:      Template.instance().firstVote.get()
-      };
-
-      Meteor.call('userVoteUpDownVote', userVoteAttributes, function (error, result) {
-        if (error){
-          console.log(error.reason);
-        };
-      });
-
+      }); 
     };
-
+  };
   }
 });
+
+
+      // var thisVote = Template.instance().firstVote.get()? true : !Template.instance().previousVote.get();
+
+      // var userVoteAttributes = {
+      //   voteChoiceId: Template.instance().currentVoteChoiceId.get(),
+      //   upVote:       thisVote,
+      //   firstVote:      Template.instance().firstVote.get()
+      // };
+
+      // Meteor.call('userVoteUpDownVote', userVoteAttributes, function (error, result) {
+      //   if (error){
+      //     console.log(error.reason);
+      //   };
+      // });
