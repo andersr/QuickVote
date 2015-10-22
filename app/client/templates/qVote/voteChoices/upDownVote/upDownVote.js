@@ -78,9 +78,10 @@ Template.upDownVote.events({
       $('#loginModal').modal('show');
     } else {
 
+      // is this the current user's first overall vote for this vote?
       if (Template.instance().firstOverallVote.get()) {
 
-        // update this userVote to be an upVote
+        // upVote this vote
         Meteor.call('userVoteUpDownVote',
           {
             voteChoiceId: Template.instance().currentVoteChoiceId.get(),
@@ -94,72 +95,108 @@ Template.upDownVote.events({
           }
         );
 
-      } else {
+        // otherwise, is the current vote already an upvote?
+      } else if (Template.instance().previousVote.get() === true) {
+
+        // then downVote this vote
+        Meteor.call('userVoteUpDownVote', {
+          voteChoiceId: Template.instance().currentVoteChoiceId.get(),
+          upVote: false,
+          firstVote: false
+        }, function (error, result) {
+            if (error){
+              console.log(error.reason);
+            }; 
+          }
+       );
+
+    } else {
+
+      //upvote this vote
+      Meteor.call('userVoteUpDownVote',
+        {
+          voteChoiceId: Template.instance().currentVoteChoiceId.get(),
+          upVote:       true,
+          firstVote:    Template.instance().firstVote.get()
+        },
+        function (error, result) {
+          if (error){
+            console.log(error.reason);
+          }; 
+        }
+      );
+
+     // look for other upVotes and downvote them
 
       var votesByThisVoter = Template.instance().votesByThisVoter.get();
       // console.log("votesByThisVoter: " + votesByThisVoter);
 
       votesByThisVoter.forEach(function (userVote) {
 
-        // for the current vote choice...
-        if (userVote.voteChoiceId === Template.instance().currentVoteChoiceId.get()){
+        // if this is not the current vote choice AND it is an upVote
+        if (userVote.voteChoiceId != Template.instance().currentVoteChoiceId.get() && userVote.upVote){
 
-           // if it is currently an upvote
-           if (userVote.upVote){
-
-             // update this userVote to be a downVote
-             Meteor.call('userVoteUpDownVote', {
-                voteChoiceId: userVote.voteChoiceId,
-                upVote: false,
-                firstVote: false
-              }, function (error, result) {
-                  if (error){
-                    console.log(error.reason);
-                  }; 
-                }
-             );
-
-           } else {
-
-            // update this userVote to be an upVote
-            Meteor.call('userVoteUpDownVote',
-              {
-                voteChoiceId: userVote.voteChoiceId,
-                upVote:       true,
-                firstVote:    Template.instance().firstVote.get()
-              },
-              function (error, result) {
+          // downVote it
+           Meteor.call('userVoteUpDownVote', {
+              voteChoiceId: userVote.voteChoiceId,
+              upVote: false,
+              firstVote: false
+            }, function (error, result) {
                 if (error){
                   console.log(error.reason);
                 }; 
               }
-            );
-
-          };
-
-
-        } else {
-
-          // downVote all other userVotes
-          Meteor.call('userVoteUpDownVote',
-            {
-              voteChoiceId: userVote.voteChoiceId,
-              upVote:       false,
-              firstVote:    false
-            },
-            function (error, result) {
-              if (error){
-                console.log(error.reason);
-              }; 
-            }
-          );
+           );
         };
-      }); 
+      });
+      
     };
   };
   }
 });
 
+        // else {
+
+
+        //   // downVote all other userVotes
+        //   Meteor.call('userVoteUpDownVote',
+        //     {
+        //       voteChoiceId: userVote.voteChoiceId,
+        //       upVote:       false,
+        //       firstVote:    false
+        //     },
+        //     function (error, result) {
+        //       if (error){
+        //         console.log(error.reason);
+        //       }; 
+        //     }
+        //   );
+        // };
+        // // if it is currently an upvote
+        //    if (userVote.upVote){
+
+
+
+        //       // if this is a different vote...
+        //       // if this vote is an upvote...
+        //       if (userVote.upVote){
+
+        //        // downVote this vote
+        //        Meteor.call('userVoteUpDownVote', {
+        //           voteChoiceId: userVote.voteChoiceId,
+        //           upVote: false,
+        //           firstVote: false
+        //         }, function (error, result) {
+        //             if (error){
+        //               console.log(error.reason);
+        //             }; 
+        //           }
+        //        );
+
+ 
+        //     };
+
+        //   };
 
       // var thisVote = Template.instance().firstVote.get()? true : !Template.instance().previousVote.get();
 
