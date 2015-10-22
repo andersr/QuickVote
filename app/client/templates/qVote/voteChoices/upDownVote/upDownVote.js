@@ -76,7 +76,8 @@ Template.upDownVote.events({
     if (!Meteor.userId()) {
       Session.set("loginViaModal", true);
       $('#loginModal').modal('show');
-    } else {
+      return;
+    };
 
       // is this the current user's first overall vote for this vote?
       if (Template.instance().firstOverallVote.get()) {
@@ -149,65 +150,8 @@ Template.upDownVote.events({
            );
         };
       });
-      
+
     };
-  };
+  // };
   }
 });
-
-        // else {
-
-
-        //   // downVote all other userVotes
-        //   Meteor.call('userVoteUpDownVote',
-        //     {
-        //       voteChoiceId: userVote.voteChoiceId,
-        //       upVote:       false,
-        //       firstVote:    false
-        //     },
-        //     function (error, result) {
-        //       if (error){
-        //         console.log(error.reason);
-        //       }; 
-        //     }
-        //   );
-        // };
-        // // if it is currently an upvote
-        //    if (userVote.upVote){
-
-
-
-        //       // if this is a different vote...
-        //       // if this vote is an upvote...
-        //       if (userVote.upVote){
-
-        //        // downVote this vote
-        //        Meteor.call('userVoteUpDownVote', {
-        //           voteChoiceId: userVote.voteChoiceId,
-        //           upVote: false,
-        //           firstVote: false
-        //         }, function (error, result) {
-        //             if (error){
-        //               console.log(error.reason);
-        //             }; 
-        //           }
-        //        );
-
- 
-        //     };
-
-        //   };
-
-      // var thisVote = Template.instance().firstVote.get()? true : !Template.instance().previousVote.get();
-
-      // var userVoteAttributes = {
-      //   voteChoiceId: Template.instance().currentVoteChoiceId.get(),
-      //   upVote:       thisVote,
-      //   firstVote:      Template.instance().firstVote.get()
-      // };
-
-      // Meteor.call('userVoteUpDownVote', userVoteAttributes, function (error, result) {
-      //   if (error){
-      //     console.log(error.reason);
-      //   };
-      // });
