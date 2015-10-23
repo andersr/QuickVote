@@ -22,7 +22,8 @@ callback-hook@1.0.4
 check@1.0.6
 chuangbo:cookie@1.1.0
 coffeescript@1.0.10
-dburles:collection-helpers@1.0.3
+dburles:collection-helpers@1.0.4
+dburles:mongo-collection-instances@0.3.4
 ddp@1.2.2
 ddp-client@1.2.1
 ddp-common@1.2.1
@@ -62,6 +63,7 @@ jquery@1.11.4
 juliancwirko:s-alert@3.1.0
 juliancwirko:s-alert-stackslide@3.1.0
 kit:basic-auth@1.0.1
+lai:collection-extensions@0.1.4
 launch-screen@1.0.4
 less@2.5.0_3
 livedata@1.0.15

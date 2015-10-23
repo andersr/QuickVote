@@ -1,12 +1,12 @@
-Template.deleteVote.onCreated(function(){
+Template.fooTest.onCreated(function(){
 
   // this.voteId = new ReactiveVar(this.data._id);
 
-  console.log("delete vote template: " + this.data._id);
+  console.log("fooTest: " + this.data._id);
 
 });
 
-Template.deleteVote.events({
+Template.fooTest.events({
   "click .delete-vote":function(){
 
     var voteId = Template.instance().voteId.get();

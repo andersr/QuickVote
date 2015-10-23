@@ -51,3 +51,4 @@ meteorhacks:aggregate
 momentjs:moment
 mizzao:timesync
 kit:basic-auth
+dburles:mongo-collection-instances

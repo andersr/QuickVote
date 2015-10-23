@@ -17,6 +17,17 @@ AppLib = {
       var words = str.split(' ');
       return words[0] + " " + words[1].charAt(0);
     }
-  }
-  
+  },
+  collectionHelpers: {
+
+    clickToEditUpdate: function(updateAttributes){
+      // console.log("updateAttributes: " + updateAttributes);
+
+      Meteor.call('clickToEditUpdate', updateAttributes, function(error, result){
+        if (error){
+          console.log(error.reason);
+        } ;
+      });
+    }
+  } 
 };

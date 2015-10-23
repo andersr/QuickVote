@@ -1,0 +1,10 @@
+<template name="clickToEdit">
+  {{#if editing}} 
+    <form class="update-item">
+      <input type="text" name="itemTitle" class="form-control item-title" placeholder="Update {{itemLabel}}..." value="{{itemLabel}}">
+       <span class="secondary-content"><button type="button" class="btn btn-default btn-xs cancel-edit">Cancel</button></span>
+    </form>
+  {{else}}
+    <div class="clickable full-width edit-item">{{itemLabel}}</div>
+  {{/if}}
+</template>
