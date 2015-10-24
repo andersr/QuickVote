@@ -20,10 +20,10 @@ AppLib = {
   },
   collectionHelpers: {
 
-    clickToEditUpdate: function(updateAttributes){
+    clickToUpdate: function(updateAttributes){
       // console.log("updateAttributes: " + updateAttributes);
 
-      Meteor.call('clickToEditUpdate', updateAttributes, function(error, result){
+      Meteor.call('clickToUpdate', updateAttributes, function(error, result){
         if (error){
           console.log(error.reason);
         } ;

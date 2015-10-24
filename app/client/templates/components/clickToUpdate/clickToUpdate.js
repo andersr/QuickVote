@@ -1,4 +1,4 @@
-Template.clickToEdit.onCreated(function(){
+Template.clickToUpdate.onCreated(function(){
 
   var
   templateInstance                 = this;
@@ -15,7 +15,7 @@ Template.clickToEdit.onCreated(function(){
   });
 });
 
-Template.clickToEdit.helpers({
+Template.clickToUpdate.helpers({
   editing: function () {
     return Template.instance().editing.get();
   },
@@ -24,7 +24,7 @@ Template.clickToEdit.helpers({
   }
 });
 
-Template.clickToEdit.events({
+Template.clickToUpdate.events({
 
   'click .edit-item': function () {
     Template.instance().editableItem.set(Template.instance().itemId.get());
@@ -43,7 +43,7 @@ Template.clickToEdit.events({
     itemAttributes.collection = this.collection;
     itemAttributes.fieldValue = template.find('.click-to-edit-form .field-value').value;
 
-    AppLib.collectionHelpers.clickToEditUpdate(itemAttributes);
+    AppLib.collectionHelpers.clickToUpdate(itemAttributes);
 
     Template.instance().editableItem.set(null);
   }

@@ -1,6 +1,6 @@
   Meteor.methods({
 
-    clickToEditUpdate:function(updateAttributes){
+    clickToUpdate:function(updateAttributes){
 
       check(Meteor.userId(), String);
       check(updateAttributes, {
