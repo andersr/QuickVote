@@ -34,7 +34,7 @@ Template.voteStatus.helpers({
       return {
         message: "Voting hasn't started yet.",
         ownerAction: "Start this vote",
-        classes: "btn btn-default start-vote"
+        classes: "btn btn-default start-vote no-underline"
       }
 
     } else if (votingEnabled && votingInitiated){
@@ -42,7 +42,7 @@ Template.voteStatus.helpers({
       return {
         message: "Voting is currently in progress.",
         ownerAction: "End Voting",
-        classes: "btn btn-default end-vote"
+        classes: "btn btn-default no-underline end-vote"
       }
 
     } else if (!votingEnabled && votingInitiated){
@@ -50,7 +50,7 @@ Template.voteStatus.helpers({
       return {
         message: "Voting has ended.",
         ownerAction: "Re-open this vote",
-        classes: "start-vote"
+        classes: "meta-info start-vote"
       }
 
     };
