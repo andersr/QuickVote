@@ -1,7 +1,7 @@
 <template name="voteStatus">
-<div class="flex-line">
-  {{currentStatus.message}}
-</div>
+<p class="meta-info">
+{{currentStatus.message}}
+</p>
   {{#if isOwner}}
   <a href="" class="{{currentStatus.classes}}" role="button">{{currentStatus.ownerAction}}</a>
   {{else}}
