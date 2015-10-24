@@ -28,7 +28,7 @@
         <td class="large-text vertical-middle">{{count}}</td>
         <td class="large-text">
         {{#if isOwner}}
-        {{> clickToEdit itemName=title itemId=this._id itemCollection="voteChoices" itemKey="title"}}
+        {{> clickToEdit fieldValue=title fieldKey="title" collection="voteChoices" itemId=this._id}}
         {{else}}
         {{title}}
         {{/if}}

@@ -4,15 +4,15 @@
 
       check(Meteor.userId(), String);
       check(updateAttributes, {
-        id: String,
+        itemId: String,
         collection: String,
-        fieldName: String,
+        fieldKey: String,
         fieldValue: String
       });
       var dbUpdate = {};
-      dbUpdate[updateAttributes.fieldName] = updateAttributes.fieldValue;
+      dbUpdate[updateAttributes.fieldKey] = updateAttributes.fieldValue;
 
-     Mongo.Collection.get(updateAttributes.collection).update(updateAttributes.id,{ 
+     Mongo.Collection.get(updateAttributes.collection).update(updateAttributes.itemId,{ 
       $set: dbUpdate
      });
 
