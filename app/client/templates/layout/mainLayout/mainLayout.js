@@ -1,8 +1,15 @@
-// Template.mainLayout.helpers({
-//   foo: function () {
-//     // ...
-//   }
-// });
+Template.mainLayout.helpers({
+  footer: function () {
+  
+    switch (Router.current().route.getName()){
+      case 'voteDetail':
+        return "voteFooter";
+      default: 
+        return "appFooter";
+    };
+    
+  }
+});
 
 Template.mainLayout.events({
 "click .logout":function(){ 
