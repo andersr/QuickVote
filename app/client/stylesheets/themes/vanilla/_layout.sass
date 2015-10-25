@@ -1,6 +1,8 @@
 // FULL HEIGHT, SINGLE COLUMN
 // ____________________________________________
-
+html
+  // * enough space to scroll up to get fullscreen on iOS8 */
+  padding-bottom: 80px
 
 html,body
   box-sizing: border-box
@@ -8,11 +10,13 @@ html,body
     box-sizing: inherit
 
 html, body
-  height: 100%
+  height: 100vh
   overflow:hidden
+  padding:0
+  margin:0
 
 .app-container
-  height: 100%
+  height: 100vh
   margin-top: 0
   margin-bottom: 0
   margin-left: auto
@@ -34,6 +38,7 @@ html, body
 
 .main-content
   flex: 1
+  overflow-x: auto
 
 .app-header, .app-footer, .vote-footer
   .nav-center

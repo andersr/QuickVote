@@ -29,5 +29,17 @@ AppLib = {
         } ;
       });
     }
-  } 
+  }
+  // , 
+  // layoutHelpers: {
+  //   scrollToTop: function(){
+  //     window.addEventListener("load",function() {
+  //     // Set a timeout...
+  //     Meteor.setTimeout(function(){
+  //       // Hide the address bar!
+  //       window.scrollTo(0, 1);
+  //     }, 0);
+  //   });
+  //   }
+  // }
 };
