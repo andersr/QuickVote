@@ -1,41 +1,20 @@
-Template.voteMetaInfo.onCreated(function(){
-  // var
-  // templateInstance                      = this;
-  // // var checkCreatedTimeAgo;
-  // templateInstance.voteCreatedAt     = new ReactiveVar();
-
-  // var createdAt = Votes.findOne({_id: Router.current().params._id }).createdAt;
-    // console.log(createdAt);
-    // var createdAtTimeAgo;
-
-  // var checkCreatedAt = Meteor.setInterval(function() {
-  //     Template.instance().voteCreatedAt.set(moment(createdAt).fromNow());
-  //   }, 60000);
-
-  // templateInstance.autorun(function(){
-
-  //   var votesSubscription = templateInstance.subscribe('votes');
-
-  //   if (votesSubscription.ready()) {
-  //     var vote = Votes.findOne({_id: Router.current().params._id }); 
-
-  //     // templateInstance.createdAtTimeAgo.set(moment(vote.createdAt).fromNow());
-  //   };
-  // });
-
-    // checkCreatedTimeAgo = Meteor.setInterval(function() {
-    //  Template.instance().createdAtTimeAgo.set(moment(vote.createdAt).fromNow());
-    // }, 60000);
-
-});
 Template.voteMetaInfo.helpers({
   voteCreatorName: function () {
     var vote = Votes.findOne({_id: Router.current().params._id });
     
     if (vote.owner === Meteor.userId()) {
-      return "you";
+      return "by you, ";
     } else {
-      return vote.ownerPublicName;
+      if (vote.ownerPublicName != "") {
+
+         return "by " + vote.ownerPublicName + ", ";
+
+      } else {
+
+         return "";
+
+      };
+     
     };
     
   },
@@ -79,3 +58,34 @@ Template.voteMetaInfo.events({
 
   }
 });
+
+// Template.voteMetaInfo.onCreated(function(){
+//   // var
+//   // templateInstance                      = this;
+//   // // var checkCreatedTimeAgo;
+//   // templateInstance.voteCreatedAt     = new ReactiveVar();
+
+//   // var createdAt = Votes.findOne({_id: Router.current().params._id }).createdAt;
+//     // console.log(createdAt);
+//     // var createdAtTimeAgo;
+
+//   // var checkCreatedAt = Meteor.setInterval(function() {
+//   //     Template.instance().voteCreatedAt.set(moment(createdAt).fromNow());
+//   //   }, 60000);
+
+//   // templateInstance.autorun(function(){
+
+//   //   var votesSubscription = templateInstance.subscribe('votes');
+
+//   //   if (votesSubscription.ready()) {
+//   //     var vote = Votes.findOne({_id: Router.current().params._id }); 
+
+//   //     // templateInstance.createdAtTimeAgo.set(moment(vote.createdAt).fromNow());
+//   //   };
+//   // });
+
+//     // checkCreatedTimeAgo = Meteor.setInterval(function() {
+//     //  Template.instance().createdAtTimeAgo.set(moment(vote.createdAt).fromNow());
+//     // }, 60000);
+
+// });
