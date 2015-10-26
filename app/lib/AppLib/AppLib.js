@@ -15,7 +15,12 @@ AppLib = {
 
     firstWordFirstCharOfSecondWord: function(str){
       var words = str.split(' ');
-      return words[0] + " " + words[1].charAt(0);
+      if (words.length > 0) {
+        return words[0] + " " + words[1].charAt(0);
+      } else {
+        return words[0];
+      };
+     
     }
   },
   collectionHelpers: {

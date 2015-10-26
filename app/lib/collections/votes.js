@@ -34,8 +34,10 @@ Meteor.methods({
       title: String
     });
 
-    var ownerName = Meteor.users.findOne({_id: Meteor.userId() }).profile.name;
-    var ownerPublicName = AppLib.txtHelpers.firstWordFirstCharOfSecondWord(ownerName);
+    var ownerName = "UserName";
+    // Meteor.users.findOne({_id: Meteor.userId() }).profile.name || "UserName";
+    var ownerPublicName = "UserName";
+    // var ownerPublicName = AppLib.txtHelpers.firstWordFirstCharOfSecondWord(ownerName);
 
     var voteAttributes = _.extend(voteAttributes, {
       owner: Meteor.userId(),
