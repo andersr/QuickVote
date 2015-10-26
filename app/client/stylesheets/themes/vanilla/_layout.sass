@@ -5,29 +5,31 @@
 //GLOBAL
 html,body
   box-sizing: border-box
-  height: 100vh
-  overflow:hidden
-  padding:0
-  margin:0
+  height:100%
 
 *, *:before, *:after
   box-sizing: inherit
 
+body
+  overflow:hidden
+  padding:0
+  margin:0
+
+
+
 
 //APP CONTAINER
 .app-container
-  min-height: 100vh
+  height:100%
   margin-top: 0
   margin-bottom: 0
   margin-left: auto
   margin-right: auto
   padding-left: 1.5em
   padding-right:$app-container-padding
-
   max-width: $app-max-width
   display: flex
   flex-direction: column
-
 
 // APP HEADERS AND FOOTERS
 .app-header
@@ -40,10 +42,17 @@ html,body
 .app-header, .app-footer, .vote-footer
   .nav-center
     text-align: center
+
 .app-footer
   height: $app-footer-height
+
+
 .vote-footer
   height: $vote-footer-height
+  // position: fixed;
+  // bottom: 0;
+  // left: 0;
+  // width: 100%;
 
 
 // MAIN CONTENT
@@ -56,7 +65,7 @@ html,body
 @media screen and (min-width: $small-screen-break-point)
 
   .app-container
-    min-height: $app-min-height
+    height: $app-height
     margin-top: $app-top-bottom-margin
     margin-bottom: $app-top-bottom-margin
 
