@@ -1,7 +1,3 @@
-// Template.mainLayout.onRendered(function(){
-
-// });
-
 Template.mainLayout.helpers({
   footer: function () {
   

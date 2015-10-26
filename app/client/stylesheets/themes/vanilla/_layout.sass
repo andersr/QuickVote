@@ -1,22 +1,22 @@
 // FULL HEIGHT, SINGLE COLUMN
 // ____________________________________________
-html
-  // * enough space to scroll up to get fullscreen on iOS8 */
-  padding-bottom: 80px
 
+
+//GLOBAL
 html,body
   box-sizing: border-box
-*, *:before, *:after
-    box-sizing: inherit
-
-html, body
   height: 100vh
   overflow:hidden
   padding:0
   margin:0
 
+*, *:before, *:after
+  box-sizing: inherit
+
+
+//APP CONTAINER
 .app-container
-  // height: 100vh
+  min-height: 100vh
   margin-top: 0
   margin-bottom: 0
   margin-left: auto
@@ -28,6 +28,8 @@ html, body
   display: flex
   flex-direction: column
 
+
+// APP HEADERS AND FOOTERS
 .app-header
   height: $app-header-height
 
@@ -35,23 +37,22 @@ html, body
     .app-brand
       display: inline-block
       width: 100%
-
-.main-content
-  flex: 1
-  overflow-x: auto
-
 .app-header, .app-footer, .vote-footer
   .nav-center
     text-align: center
-
-// FOOTERS
 .app-footer
   height: $app-footer-height
-
 .vote-footer
   height: $vote-footer-height
 
 
+// MAIN CONTENT
+.main-content
+  flex: 1
+  overflow-x: auto
+
+
+// TABLET AND LARGER
 @media screen and (min-width: $small-screen-break-point)
 
   .app-container

@@ -2,7 +2,7 @@ Template.deleteVote.onCreated(function(){
 
   // this.voteId = new ReactiveVar(this.data._id);
 
-  console.log("delete vote template: " + this.data._id);
+  // console.log("delete vote template: " + this.data._id);
 
 });
 
