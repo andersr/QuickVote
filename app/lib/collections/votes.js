@@ -52,11 +52,11 @@ Meteor.methods({
 
     var voteId = Votes.insert(voteAttributes);
 
-    Meteor.call('createVoteWinners', voteId, function (error, result) {
-      if (error){
-        console.log(error.reason);
-      }
-    });
+    // Meteor.call('createVoteWinners', voteId, function (error, result) {
+    //   if (error){
+    //     console.log(error.reason);
+    //   }
+    // });
 
     return {
       voteId:voteId
