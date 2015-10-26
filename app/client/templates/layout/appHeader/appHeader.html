@@ -25,9 +25,14 @@
         </div>
       {{else}}
         {{#unless isLoginPage}}
-          {{> loginButtons align="right"}}
+         <a href="" class="login">Sign In/Up</a>
+       
         {{/unless}}
       {{/if}}
     </div>
   </div>
+</template>
+
+<template name="loginTmp">
+     {{> loginButtons align="right"}}
 </template>

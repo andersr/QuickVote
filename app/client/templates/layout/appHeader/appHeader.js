@@ -75,6 +75,11 @@ Template.appHeader.events({
     event.preventDefault();
     Session.set("newVote", false);
   },
+  "click .login": function(){
+     Session.set("loginViaModal", true);
+      $('#loginModal').modal('show');
+  },
+
   "click .logout": function(event){
     event.preventDefault();
     Meteor.logout();

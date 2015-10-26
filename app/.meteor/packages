@@ -22,7 +22,6 @@ nemo64:bootstrap
 splendido:accounts-meld
 reactive-dict
 useraccounts:bootstrap
-accounts-ui
 accounts-password
 tmeasday:publish-counts
 fastclick
