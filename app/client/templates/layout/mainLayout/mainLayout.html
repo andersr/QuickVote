@@ -3,6 +3,9 @@
     {{> sAlert template='dkAlert'}}
     {{> loginModal}}
     {{> appHeader}}
+    {{#if voteDetail}}
+      {{> voteHeader}}
+    {{/if}}
     <div class="main-content">
       {{> yield}}
     </div>

@@ -7,12 +7,17 @@ body
   @include border-radius(.35em)
 
 // LAYOUT
-.app-header
-  border-bottom: 1px solid $light-gray
+// .app-header
+//   border-bottom: 1px solid $light-gray
   
 .vote-footer, .app-footer
   border-top: 1px solid $light-gray
 
+
+//TABLES
+.table > tbody > tr > td
+  border-top: none
+ 
 
 // BRAND
 // --------------------------------------------
@@ -29,6 +34,10 @@ body
 
   &:hover
     color: $off-black
+
+//HELPERS
+.border-bottom
+  border-bottom: 1px solid $light-gray
 
 
 

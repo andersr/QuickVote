@@ -1,4 +1,8 @@
 Template.mainLayout.helpers({
+  voteDetail: function () {
+    return Router.current().route.getName() === 'voteDetail';
+  },
+
   footer: function () {
   
     switch (Router.current().route.getName()){
@@ -7,7 +11,6 @@ Template.mainLayout.helpers({
       default: 
         return "appFooter";
     };
-    
   }
 });
 
