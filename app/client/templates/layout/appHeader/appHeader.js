@@ -82,7 +82,12 @@ Template.appHeader.events({
 
   "click .logout": function(event){
     event.preventDefault();
-    Meteor.logout();
+    // Meteor.logout();
+    Meteor.logout(function(error) {
+      if(error){
+        alert("There was a logout error: " + error.reason);
+      }
+    });
     Session.set("logout",true);
     Router.go('login');
   }
