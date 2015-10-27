@@ -21,7 +21,6 @@ service-configuration
 nemo64:bootstrap
 splendido:accounts-meld
 reactive-dict
-useraccounts:bootstrap
 accounts-password
 tmeasday:publish-counts
 fastclick
@@ -42,7 +41,6 @@ spacebars
 check
 matb33:collection-hooks
 ostrio:iron-router-title
-andersr:mobileheadertag
 peppelg:mongo-sum
 fourseven:scss@=3.2.0
 meteoric:ionicons-sass
@@ -51,3 +49,4 @@ momentjs:moment
 mizzao:timesync
 kit:basic-auth
 dburles:mongo-collection-instances
+accounts-ui
