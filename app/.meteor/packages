@@ -49,4 +49,4 @@ momentjs:moment
 mizzao:timesync
 kit:basic-auth
 dburles:mongo-collection-instances
-accounts-ui
+useraccounts:bootstrap
