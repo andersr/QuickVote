@@ -1,5 +1,5 @@
 Meteor.publish('votes', function() {
-  Counts.publish(this, 'votesCount', Votes.find());
+  // Counts.publish(this, 'votesCount', Votes.find());
   return Votes.find(); 
 });
 
