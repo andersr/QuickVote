@@ -43,20 +43,6 @@ Meteor.methods({
 
     var voteChoiceId = VoteChoices.insert(voteChoiceAttributes);
 
-    var userVoteAttributes = {
-      voteChoiceId: voteChoiceId
-    };
-
-    Meteor.call('addUserVote', userVoteAttributes, function (error, result) {
-      if (error){
-        console.log(error.reason);
-      }
-    });
-
-    // return {
-    //   voteChoiceId: voteChoiceId
-    // };
-
   },
   
   removeVoteChoice:function(voteChoiceId){
