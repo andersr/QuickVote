@@ -81,7 +81,7 @@ Template.appHeader.events({
   },
 
   "click .logout": function(event){
-    event.preventDefault();
+    // event.preventDefault();
     // Meteor.logout();
     Meteor.logout(function(error) {
       if(error){
