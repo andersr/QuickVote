@@ -1,3 +1,3 @@
-# TopicVoter App
+# QuickVote App
 
-A meteor app used for an introductory talk on Meteor JS.
+Quickly create a vote, add vote choices, and allow people to sign in and vote.
