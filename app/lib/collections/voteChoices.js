@@ -38,7 +38,8 @@ Meteor.methods({
 
     var voteChoiceAttributes = _.extend(voteChoiceAttributes, {
       count:0,
-      updatedAt: new Date()
+      updatedAt: new Date(),
+      owner: Meteor.userId()
     });
 
     var voteChoiceId = VoteChoices.insert(voteChoiceAttributes);
@@ -48,7 +49,12 @@ Meteor.methods({
   removeVoteChoice:function(voteChoiceId){
     check(Meteor.userId(), String);
     check(voteChoiceId, String);
-    VoteChoices.remove(voteChoiceId);
+
+    var voteChoice = VoteChoices.findOne({_id: voteChoiceId });
+    if (voteChoice.owner === Meteor.userId()) {
+      VoteChoices.remove(voteChoice._id);
+    };
+        
   },
 
   updateVoteChoiceCount:function(voteChoiceAttributes){
