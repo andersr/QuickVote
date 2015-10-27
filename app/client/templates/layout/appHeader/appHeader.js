@@ -59,7 +59,6 @@ Template.appHeader.events({
   "click .new-vote": function(){
 
     //TODO: replicated in votesList - make DRY - eg with template helper
-
     if (!Meteor.userId()) {
       Session.set("loginViaModal", true);
       $('#loginModal').modal('show');

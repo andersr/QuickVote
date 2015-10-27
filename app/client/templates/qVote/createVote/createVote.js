@@ -6,6 +6,10 @@ Template.createVote.events({
 
   'submit .new-vote-form': function(event) {
     event.preventDefault();
+     if (!Meteor.userId()) {
+      Session.set("loginViaModal", true);
+      $('#loginModal').modal('show');
+     };
 
     var $input = $(event.target).find('[type=text]');
     if (! $input.val())
