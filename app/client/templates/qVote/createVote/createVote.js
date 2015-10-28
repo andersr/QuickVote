@@ -9,6 +9,7 @@ Template.createVote.events({
      if (!Meteor.userId()) {
       Session.set("loginViaModal", true);
       $('#loginModal').modal('show');
+      return;
      };
 
     var $input = $(event.target).find('[type=text]');
@@ -35,7 +36,9 @@ Template.createVote.events({
     $input.val('');
   }
 
-  //   "keyup input": function(event,template){
+});
+
+ //   "keyup input": function(event,template){
   //     event.preventDefault();
   //   // console.log("submitted new vote");
   //   if (event.keyCode === 13){
@@ -44,7 +47,6 @@ Template.createVote.events({
   //     console.log("vote title: " + voteTitle);
   //   }
   // }
-});
     //   var voteAttributes = {
     //     title: voteTitle
     //   };
@@ -60,7 +62,6 @@ Template.createVote.events({
     // });
 
   
-
     //check again for meteor user id
 
     // if (!Meteor.userId()) {
