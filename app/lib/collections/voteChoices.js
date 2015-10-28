@@ -2,27 +2,27 @@ VoteChoices = new Mongo.Collection('voteChoices');
 
 // from http://joshowens.me/meteor-security-101/
 
-VoteChoices.allow({  
-  insert: function (userId, doc) {
-    return userId;
-  },
-  update: function (userId, doc, fields, modifier) {
-    // can only change your own documents
-    return doc.userId === userId;
-  },
-  remove: function (userId, doc) {
-    // can only remove your own documents
-    return doc.userId === userId;
-  }
-});
-// deny anyone that tries to update the document userId:
+// VoteChoices.allow({  
+//   insert: function (userId, doc) {
+//     return userId;
+//   },
+//   update: function (userId, doc, fields, modifier) {
+//     // can only change your own documents
+//     return doc.userId === userId;
+//   },
+//   remove: function (userId, doc) {
+//     // can only remove your own documents
+//     return doc.userId === userId;
+//   }
+// });
+// // deny anyone that tries to update the document userId:
 
-VoteChoices.deny({  
-  update: function (userId, docs, fields, modifier) {
-    // can't change owners
-    return _.contains(fields, 'userId');
-  }
-});
+// VoteChoices.deny({  
+//   update: function (userId, docs, fields, modifier) {
+//     // can't change owners
+//     return _.contains(fields, 'userId');
+//   }
+// });
 
 
 
@@ -36,10 +36,16 @@ Meteor.methods({
       voteId: String
     });
 
+    var vote = Votes.findOne({_id: voteChoiceAttributes.voteId});
+
+    if (Meteor.userId() != vote.owner) {
+      return;
+    };
+
     var voteChoiceAttributes = _.extend(voteChoiceAttributes, {
       count:0,
       updatedAt: new Date(),
-      owner: Meteor.userId()
+      owner: vote.owner
     });
 
     var voteChoiceId = VoteChoices.insert(voteChoiceAttributes);

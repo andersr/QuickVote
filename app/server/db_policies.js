@@ -21,9 +21,11 @@ Votes.permit(['insert']).ifLoggedIn().apply();
 //Only allow the owner of a vote to update or remove it
 Votes.permit(['update', 'remove']).isVoteOwner().apply();
 
+VoteChoices.permit(['insert']).ifLoggedIn().apply();
+
 // VOTE CHOICES Policies
 //Must be vote owner to add/update/remove a corresponding vote choice
-VoteChoices.permit(['insert', 'update', 'remove']).isVoteOwner().apply();
+VoteChoices.permit(['update', 'remove']).isVoteOwner().apply();
 
 // USER VOTES Policies
 
