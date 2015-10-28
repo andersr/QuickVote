@@ -5,6 +5,7 @@ BrowserPolicy.content.allowInlineStyles();
 BrowserPolicy.content.allowFontDataUrl();
 
 var trusted = [
+  '*quickvote.meteor.com',
   '*.google-analytics.com',
   '*.googleapis.com',
   '*.gstatic.com',
