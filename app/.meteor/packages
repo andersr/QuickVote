@@ -21,7 +21,6 @@ service-configuration
 nemo64:bootstrap
 splendido:accounts-meld
 reactive-dict
-accounts-password
 tmeasday:publish-counts
 fastclick
 meteorhacks:fast-render

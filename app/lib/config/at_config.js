@@ -1,5 +1,5 @@
 AccountsTemplates.configure({
-  forbidClientAccountCreation: false,
+  forbidClientAccountCreation: true,
   overrideLoginErrors: true,
   texts: {
     title: {
