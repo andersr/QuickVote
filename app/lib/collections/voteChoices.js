@@ -57,9 +57,12 @@ Meteor.methods({
     check(voteChoiceId, String);
 
     var voteChoice = VoteChoices.findOne({_id: voteChoiceId });
-    if (voteChoice.owner === Meteor.userId()) {
-      VoteChoices.remove(voteChoice._id);
+    
+    if (Meteor.userId() != voteChoice.owner) {
+      return;
     };
+
+    VoteChoices.remove(voteChoice._id);
         
   },
 
