@@ -1,10 +1,18 @@
-Meteor.publish('votes', function(limit) {
+Meteor.publish('votesList', function(limit) {
+  check(limit, Number);
+
   Counts.publish(this, 'votesCount', Votes.find());
   return Votes.find({}, {limit: limit}); 
 });
 
-Meteor.publish('voteChoices', function() {
-  return VoteChoices.find(); 
+Meteor.publish('voteDetails', function(voteId) {
+  check(voteId, String);
+  return Votes.find({_id: voteId}); 
+});
+
+Meteor.publish('voteChoices', function(voteId) {
+  check(voteId, String);
+  return VoteChoices.find({voteId: voteId}); 
 });
 
 Meteor.publish('userVotes', function() {

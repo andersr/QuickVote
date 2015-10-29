@@ -3,18 +3,21 @@ Template.voteChoicesList.onCreated(function(){
   templateInstance                  = this;
   templateInstance.showVoteResults  = new ReactiveVar();
  
-   
   templateInstance.autorun(function(){
 
-    var votesSubscription = templateInstance.subscribe('votes');
+    var voteId = Router.current().params._id;
+    var votesSubscription = templateInstance.subscribe('voteDetails', voteId);
+    var votesChoicesSubscription = templateInstance.subscribe('voteChoices', voteId);
+    
+    if (votesSubscription.ready() && votesChoicesSubscription.ready()) {
 
-    if (votesSubscription.ready()) {
-      var vote = Votes.findOne({_id: Router.current().params._id});
+      var vote = Votes.findOne({_id: voteId});
       templateInstance.showVoteResults.set(!vote.votingEnabled && vote.votingInitiated);
+      Session.set("addVoteChoice", VoteChoices.find({voteId: voteId }).count() === 0);
 
-      if(VoteChoices.find({voteId: vote._id }).count() === 0){
-        Session.set("addVoteChoice", true);
-      };
+      // if(){
+        
+      // };
 
     };
   });
@@ -37,30 +40,31 @@ Template.voteChoicesList.helpers({
   },
   showVoteResults: function(){
     return Template.instance().showVoteResults.get();
-  },
-  displayWinners: function(){
-
-    var vote = Votes.findOne({_id: Router.current().params._id }, {winningChoices: 1, winningCount: 1 });
-    var numberOfWinners = vote.winningChoices.length;
-    var winningChoiceTitles = _.map(vote.winningChoices, function(winningChoice){
-      return VoteChoices.findOne({_id: winningChoice }, {title: 1}).title;
-    });
-
-    if (numberOfWinners === 0) {
-      return "No winners yet :-/";
-    } else if (numberOfWinners === 1){
-      return winningChoiceTitles[0] + " got the most votes!";
-    } else if (numberOfWinners === 2){
-      return "It's a tie between '" + winningChoiceTitles[0] + "' and '" + winningChoiceTitles[1] + "'!";
-
-    } else if (numberOfWinners > 2){
-       return "Three or more winners";
-      
-    } else {
-       return "";  //something went wrong
-    };
-
   }
+  // ,
+  // displayWinners: function(){
+
+  //   var vote = Votes.findOne({_id: Router.current().params._id }, {winningChoices: 1, winningCount: 1 });
+  //   var numberOfWinners = vote.winningChoices.length;
+  //   var winningChoiceTitles = _.map(vote.winningChoices, function(winningChoice){
+  //     return VoteChoices.findOne({_id: winningChoice }, {title: 1}).title;
+  //   });
+
+  //   if (numberOfWinners === 0) {
+  //     return "No winners yet :-/";
+  //   } else if (numberOfWinners === 1){
+  //     return winningChoiceTitles[0] + " got the most votes!";
+  //   } else if (numberOfWinners === 2){
+  //     return "It's a tie between '" + winningChoiceTitles[0] + "' and '" + winningChoiceTitles[1] + "'!";
+
+  //   } else if (numberOfWinners > 2){
+  //      return "Three or more winners";
+      
+  //   } else {
+  //      return "";  //something went wrong
+  //   };
+
+  // }
 
 });
 

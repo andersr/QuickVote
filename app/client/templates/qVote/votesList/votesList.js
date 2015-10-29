@@ -17,7 +17,7 @@ Template.votesList.onCreated(function(){
   instance.autorun(function(){
 
     //subscribe to the most recent limit
-    var votesSubscription = instance.subscribe('votes', instance.limit.get());
+    var votesSubscription = instance.subscribe('votesList', instance.limit.get());
     
     if (votesSubscription.ready()) {
       instance.subscriptionsReady.set(true);

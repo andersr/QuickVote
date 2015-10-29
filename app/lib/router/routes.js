@@ -55,7 +55,7 @@ Router.onStop(closeVoteChoiceForm, {only: ['voteDetail']});
 Router.route('/votes/:_id', {
   name: 'voteDetail',
   waitOn:function(){
-    return Meteor.subscribe('votes', this.params._id);
+    return Meteor.subscribe('voteDetails', this.params._id);
   },
   data: function () {
     return Votes.findOne({_id: this.params._id});
