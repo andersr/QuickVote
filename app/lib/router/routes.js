@@ -72,12 +72,7 @@ Router.route('/votes/:_id', {
 
 // LOGIN
 Router.route('/login', {
-  name: 'login'
-  // ,
-  // title: function(){
-  //   return "Please Sign In";
-  // }
-  ,
+  name: 'login',
   action: function(){
     this.render();
   }
@@ -85,6 +80,7 @@ Router.route('/login', {
 
 
 // HOME
+// :votesCountLimit?
 Router.route('/', {
   name: 'home',
   action: function(){
