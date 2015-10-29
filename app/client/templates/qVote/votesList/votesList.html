@@ -10,7 +10,7 @@
               </div>
             {{/unless}}
           {{else}}
-          {{#each this}}
+          {{#each votes}}
           <tr>
             <td>
               <h2>
@@ -33,5 +33,8 @@
           {{/if}}
         </tbody>
     </table>
-    
+
+{{#if showMore}}
+    <p><a href="" class="show-more">Show more...</a></p>
+{{/if}}
 </template>

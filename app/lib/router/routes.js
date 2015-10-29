@@ -86,11 +86,11 @@ Router.route('/', {
   action: function(){
     this.render();
   },
-  waitOn: function() { 
-    return Meteor.subscribe('votes'); 
-  },
-   data: function () {
-    return Votes.find({}, {sort: {updatedAt: -1 }});
-  },
+  // waitOn: function() { 
+  //   return Meteor.subscribe('votes'); 
+  // },
+  //  data: function () {
+  //   return Votes.find({}, {sort: {updatedAt: -1 }});
+  // },
   fastRender: true
 });

@@ -1,6 +1,6 @@
-Meteor.publish('votes', function() {
+Meteor.publish('votes', function(limit) {
   Counts.publish(this, 'votesCount', Votes.find());
-  return Votes.find(); 
+  return Votes.find({}, {limit: limit}); 
 });
 
 Meteor.publish('voteChoices', function() {
