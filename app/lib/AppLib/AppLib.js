@@ -23,6 +23,11 @@ AppLib = {
      
     }
   },
+  
+  listHelpers: {
+    pageIncrement: 10
+  },
+
   collectionHelpers: {
 
     clickToUpdate: function(updateAttributes){

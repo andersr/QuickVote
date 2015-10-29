@@ -3,7 +3,7 @@ Template.votesList.onCreated(function(){
   var instance = this;
 
   //Set amount to load each time 'load more' is clicked
-  instance.pageIncrement = new ReactiveVar(5);
+  instance.pageIncrement = new ReactiveVar(AppLib.listHelpers.pageIncrement);
 
   //check if subscriptions are ready
   instance.subscriptionsReady = new ReactiveVar(false);
