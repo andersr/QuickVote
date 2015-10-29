@@ -54,7 +54,6 @@ Template.votesList.helpers({
   },
   votes: function(){
     return Template.instance().votes();
-
   }
 });
 
@@ -62,15 +61,6 @@ Template.votesList.helpers({
 Template.votesList.events({
 
   "click .show-more": function(){
-
-  // update the limit based on the pageIncrement
-  Template.instance().limit.set(Template.instance().limit.get() + Template.instance().pageIncrement.get());
-
+    Template.instance().limit.set(Template.instance().limit.get() + Template.instance().pageIncrement.get());
   }
 });
-
-  // by default, load only up to the limit
-  // set loadedQty = limit
-  //   if total count > loadedQty, set showMore to true
-  // on click of show more, display another showMoreIncrement
-  // update loadedQty to += showMoreIncrement
