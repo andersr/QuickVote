@@ -7,7 +7,7 @@ Meteor.publish('votesList', function(limit) {
 
 Meteor.publish('voteDetails', function(voteId) {
   check(voteId, String);
-  return Votes.find({_id: voteId}); 
+  return Votes.find({_id: voteId}, {limit: 1}); 
 });
 
 Meteor.publish('voteChoices', function(voteId) {

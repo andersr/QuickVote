@@ -25,7 +25,7 @@ AppLib = {
   },
   
   listHelpers: {
-    pageIncrement: 10
+    pageIncrement: 25
   },
 
   collectionHelpers: {
