@@ -5,6 +5,9 @@ Template.votesList.onCreated(function(){
   //Set amount to load each time 'load more' is clicked
   instance.pageIncrement = new ReactiveVar(5);
 
+  //check if subscriptions are ready
+  instance.subscriptionsReady = new ReactiveVar(false);
+
   // set default value for qty of items to display
   instance.limit         = new ReactiveVar(instance.pageIncrement.get());
 
@@ -17,12 +20,11 @@ Template.votesList.onCreated(function(){
     var votesSubscription = instance.subscribe('votes', instance.limit.get());
     
     if (votesSubscription.ready()) {
-
-      //after items have loaded, set new limit to be items loaded + pageIncrement
-      // instance.limit.set(instance.loaded.get() + pageIncrement);
+      instance.subscriptionsReady.set(true);
 
     } else {
-      console.log("vote subscription is not ready yet");
+      // console.log("vote subscription is not ready yet");
+      instance.subscriptionsReady.set(false);
     };
   });
 
@@ -35,8 +37,8 @@ Template.votesList.onCreated(function(){
 
 
 Template.votesList.helpers({
-  finishedLoading: function(){
-    return Template.instance().finishedLoading.get();
+  subscriptionsReady: function(){
+    return Template.instance().subscriptionsReady.get();
   },
   showMore: function(){
      return Counts.get('votesCount') > Template.instance().limit.get();

@@ -10,26 +10,23 @@
               </div>
             {{/unless}}
           {{else}}
-          {{#each votes}}
-          <tr>
-            <td>
-              <h2>
-              
-                {{#linkTo route='voteDetail'}}{{title}}{{/linkTo}}
-              </h2>
-            </td>
-            <td class="vertical-middle text-center">
-                {{#if this.votingEnabled}}
-                   Voting Open
-                {{else}}
-                   Voting Closed
-                {{/if}}
-            </td>
-            {{#if isOwner}}
-            {{> deleteVote}}
-            {{/if}}
-          </tr>
-          {{/each}}
+              {{#each votes}}
+                <tr>
+                  <td>
+                    <h2>
+                      {{#linkTo route='voteDetail'}}{{title}}{{/linkTo}}
+                    </h2>
+                  </td>
+                  <td class="vertical-middle text-center">
+                      {{#if this.votingEnabled}}
+                         Voting Open
+                      {{else}}
+                         Voting Closed
+                      {{/if}}
+                  </td>
+                  {{#if isOwner}}{{> deleteVote}}{{/if}}
+                </tr>
+            {{/each}}
           {{/if}}
         </tbody>
     </table>
@@ -37,4 +34,5 @@
 {{#if showMore}}
     <p><a href="" class="show-more">Show more...</a></p>
 {{/if}}
+ {{#unless subscriptionsReady}}{{> loading}}{{/unless}}
 </template>
