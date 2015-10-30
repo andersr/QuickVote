@@ -46,8 +46,6 @@ meteoric:ionicons-sass
 meteorhacks:aggregate
 momentjs:moment
 mizzao:timesync
-kit:basic-auth
 dburles:mongo-collection-instances
 useraccounts:bootstrap
-east5th:check-checker
 browser-policy
