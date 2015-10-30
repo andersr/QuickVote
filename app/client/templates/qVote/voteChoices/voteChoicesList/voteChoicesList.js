@@ -2,6 +2,9 @@ Template.voteChoicesList.onCreated(function(){
   var
   templateInstance                  = this;
   templateInstance.showVoteResults  = new ReactiveVar();
+  templateInstance.voteStarted  = new ReactiveVar(false);
+  templateInstance.voteEnded  = new ReactiveVar(false);
+
 
   templateInstance.autorun(function(){
 
@@ -12,6 +15,8 @@ Template.voteChoicesList.onCreated(function(){
     if (votesSubscription.ready() && votesChoicesSubscription.ready()) {
 
       var vote = Votes.findOne({_id: voteId});
+      templateInstance.voteStarted.set(vote.voteStarted);
+      templateInstance.voteEnded.set(vote.voteEnded);
 
       //show add vote choice true if vote has not started or this vote has no vote choices
       if (!vote.voteStarted || VoteChoices.find({voteId: voteId }).count() === 0) {
@@ -41,6 +46,10 @@ Template.voteChoicesList.helpers({
   },
   showVoteResults: function(){
     return Template.instance().showVoteResults.get();
+  },
+  voteInProgress: function(){
+
+    return Template.instance().voteStarted.get() && !Template.instance().voteEnded.get();
   }
   // ,
   // displayWinners: function(){

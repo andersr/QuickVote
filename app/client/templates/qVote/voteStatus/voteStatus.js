@@ -13,13 +13,8 @@ Template.voteStatus.onCreated(function(){
 
     if (votesSubscription.ready()) {
       var vote = Votes.findOne({_id: voteId });
-      console.log("vote: " + vote._id);
-
       templateInstance.voteStarted.set(vote.voteStarted);
-
       templateInstance.voteEnded.set(vote.voteEnded);
-
-
     };
   });
 });

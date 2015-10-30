@@ -23,14 +23,14 @@ Template.upDownVote.onCreated(function(){
         templateInstance.firstOverallVote.set(firstOverallVote);
 
         var votesByThisVoter = UserVotes.find({userId: Meteor.userId(), voteId: templateInstance.currentVoteId.get()}).fetch();
-             
-        templateInstance.votesByThisVoter.set(votesByThisVoter);      
+
+        templateInstance.votesByThisVoter.set(votesByThisVoter);
 
         var firstVote = UserVotes.find({
           voteChoiceId:templateInstance.currentVoteChoiceId.get(),
           userId: Meteor.userId()
         }, {limit: 1}).count() === 0;
-        templateInstance.firstVote.set(firstVote); 
+        templateInstance.firstVote.set(firstVote);
 
         if (templateInstance.firstVote.get()) {
           templateInstance.previousVote.set(false);
@@ -39,7 +39,7 @@ Template.upDownVote.onCreated(function(){
             voteChoiceId:templateInstance.currentVoteChoiceId.get(),
             userId: Meteor.userId()
           });
-          templateInstance.previousVote.set(userVote.upVote);      
+          templateInstance.previousVote.set(userVote.upVote);
         };
       };
     };
@@ -87,7 +87,7 @@ Template.upDownVote.events({
         firstVote:    true
       });
 
-      // otherwise, is the current vote already an upvote? THIS MAY BE THE ISSUE
+      // otherwise, is the current vote already an upvote?
     } else if (Template.instance().previousVote.get() === true) {
 
       // then downVote this vote
