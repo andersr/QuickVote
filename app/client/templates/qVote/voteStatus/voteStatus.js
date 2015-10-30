@@ -1,23 +1,25 @@
 Template.voteStatus.onCreated(function(){
   var
-  templateInstance                 = this;
+  templateInstance  = this,
+  voteId            = Router.current().params._id;
 
-  templateInstance.votingEnabled   = new ReactiveVar(),
-  templateInstance.votingInitiated = new ReactiveVar()
+  templateInstance.voteStarted   = new ReactiveVar(),
+  templateInstance.voteEnded = new ReactiveVar()
   ;
 
   templateInstance.autorun(function(){
 
-    var votesSubscription = templateInstance.subscribe('votes');
+    var votesSubscription = templateInstance.subscribe('voteDetails', voteId);
 
     if (votesSubscription.ready()) {
-      var vote = Votes.findOne({_id: Router.current().params._id });
-          
-      templateInstance.votingEnabled.set(vote.votingEnabled);
-    
-      templateInstance.votingInitiated.set(vote.votingInitiated);
-     
-      
+      var vote = Votes.findOne({_id: voteId });
+      console.log("vote: " + vote._id);
+
+      templateInstance.voteStarted.set(vote.voteStarted);
+
+      templateInstance.voteEnded.set(vote.voteEnded);
+
+
     };
   });
 });
@@ -26,10 +28,10 @@ Template.voteStatus.helpers({
 
   currentStatus: function(){
 
-    var votingEnabled = Template.instance().votingEnabled.get();
-    var votingInitiated = Template.instance().votingInitiated.get();
+    var voteStarted = Template.instance().voteStarted.get();
+    var voteEnded = Template.instance().voteEnded.get();
 
-    if (!votingEnabled && !votingInitiated) { 
+    if (!voteStarted) {
 
       return {
         message: "Voting hasn't started yet.",
@@ -37,7 +39,7 @@ Template.voteStatus.helpers({
         classes: "btn btn-default start-vote no-underline"
       }
 
-    } else if (votingEnabled && votingInitiated){
+    } else if (voteStarted && !voteEnded){
 
       return {
         message: "Voting is currently in progress.",
@@ -45,7 +47,7 @@ Template.voteStatus.helpers({
         classes: "btn btn-default no-underline end-vote"
       }
 
-    } else if (!votingEnabled && votingInitiated){
+    } else if (voteEnded){
 
       return {
         message: "Voting has ended.",

@@ -2,30 +2,31 @@ Template.voteChoicesList.onCreated(function(){
   var
   templateInstance                  = this;
   templateInstance.showVoteResults  = new ReactiveVar();
- 
+
   templateInstance.autorun(function(){
 
     var voteId = Router.current().params._id;
     var votesSubscription = templateInstance.subscribe('voteDetails', voteId);
     var votesChoicesSubscription = templateInstance.subscribe('voteChoices', voteId);
-    
+
     if (votesSubscription.ready() && votesChoicesSubscription.ready()) {
 
       var vote = Votes.findOne({_id: voteId});
-      templateInstance.showVoteResults.set(!vote.votingEnabled && vote.votingInitiated);
-      Session.set("addVoteChoice", VoteChoices.find({voteId: voteId }).count() === 0);
 
-      // if(){
-        
-      // };
+      //show add vote choice true if vote has not started or this vote has no vote choices
+      if (!vote.voteStarted || VoteChoices.find({voteId: voteId }).count() === 0) {
+         Session.set("addVoteChoice", true);
+      };
 
+      //show vote results if vote has eneded
+      templateInstance.showVoteResults.set(vote.voteEnded);
     };
   });
 
 });
 
 Template.voteChoicesList.helpers({
-  
+
   voteChoices:function(){
 
     if (Template.instance().showVoteResults.get()) {
@@ -33,7 +34,7 @@ Template.voteChoicesList.helpers({
     } else {
       return VoteChoices.find({voteId: Router.current().params._id }, {sort: { updatedAt: -1 }});
     };
-   
+
   },
   showVoteChoiceForm: function(){
     return Session.get("addVoteChoice");
@@ -59,7 +60,7 @@ Template.voteChoicesList.helpers({
 
   //   } else if (numberOfWinners > 2){
   //      return "Three or more winners";
-      
+
   //   } else {
   //      return "";  //something went wrong
   //   };

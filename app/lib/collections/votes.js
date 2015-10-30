@@ -23,8 +23,8 @@ Meteor.methods({
       ownerPublicName: ownerPublicName,
       createdAt: new Date(),
       updatedAt: new Date(),
-      votingEnabled: false,
-      votingInitiated: false,
+      voteStarted: false,
+      voteEnded: false,
       winningCount: 0,
       winningChoices: []
     });
@@ -47,15 +47,14 @@ Meteor.methods({
     check(voteAttributes, {
       voteId: String
     });
- 
+
     var vote = Votes.findOne({_id: voteAttributes.voteId });
 
     if(vote.owner === Meteor.userId()){
 
       Votes.upsert(voteAttributes.voteId, {
-        $set: { 
-          votingEnabled: true,
-          votingInitiated: true
+        $set: {
+          voteStarted: true
         }
       });
 
@@ -66,14 +65,14 @@ Meteor.methods({
     check(voteAttributes, {
       voteId: String
     });
- 
+
     var vote = Votes.findOne({_id: voteAttributes.voteId });
 
     if(vote.owner === Meteor.userId()){
 
       Votes.upsert(voteAttributes.voteId, {
-        $set: { 
-          votingEnabled: false
+        $set: {
+          voteEnded: true
         }
       });
 
@@ -85,13 +84,13 @@ Meteor.methods({
   //     voteId: String,
   //     votingEnabled: Boolean
   //   });
- 
+
   //   var vote = Votes.findOne({_id: voteAttributes.voteId });
 
   //   if(vote.owner === Meteor.userId()){
 
   //     Votes.upsert(voteAttributes.voteId, {
-  //       $set: { 
+  //       $set: {
   //         votingEnabled: voteAttributes.votingEnabled,
   //         votingInitiated: true
   //       }
@@ -99,7 +98,7 @@ Meteor.methods({
 
   //   }
   // },
-  
+
   // MAKE SURE THIS WORKS NOW
   updateVoteWinners: function(voteAttributes){
     check(Meteor.userId(), String);
@@ -111,11 +110,11 @@ Meteor.methods({
 
     var vote = Votes.findOne({_id: voteAttributes.voteId });
 
-    Votes.update(vote._id, { 
-      $set: { 
+    Votes.update(vote._id, {
+      $set: {
         winningChoices: voteAttributes.winningChoices,
         winningCount: voteAttributes.winningCount
-       } 
+       }
     });
 
   },
